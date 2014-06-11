@@ -1,0 +1,341 @@
+@font-face {
+  font-family: 'Noto Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Noto Sans'), local('NotoSans'), url(fonts/noto-sans.woff) format('woff');
+}
+
+html {
+	height: 100%;
+	margin: 0px;
+}
+
+body {
+	background-color: #8E8461;
+	font-family: 'Noto Sans', Arial, sans-serif;
+	font-size: 15px;
+	height: 100%;
+	width: 100%;
+	margin: 0px;
+}
+
+header {
+	background-color: #FFFFFF;
+	padding: 5px 40px;
+	height: 75px;
+	box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.8);
+	position: relative;
+	z-index: 10;
+}
+
+/* Page title */
+header img {
+	float: left;
+	margin-right: 30px;
+	margin-top: 5px;
+}
+
+header h1 {
+	float: left;
+	text-decoration: none;
+}
+header a{
+	text-decoration: none;
+}
+
+header a:visited {
+  color: inherit;
+}
+
+/* Buttons in the header */
+header nav {
+	position: relative;
+	top: 20px;
+}
+
+header nav ul {
+	padding: 0px;
+	margin: 0px;
+	list-style-type: none;
+}
+
+header nav ul li {
+	float: right;
+	color: #000000;
+	margin-right: 20px;
+	text-align: center;
+}
+
+header nav ul li a {
+	display: block;
+	text-decoration: none;
+	color: #000000;
+	padding: 10px 20px;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	height: 17px;
+	font-size: 15px;
+	font-weight: bold;
+}
+
+header nav ul li a:hover {
+	display: block;
+	text-decoration: none;
+}
+
+/* Header Login Button */
+header nav ul li #login {
+	background-color: #9ACA55;
+	width: 120px;
+}
+
+header nav ul li #login:hover {
+	background-color: #68a170;
+}
+
+header nav ul li #login:active {
+	background-color: #95c49c;
+}
+
+/* Header Layer Button */
+header nav ul li #webgis {
+	background-color: #546a86;
+	width: 120px;
+}
+
+header nav ul li #webgis:hover {
+	background-color: #6a85a8;
+}
+
+header nav ul li #webgis:active {
+	background-color: #8ba6c9;
+}
+
+/* Header Layer Button */
+header nav ul li #project {
+	background-color: #546a86;
+	width: 120px;
+}
+
+header nav ul li #project:hover {
+	background-color: #6a85a8;
+}
+
+header nav ul li #project:active {
+	background-color: #8ba6c9;
+}
+
+/* Upload Button */
+header nav ul li #upload {
+	background-color: #546a86;
+	width: 180px;
+}
+
+header nav ul li #upload:hover {
+	background-color: #6a85a8;
+}
+
+header nav ul li #upload:active {
+	background-color: #8ba6c9;
+}
+
+.map-intro {
+	position: absolute;
+	left: 20px;
+	top: 20px;
+	height: 130px;
+	width: 100px;
+	border: 1px solid #5f5f5f;
+}
+
+.introjs-arrow {
+	display: none !important;
+}
+
+footer {
+	background-color: #3c4245;
+	padding: 4px 40px;
+	height: 20px;
+	box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.8);
+	position: absolute;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+	z-index: 1;
+	text-align: right;
+	vertical-align: middle;
+}
+
+/* Map */
+#map {
+	min-height: 0%;
+	position: absolute;
+	top: 85px;
+	bottom: 28px;
+	right: 0px;
+	left: 300px;
+}
+
+/* Leaflet zoom and location finder controls */
+#map .leaflet-left {
+	left: 10px;
+}
+
+#map .leaflet-control {
+	font-family: 'Noto Sans', Arial, sans-serif;
+}
+
+#map .leaflet-control-geosearch input:hover {
+	background-color: #F6F6F6;
+}
+
+/* Leaflet layer toggler */
+#map .leaflet-control-layers-toggle {
+	cursor: pointer;
+}
+
+#map .leaflet-control-layers-list label {
+	cursor: pointer;
+	border-radius: 4px;
+}
+
+#map .leaflet-control-layers-list label:hover {
+	background-color: #EEEEEE;
+}
+
+/* Leaflet GroupedLayer toggler */
+#map .leaflet-control-layers-group-name {
+	font-weight: bold;
+	margin-bottom: .2em;
+	display: block;
+}
+
+#map .leaflet-control-layers-group {
+	margin-bottom: .5em;
+}
+
+#map .leaflet-control-layers-group label {
+	padding-left: .5em;
+}
+
+#map .leaflet-control-coordinates {
+	background-color: #FFFFFF !important;
+	box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.5);
+}
+
+#map .leaflet-control-coordinates input {
+	background-color: #F6F6F6 !important;
+	border-radius: 0px;
+	border: 0px;
+	font-family: 'Noto Sans', Arial, sans-serif;
+	font-size: 13px;
+	padding: 0px 5px;
+}
+
+/* Leaflet Scale */
+#map .leaflet-control-scale {
+    margin-bottom: 5px !important;
+    position: relative !important;
+    right: 170px !important;
+    bottom: -160px !important;
+}
+
+/* Change highlighting of activated tools */
+/* Measure Control */
+#map .leaflet-control.enabled a {
+	background-color: yellow  !important;
+}
+
+/* Drawing Tools */
+#map .leaflet-draw-toolbar-button-enabled { 
+     background-color: yellow !important;
+}
+
+/*Locate Me Tool*/
+#map .leaflet-control-locate.active.following a {
+	background-color: yellow;
+}
+
+#mapcontrol{
+	background-color: #FFFFFF;
+	width: 300px;
+	position: absolute;
+	top: 85px;
+	bottom: 28px;
+	z-index: 3;
+	overflow: auto;
+	padding-bottom: 20px;
+}
+
+#login-content{
+	background-color: #FFFFFF;
+	padding: 10px;
+	position: absolute;
+	top: 85px;
+	right: 0px;
+	width: 250px;
+	height: 170px;
+	z-index: 9;
+	overflow: auto;
+	padding-bottom: 20px;
+	display: none;
+	box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.8);
+}
+
+#login-content h1{
+	margin-left: 15px;
+	margin-bottom: 5px;
+	font-size: 15px;
+	font-family: 'Noto Sans', Arial, sans-serif;
+}
+
+#username, #password{
+	margin-top: -5px;
+	margin-left: 15px;
+	height: 20px;
+	width: 210px;
+}
+
+#submit{
+	margin-top: 25px;
+	margin-left: 15px;
+	height: 26px;
+	width: 100px;
+	cursor: pointer;
+	background-color: #EEEEEE;
+}
+
+#impressum-content{
+  background-color: #FFFFFF;
+	padding: 10px;
+	position: absolute;
+	bottom: 28px;
+	right: 0px;
+	width: 500px;
+	height: 220px;
+	z-index: 1000;
+	overflow: auto;
+	padding-bottom: 20px;
+	display: none;
+	box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.8);
+}
+
+#impressum-content h1{
+  font-size: 15px;
+  font-family: 'Noto Sans', Arial, sans-serif;
+}
+  
+
+footer a {
+	color: #FFFFFF;
+	text-decoration: none;
+	letter-spacing: 1px;
+	padding-left: 20px;
+	text-transform: uppercase;
+	font-size: 13px;
+}
+
+footer a:hover {
+	color: #A6A6A6;
+	text-decoration: none;
+}
