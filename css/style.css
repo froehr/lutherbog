@@ -78,6 +78,18 @@ header nav ul li a {
 	font-weight: bold;
 }
 
+header nav ul li input {
+	display: block;
+	text-decoration: none;
+	color: #000000;
+	padding: 10px 20px;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	height: 17px;
+	font-size: 15px;
+	font-weight: bold;
+}
+
 header nav ul li a:hover {
 	display: block;
 	text-decoration: none;
@@ -95,6 +107,22 @@ header nav ul li #login:hover {
 
 header nav ul li #login:active {
 	background-color: #95c49c;
+}
+
+/* Header Logout Button */
+header nav ul li #logout {
+	background-color: #FF3333;
+	width: 160px;
+	height: 37px;
+	border: hidden;
+}
+
+header nav ul li #logout:hover {
+	background-color: #E62E2E;
+}
+
+header nav ul li #logout:active {
+	background-color: #FF6666;
 }
 
 /* Header Layer Button */
@@ -122,6 +150,20 @@ header nav ul li #project:hover {
 }
 
 header nav ul li #project:active {
+	background-color: #8ba6c9;
+}
+
+/* Upload Button */
+header nav ul li #access {
+	background-color: #546a86;
+	width: 180px;
+}
+
+header nav ul li #access:hover {
+	background-color: #6a85a8;
+}
+
+header nav ul li #access:active {
 	background-color: #8ba6c9;
 }
 
@@ -323,6 +365,14 @@ footer {
 #impressum-content h1{
   font-size: 15px;
   font-family: 'Noto Sans', Arial, sans-serif;
+}
+
+#login{
+	display: block;
+}
+
+#logout{
+	display: none;
 }
   
 

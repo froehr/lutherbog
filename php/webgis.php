@@ -1,3 +1,9 @@
+<?php
+session_start();
+$_SESSION['page'] = 'map';
+include 'granted.php';
+?>
+
 <!DOCTYPE HTML>
 <html>
 	<head>
@@ -47,8 +53,9 @@
                             <a href='../index.php'><h1>LUTHERbog WebGIS</h1></a>
 				<nav>
 					<ul>
-						<li><a href="../index.php" class="header-buttons" id="login">Ausloggen</a></li>
+						<li><form action="logout.php" method="post"><input name="submit" type="submit" value="Ausloggen" class="header-buttons" id="logout" /></form></li>
 						<li><a href="upload.php" class="header-buttons" id="upload">Daten hinzuf&uuml;gen</a></li>
+						<li><a href="access.php" class="header-buttons" id="access">Daten einsehen</a></li>
 					</ul>
 				</nav>
 			</header>
@@ -69,6 +76,7 @@
 		
 		<script src="../js/map.js"></script>
 		<script src="../js/userinterface.js"></script>
+		<script src="../js/login.js"></script>
                 
 	</body>
 </html>
