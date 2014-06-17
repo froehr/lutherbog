@@ -78,18 +78,6 @@ header nav ul li a {
 	font-weight: bold;
 }
 
-header nav ul li input {
-	display: block;
-	text-decoration: none;
-	color: #000000;
-	padding: 10px 20px;
-	text-transform: uppercase;
-	letter-spacing: 1px;
-	height: 17px;
-	font-size: 15px;
-	font-weight: bold;
-}
-
 header nav ul li a:hover {
 	display: block;
 	text-decoration: none;
@@ -112,9 +100,6 @@ header nav ul li #login:active {
 /* Header Logout Button */
 header nav ul li #logout {
 	background-color: #FF3333;
-	width: 160px;
-	height: 37px;
-	border: hidden;
 }
 
 header nav ul li #logout:hover {
@@ -125,9 +110,24 @@ header nav ul li #logout:active {
 	background-color: #FF6666;
 }
 
-/* Header Layer Button */
+/* Header Admin Button */
+header nav ul li #admin {
+	background-color: #546a86;
+	display: none;
+}
+
+header nav ul li #admin:hover {
+	background-color: #6a85a8;
+}
+
+header nav ul li #admin:active {
+	background-color: #8ba6c9;
+}
+
+/* Header Webgis Button */
 header nav ul li #webgis {
 	background-color: #546a86;
+	display: none;
 	width: 120px;
 }
 
@@ -139,7 +139,7 @@ header nav ul li #webgis:active {
 	background-color: #8ba6c9;
 }
 
-/* Header Layer Button */
+/* Header Project Button */
 header nav ul li #project {
 	background-color: #546a86;
 	width: 120px;
@@ -153,7 +153,7 @@ header nav ul li #project:active {
 	background-color: #8ba6c9;
 }
 
-/* Upload Button */
+/* ZUgriff Button */
 header nav ul li #access {
 	background-color: #546a86;
 	width: 180px;
@@ -194,6 +194,70 @@ header nav ul li #upload:active {
 	display: none !important;
 }
 
+#switch {
+	background-color: #3c4245;
+	height: 30px;
+	width: 100%;
+	box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.8);
+	position: absolute;
+	top: 85px;
+	z-index: 8;
+}
+
+#switch ul {
+	margin-top: 0px;
+	padding-left: 0px;
+	list-style-type: none;
+}
+
+#switch ul li {
+	float: left;
+	text-align: center;
+	height: 30px;
+	width:25%;
+}
+
+#switch ul li h1 {
+	display: block;
+	text-decoration: none;
+	color: #FFFFFF;
+	text-transform: uppercase;
+	letter-spacing: 3px;
+	font-size: 15px;
+	font-weight: bold;
+	margin-top: 5px;
+}
+
+#switch ul li:hover {
+	background-color: #989A9A !important;
+}
+
+#switch ul li:active {
+	background-color: #CCCCCC !important;
+}
+
+.switch-content {
+	position: fixed;
+	background-color: #CCCCCC;
+	top: 115px;
+	width: 100%;
+	height: 100%;
+	z-index: 7;
+	padding: 20px;
+}
+
+#viewuser-content {
+	display: block;
+}
+
+#changeuser-content {
+	display: none;
+}
+
+#adduser-content {
+	display: none;
+}
+
 footer {
 	background-color: #3c4245;
 	padding: 4px 40px;
@@ -203,7 +267,7 @@ footer {
 	bottom: 0px;
 	left: 0px;
 	right: 0px;
-	z-index: 1;
+	z-index: 9;
 	text-align: right;
 	vertical-align: middle;
 }
@@ -331,6 +395,36 @@ footer {
 	font-family: 'Noto Sans', Arial, sans-serif;
 }
 
+#logout-content{
+	background-color: #FFFFFF;
+	padding: 10px;
+	position: absolute;
+	top: 85px;
+	right: 0px;
+	width: 300px;
+	height: 170px;
+	z-index: 9;
+	overflow: auto;
+	padding-bottom: 20px;
+	display: none;
+	box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.8);
+}
+
+#logout-content h1{
+	margin-left: 10px;
+	margin-bottom: 5px;
+	font-weight: bold;
+	font-size: 20px;
+	font-family: 'Noto Sans', Arial, sans-serif;
+}
+
+#logout-content p{
+	margin-left: 15px;
+	margin-bottom: 5px;
+	font-size: 14px;
+	font-family: 'Noto Sans', Arial, sans-serif;
+}
+
 #username, #password{
 	margin-top: -5px;
 	margin-left: 15px;
@@ -348,7 +442,7 @@ footer {
 }
 
 #impressum-content{
-  background-color: #FFFFFF;
+	background-color: #FFFFFF;
 	padding: 10px;
 	position: absolute;
 	bottom: 28px;
@@ -363,8 +457,8 @@ footer {
 }
 
 #impressum-content h1{
-  font-size: 15px;
-  font-family: 'Noto Sans', Arial, sans-serif;
+	font-size: 15px;
+	font-family: 'Noto Sans', Arial, sans-serif;
 }
 
 #login{
@@ -374,7 +468,37 @@ footer {
 #logout{
 	display: none;
 }
-  
+
+table {
+	margin-left: 30px;
+	border:1px solid black;
+	border-collapse: collapse;
+	width: 500px;
+	font-size: 20px;
+	font-family: 'Noto Sans', Arial, sans-serif;
+}
+
+td {
+	padding: 5px;
+	height: 30px;
+	border:1px solid black;
+	border-collapse: collapse;
+	text-align: center;
+}
+
+td a{
+	text-decoration: underline;
+	color: #000000;
+}
+
+th {
+	padding: 5px;
+	height: 30px;
+	border:1px solid black;
+	border-collapse: collapse;
+	text-align: center;
+	font-size: 30px;
+} 
 
 footer a {
 	color: #FFFFFF;

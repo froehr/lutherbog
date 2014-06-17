@@ -5,7 +5,6 @@ if (isset($_POST['username']) && isset($_POST['password'])){
   
     include 'db_config.php';
     $query = mysql_query("SELECT * FROM `login` WHERE `user` = '".$username."' AND `password` = '".$password."'");
-    echo mysql_error();
     if (mysql_num_rows($query) != 0) {
             while ($row = mysql_fetch_object($query)) {
                     $_SESSION['id'] = $row->id;
@@ -13,6 +12,9 @@ if (isset($_POST['username']) && isset($_POST['password'])){
                     $_SESSION['map'] = $row->map;
                     $_SESSION['data'] = $row->data;
                     $_SESSION['admin'] = $row->admin;
+                    $_SESSION['vorname'] = $row->vorname;
+                    $_SESSION['nachname'] = $row->nachname;
+                    $_SESSION['email'] = $row->email;
             }
     }
 }

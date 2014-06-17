@@ -1,6 +1,5 @@
 <?php
 session_start(); 
-if(isset($_POST['submit'])){
     $_SESSION['id'] = '';
     $_SESSION['user'] = '';
     $_SESSION['map'] = '';
@@ -10,6 +9,5 @@ if(isset($_POST['submit'])){
     session_destroy();
     
 echo '<script>window.location = "../index.php";</script>';
-}
 
 ?>
