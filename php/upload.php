@@ -31,6 +31,67 @@ include 'granted.php';
 					<p><?php echo $_SESSION['vorname']." ".$_SESSION['nachname']; ?></p>
 				</form>
 			</div>
+                        
+                        <div id="switch">
+				<ul>
+					<li id="calibration"><h1>Kalibrierung</h1></li>
+					<li id="weather"><h1>Wetterstation</h1></li>
+                                        <li id="methan"><h1>CH4</h1></li>
+                                        <li id="cholendioxid"><h1>CO2</h1></li>
+				</ul>
+			</div>
+                        
+                        <div class=switch-content id=calibration-content>
+				<h2>Auf dieser Seite k&ouml;nnen t&auml;gliche Messungen kalibriert werde:</h2>
+                                <table>
+					<form action="#" method="post">
+						<tr>
+							<td>Datum</td>
+							<td><input type="date" name="date" id="date" required/></td>
+						</tr>
+						
+						<tr>
+							<td colspan="2"><div class="submit"><input type="submit" value="Login &nbsp; &#9658;" id="submit" /></div></td>
+						</tr>
+					</form>
+				</table>
+				
+			</div>
+                        
+                        <div class=switch-content id=weather-content>
+				<h2>Auf dieser Seite k&ouml;nnen aktuelle Wetterdaten gespeichert werden:</h2>
+                                
+                                <form enctype="multipart/form-data" action="#" method="POST">
+                                    <input type="hidden" name="MAX_FILE_SIZE" value="300000000" />
+                                    <!-- Der Name des Input Felds bestimmt den Namen im $_FILES Array -->
+                                    Diese Datei hochladen: <input name="userfile" type="file" />
+                                    <input type="submit" value="Send File" />
+                                    
+                                    <?php
+                                    
+                                    print_r($_FILES['userfile']);
+                                    
+                                    $filename = $_FILES['userfile']['tmp_name'];
+                                    
+                                    $header = NULL;
+                                        $data = array();
+                                        if (($handle = fopen($filename, 'r')) !== FALSE)
+                                        {
+                                            while (($row = fgetcsv($handle, 0, ';')) !== FALSE)
+                                            {
+                                                if(!$header)
+                                                    $header = $row;
+                                                else
+                                                    $data[] = array_combine($header, $row);
+                                            }
+                                            fclose($handle);
+                                        }
+                                    print_r($data);
+                                    
+                
+                                    ?>
+                                </form>
+			</div>
 			
 			<div id='impressum-content'>
 				<h1>Impressum</h1>

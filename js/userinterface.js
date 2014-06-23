@@ -50,6 +50,26 @@ $('#adduser').click(function() {
 	$('#viewuser-content').css('display', 'none');
 });
 
+// calibration button
+$('#calibration').click(function() {
+	$('#calibration').css('background-color', '#CCCCCC');
+	$('#weather').css('background-color', '#3c4245');
+	$('#viewuser').css('background-color', '#3c4245');
+	$('#calibration-content').css('display', 'block');
+	$('#weather-content').css('display', 'none');
+	$('#viewuser-content').css('display', 'none');
+});
+
+// weather button
+$('#weather').click(function() {
+	$('#weather').css('background-color', '#CCCCCC');
+	$('#calibration').css('background-color', '#3c4245');
+	$('#viewuser').css('background-color', '#3c4245');
+	$('#weather-content').css('display', 'block');
+	$('#calibration-content').css('display', 'none');
+	$('#viewuser-content').css('display', 'none');
+});
+
 $('#viewuser').css('background-color', '#CCCCCC');
 
 // logout button
