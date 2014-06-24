@@ -17,5 +17,8 @@ if (isset($_POST['username']) && isset($_POST['password'])){
                     $_SESSION['email'] = $row->email;
             }
     }
+    else{
+        echo("keine passende eingabe");
+    };
 }
 ?>

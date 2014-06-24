@@ -41,7 +41,6 @@ while (marker.length > i) {
                 mark = L.marker([marker[i]['latitude'], marker[i]['longitude']]).addTo(map);
                 mark.bindPopup(marker[i]['name']).openPopup();
                 i++;
-                console.log(i);
 }
 
 // Basemaps
