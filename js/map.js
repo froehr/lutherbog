@@ -15,6 +15,35 @@ var map = new L.Map('map', {
 		scale : true,
 	});
 
+// array with many markers
+var marker;
+
+// get sites from database with ajax
+jQuery.ajax({
+    type: "POST",
+    url: '../php/getSites.php',
+    dataType: 'json',
+    data: {Action:'GetAll'},
+    async: false,
+    success: function(data) {
+                marker = data;
+    },
+    error: function(textStatus, error){
+    	console.log(textStatus);
+	console.log(error);
+    }
+        
+});
+
+// create markers with popups
+i = 0;
+while (marker.length > i) {
+                mark = L.marker([marker[i]['latitude'], marker[i]['longitude']]).addTo(map);
+                mark.bindPopup(marker[i]['name']).openPopup();
+                i++;
+                console.log(i);
+}
+
 // Basemaps
 // add an OpenStreetMap tile layer
 var osm_mq = new L.tileLayer('http://{s}.mqcdn.com/tiles/1.0.0/osm/{z}/{x}/{y}.png', {
