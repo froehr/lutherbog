@@ -61,26 +61,26 @@ include 'granted.php';
 						</tr>
 						<tr>
 							<td>Passwort</td>
-							<td><input type="password" name="password" id="password" required/></td>
+							<td><input type="password" name="password1" id="username" required/></td>
 						</tr>
 						<tr>
 							<td>Passwort wiederholen</td>
-							<td><input type="password" name="password" id="password" required/></td>
+							<td><input type="password" name="password2" id="username" required/></td>
 						</tr>
 						<tr>
 							<td>Vorname</td>
-							<td><input type="text" name="username" id="username" required/></td>
+							<td><input type="text" name="vorname" id="username" required/></td>
 						</tr>
 						<tr>
 							<td>Nachname</td>
-							<td><input type="text" name="username" id="username" required/></td>
+							<td><input type="text" name="nachname" id="username" required/></td>
 						</tr>
-						<tr>
-							<td>Rechte</td>
+						<tr >
+							<td rowspan="2">Rechte</td>
 							<td><input type="radio" name="username" id="username" required/></td>
 						</tr>
 						<tr>
-							<td colspan="2"><div class="submit"><input type="submit" value="Login &nbsp; &#9658;" id="submit" /></div></td>
+							<td colspan="2"><div class="submit"><input type="submit" value="Benutzer anlegen &#9658;" id="subdmit" /></div></td>
 						</tr>
 					</form>
 				</table>

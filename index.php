@@ -1,5 +1,7 @@
 <?php
-session_start();
+if(!isset($_SESSION)){
+	session_start();
+}
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -61,13 +63,24 @@ session_start();
 				</nav>
 			</header>
 			<div id="login-content">
-				<form action="#" method="post">
-					<h1>Benutzername</h1>
-					<input type="text" name="username" id="username" required/>
-					<h1>Passwort</h1>
-					<input type="password" name="password" id="password" required/>
-					<div class="submit"><input type="submit" value="Login &nbsp; &#9658;" id="submit" /></div>
-				</form>
+				<h1>Benutzername</h1>
+				<input type="text" name="username" id="username" onkeypress="if(event.keyCode==13) {login();}"/>
+				<h1>Passwort</h1>
+				<input type="password" name="password" id="password" onkeypress="if(event.keyCode==13) {login();}"/>
+				<div id="input-error">
+					Benutzername oder Passwort ist leer
+				</div>
+				<div id="login-error">
+					Benutzername oder Passwort ist falsch
+				</div>
+				<div id="login-success">
+					Sie wurden erfolgreich eingeloggt!
+				</div>
+				<div id="login-button">
+					<p>
+						Login &nbsp; &#9658;
+					</p>
+				</div>
 			</div>
 			
 			<div id="switch">
@@ -100,12 +113,8 @@ session_start();
 			</footer>
 		</div>
 		
+		<script src="js/login.js"></script>';
 		<script src="js/userinterface.js"></script>
 		
-		<?php
-			if(isset($_SESSION['user'])){
-				echo '<script src="js/login.js"></script>';
-			}
-		?>
 	</body>
 </html>

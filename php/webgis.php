@@ -46,12 +46,7 @@ include 'granted.php';
 				<a href="#" id="impressum">Impressum</a>
 			</footer>
 			
-		<?php
-			if(isset($_SESSION['user'])){
-				echo '<script src="../js/login.js"></script>';
-			}
-		?>
-		
+		<script src="../js/login.js"></script>
 		<script src="../js/map.js"></script>
 		<script src="../js/userinterface.js"></script>                
 	</body>

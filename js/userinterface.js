@@ -80,3 +80,46 @@ $('#logout').hover(function() {
 $('header').hover(function() {
 	$('#logout-content').css('display', 'none');
 });
+
+function login() {
+	if ($('#username').val() == '' || $('#password').val() == ''){
+		$('#input-error').css('display', 'block');
+		$('#login-error').css('display', 'none');
+		$('#login-content').css('height', '200px');
+	}
+	else{
+		$('#input-error').css('display', 'none');
+		jQuery.ajax({
+			type: "POST",
+			url: 'php/login.php',
+			dataType: 'html',
+			data: {username:$('#username').val(), password:$('#password').val()},
+			success: function(data) {
+			    results = data;
+			},
+			async: false,
+		});
+		
+		if (results == 'success'){
+			$('#login-error').css('display', 'none');
+			$('#input-error').css('display', 'none');
+			$('#login-success').css('display', 'block');
+			$('#login-content').css('height', '200px');
+			setTimeout(function() {
+				location.reload();
+			}, 1500);
+			
+		}
+		
+		else{
+			$('#login-error').css('display', 'block');
+			$('#input-error').css('display', 'none');
+			$('#login-content').css('height', '200px');
+		}
+	}
+}
+
+$('#login-button').click(function(){
+	login();
+});
+

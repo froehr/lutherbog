@@ -35,3 +35,6 @@
 		<script src="../js/lib/Leaflet.fusesearch/leaflet.fusesearch.js"></script>
 		<script src="../js/lib/Leaflet.layerjson/leaflet.layerjson.js"></script>	
 		<script src="../js/lib/introJS/intro.js"></script>
+                <script src="../js/lib/Highcharts/js/highcharts.js"></script>
+		<script src="../js/lib/Highcharts/js/modules/data.js"></script>
+		<script src="../js/lib/Highcharts/js/modules/exporting.js"></script>

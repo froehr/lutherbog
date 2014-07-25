@@ -31,11 +31,29 @@ include 'granted.php';
 					<p><?php echo $_SESSION['vorname']." ".$_SESSION['nachname']; ?></p>
 				</form>
 			</div>
+                        
+                        <div id="switch">
+				<ul>
+					<li id="plotten"><h1>Daten Plotten</h1></li>
+					<li id="changeuser"><h1>anderes</h1></li>
+				</ul>
+			</div>
 			
-			<div id='impressum-content'>
-				<h1>Impressum</h1>
-				<p>Diese Website ist im Zuge der Bachelorarbeit von Fabian R&ouml;hr entstanden.</p>
-				<p>Die verarbeiteten Daten wurden von der Arbeitsgruppe Hydrologie, die von Prof. Dr. Blodau geleitet wird, gesammelt und zur Verf&uuml;gung gestellt.</p>	
+			<div class="switch-content" id="plotten-content">
+				<h2>Auf dieser Seite k&ouml;nnen Daten geplottet werden:</h2>
+                                <div id="scatterplot">
+                                </div>
+                                <div id="scatterplot-settings">
+                                    <h3>Daten ausw&auml;hlen:</h3>
+                                    Von: <input type="date" id="start-date">
+                                    Bis: <input type="date" id="end-date"> </br>
+                                    Methan: <input type="radio" name="type"> </br>
+                                    Kohlendioxid: <input type="radio" name="type">
+                                </div>
+			</div>
+			
+			<div class="switch-content" id="changeuser-content">
+				<p>anderes</p>
 			</div>
                         
                         <footer>
@@ -44,12 +62,8 @@ include 'granted.php';
 				<a href="#" id="impressum">Impressum</a>
 			</footer>
                         
-                <?php
-                    if(isset($_SESSION['user'])){
-                            echo '<script src="../js/login.js"></script>';
-                    }
-		?>
-		
-		<script src="../js/userinterface.js"></script>                
+                <script src="../js/login.js"></script>';
+                <script src="../js/userinterface.js"></script>
+                <script src="../js/plotter.js"></script>
 	</body>
 </html>

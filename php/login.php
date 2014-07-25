@@ -1,4 +1,7 @@
 <?php
+if(!isset($_SESSION)){
+	session_start();
+}
 include 'db_config.php';
 if (isset($_POST['username']) && isset($_POST['password'])){
     $username = htmlentities(mysql_real_escape_string($_POST['username']));
@@ -16,7 +19,18 @@ if (isset($_POST['username']) && isset($_POST['password'])){
                     $_SESSION['nachname'] = $row->nachname;
                     $_SESSION['email'] = $row->email;
             }
+        echo ("success");
     }
+    
+    else{
+        echo ("error");
+    };
+}
 
+if (isset($_POST['userinterface']) && ($_POST['userinterface'] == "ui")) {
+    
+        if (isset($_SESSION['user'])) {
+            echo ("true");
+        }
 }
 ?>
