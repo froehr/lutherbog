@@ -64,9 +64,9 @@ if(!isset($_SESSION)){
 			</header>
 			<div id="login-content">
 				<h1>Benutzername</h1>
-				<input type="text" name="username" id="username" onkeypress="if(event.keyCode==13) {login();}"/>
+				<input type="text" id="username" onkeypress="if(event.keyCode==13) {login();}" autofocus/>
 				<h1>Passwort</h1>
-				<input type="password" name="password" id="password" onkeypress="if(event.keyCode==13) {login();}"/>
+				<input type="password" id="password" onkeypress="if(event.keyCode==13) {login();}"/>
 				<div id="input-error">
 					Benutzername oder Passwort ist leer
 				</div>
@@ -76,10 +76,8 @@ if(!isset($_SESSION)){
 				<div id="login-success">
 					Sie wurden erfolgreich eingeloggt!
 				</div>
-				<div id="login-button">
-					<p>
-						Login &nbsp; &#9658;
-					</p>
+				<div class="submit-button" id="login-button">
+					<p>Login &nbsp; &#9658;</p>
 				</div>
 			</div>
 			
@@ -97,6 +95,7 @@ if(!isset($_SESSION)){
 				<form action="#" method="post">
 					<h1>Sie sind angemeldet als:</h1>
 					<p><?php echo $_SESSION['vorname']." ".$_SESSION['nachname']; ?></p>
+					<p><?php echo $_SESSION['email']?></p>
 				</form>
 			</div>
 			

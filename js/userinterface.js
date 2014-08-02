@@ -81,45 +81,25 @@ $('header').hover(function() {
 	$('#logout-content').css('display', 'none');
 });
 
-function login() {
-	if ($('#username').val() == '' || $('#password').val() == ''){
-		$('#input-error').css('display', 'block');
-		$('#login-error').css('display', 'none');
-		$('#login-content').css('height', '200px');
-	}
-	else{
-		$('#input-error').css('display', 'none');
-		jQuery.ajax({
-			type: "POST",
-			url: 'php/login.php',
-			dataType: 'html',
-			data: {username:$('#username').val(), password:$('#password').val()},
-			success: function(data) {
-			    results = data;
-			},
-			async: false,
-		});
-		
-		if (results == 'success'){
-			$('#login-error').css('display', 'none');
-			$('#input-error').css('display', 'none');
-			$('#login-success').css('display', 'block');
-			$('#login-content').css('height', '200px');
-			setTimeout(function() {
-				location.reload();
-			}, 1500);
-			
-		}
-		
-		else{
-			$('#login-error').css('display', 'block');
-			$('#input-error').css('display', 'none');
-			$('#login-content').css('height', '200px');
-		}
-	}
-}
 
+// Register new users
 $('#login-button').click(function(){
 	login();
 });
 
+$('#register-button').click(function(){
+	register();
+});
+
+$('#data-access').change(function(){
+        if ($('#data-access').val() == 2) {
+            $('#map-access').val('2');
+        }
+});
+
+$('#admin-access').change(function(){
+        if ($('#admin-access').val() == 1) {
+            $('#map-access').val('2');
+	    $('#data-access').val('2');
+        }
+});

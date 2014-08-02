@@ -2,6 +2,7 @@
 if(!isset($_SESSION)){
 	session_start();
 }
+
 include 'db_config.php';
 if (isset($_POST['username']) && isset($_POST['password'])){
     $username = htmlentities(mysql_real_escape_string($_POST['username']));

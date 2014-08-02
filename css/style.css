@@ -47,7 +47,7 @@ header a:visited {
   color: inherit;
 }
 
-/* Buttons in the header */
+/* Buttons im header */
 header nav {
 	position: relative;
 	top: 20px;
@@ -82,6 +82,7 @@ header nav ul li a:hover {
 	display: block;
 	text-decoration: none;
 }
+/* ------------------------------- */
 
 /* Header Login Button */
 header nav ul li #login {
@@ -96,6 +97,7 @@ header nav ul li #login:hover {
 header nav ul li #login:active {
 	background-color: #95c49c;
 }
+/* ------------------------------- */
 
 /* Header Logout Button */
 header nav ul li #logout {
@@ -109,6 +111,7 @@ header nav ul li #logout:hover {
 header nav ul li #logout:active {
 	background-color: #FF6666;
 }
+/* ------------------------------- */
 
 /* Header Admin Button */
 header nav ul li #admin {
@@ -123,6 +126,7 @@ header nav ul li #admin:hover {
 header nav ul li #admin:active {
 	background-color: #8ba6c9;
 }
+/* ------------------------------- */
 
 /* Header Webgis Button */
 header nav ul li #webgis {
@@ -153,7 +157,7 @@ header nav ul li #project:active {
 	background-color: #8ba6c9;
 }
 
-/* ZUgriff Button */
+/* Zugriff auf Daten Button */
 header nav ul li #access {
 	background-color: #546a86;
 	width: 180px;
@@ -179,19 +183,6 @@ header nav ul li #upload:hover {
 
 header nav ul li #upload:active {
 	background-color: #8ba6c9;
-}
-
-.map-intro {
-	position: absolute;
-	left: 20px;
-	top: 20px;
-	height: 130px;
-	width: 100px;
-	border: 1px solid #5f5f5f;
-}
-
-.introjs-arrow {
-	display: none !important;
 }
 
 #switch {
@@ -288,21 +279,6 @@ header nav ul li #upload:active {
 	margin: 10px;
 	float: right;
 	border: solid;
-}
-
-footer {
-	position: fixed;
-	background-color: #3c4245;
-	padding: 4px 40px;
-	height: 20px;
-	box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.8);
-	bottom: 0px;
-	left: 0px;
-	right: 0px;
-	z-index: 9;
-	text-align: right;
-	vertical-align: middle;
-	overflow: hidden;
 }
 
 /* Map */
@@ -420,7 +396,7 @@ footer {
 	display: none;
 	box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.8);
 }
-
+/* Meldungen im Login Fenster */
 #input-error{
 	margin: 10px 0px 0px 15px;
 	color:red;
@@ -441,6 +417,7 @@ footer {
 	font-size: 12px;
 	display: none;
 }
+/* ------------------------------- */
 
 #login-content h1{
 	margin-left: 15px;
@@ -449,12 +426,23 @@ footer {
 	font-family: 'Noto Sans', Arial, sans-serif;
 }
 
-#login-button{
+/* Alle Buttons, die auf der Seite verwendet werden */
+.submit-button {
 	margin-top: 15px;
 	margin-left: 15px;
 	height: 35px;
 	width: 150px;
 	cursor: pointer;
+	font-family: 'Noto Sans', Arial, sans-serif;
+	font-size: 15px;
+}
+
+.submit-button p{
+	padding: 7px 0px 0px 40px;
+}
+
+/* Button login zur Seite */
+#login-button{
 	background-color: #EEEEEE;
 }
 
@@ -465,9 +453,79 @@ footer {
 #login-button:active{
 	background-color: #B5B5B5;
 }
+/* ------------------------------- */
 
-#login-button p{
-	padding: 7px 0px 0px 40px;
+/* Bunutzer registrieren Button */
+#register-button {
+	background-color: #52CC52;
+}
+
+#register-button:hover {
+	background-color: #86DB86;
+}
+
+#register-button:active {
+	background-color: #9EE29E;
+}
+/* ------------------------------- */
+
+.register-error{
+	display: none;
+	color: red;
+	height: 30px;
+	position: absolute;
+	left: 545px;
+}
+
+#user-empty {
+	top: 80px;
+}
+
+#password-empty {
+	top: 121px;
+}
+
+#password1-empty {
+	top: 162px;
+}
+
+#name-empty {
+	top: 203px;
+}
+
+#surname-empty {
+	top: 244px;
+}
+#email-empty {
+	top: 285px
+}
+#map-empty {
+	top: 326px;
+}
+
+#data-empty {
+	top: 367px;
+}
+
+#admin-empty {
+	top: 408px;
+}
+
+#user-error {
+      top: 82px;
+}
+
+#password-error {
+      top: 140px;
+}
+
+#register-error {
+      top: 445px;
+}
+
+#register-success {
+      top: 455px;
+      color: green;
 }
 
 #logout-content{
@@ -500,20 +558,11 @@ footer {
 	font-family: 'Noto Sans', Arial, sans-serif;
 }
 
-#username, #password{
+#username, #password, #password1, #name, #surname, #email{
 	margin-top: -5px;
 	margin-left: 15px;
 	height: 20px;
 	width: 210px;
-}
-
-#submit{
-	margin-top: 15px;
-	margin-left: 15px;
-	height: 26px;
-	width: 100px;
-	cursor: pointer;
-	background-color: #EEEEEE;
 }
 
 #impressum-content{
@@ -561,7 +610,7 @@ td {
 	text-align: center;
 }
 
-td a{
+td a {
 	text-decoration: underline;
 	color: #000000;
 }
@@ -573,7 +622,23 @@ th {
 	border-collapse: collapse;
 	text-align: center;
 	font-size: 30px;
-} 
+	}
+
+/* Fu§zeile der Seite */
+footer {
+	position: fixed;
+	background-color: #3c4245;
+	padding: 4px 40px;
+	height: 20px;
+	box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.8);
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+	z-index: 9;
+	text-align: right;
+	vertical-align: middle;
+	overflow: hidden;
+}
 
 footer a {
 	color: #FFFFFF;

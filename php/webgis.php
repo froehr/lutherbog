@@ -29,6 +29,7 @@ include 'granted.php';
 				<form action="#" method="post">
 					<h1>Sie sind angemeldet als:</h1>
 					<p><?php echo $_SESSION['vorname']." ".$_SESSION['nachname']; ?></p>
+					<p><?php echo $_SESSION['email']?></p>
 				</form>
 			</div>
 			
