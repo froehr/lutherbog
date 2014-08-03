@@ -1,7 +1,7 @@
 <?php
 session_start();
 $_SESSION['page'] = 'administration';
-include 'granted.php';
+include 'process/granted.php';
 ?>
 
 <!DOCTYPE HTML>
@@ -14,12 +14,12 @@ include 'granted.php';
 	<body>
 		<div id="page">
 			<header>
-                            <a href='http://www.uni-muenster.de/Landschaftsoekologie/'><img src=../img/iloek_logo.png></a>
-                            <a href='../index.php'><h1>LUTHERbog WebGIS</h1></a>
+                            <a href="http://www.uni-muenster.de/Landschaftsoekologie/"><img src="../img/iloek_logo.png"></a>
+                            <a href="../index.php"><h1>LUTHERbog WebGIS</h1></a>
 				<nav>
 					<ul>
 						<li><a href="#" class="header-buttons" id="login">Einloggen</a></li>
-						<li><a href=logout.php class="header-buttons" id="logout">Ausloggen</a></li>
+						<li><a href="process/logout.php" class="header-buttons" id="logout">Ausloggen</a></li>
 						<li><a href="webgis.php" class="header-buttons" id="webgis">WebGIS</a></li>
 						<li><a href="http://www.uni-muenster.de/HydrologieBodenkunde/LUTHERbog.html" class="header-buttons" id="project" target="_blank">Das Projekt</a></li>
 					</ul>
@@ -42,16 +42,16 @@ include 'granted.php';
 				</ul>
 			</div>
 			
-			<div class=switch-content id=viewuser-content>
+			<div class="switch-content" id="viewuser-content">
 				<h2>Auf dieser Seite k&ouml;nnen bestehende Benutzer und ihre Rechte eingesehen werden:</h2>
-				<?php include 'view-user.php' ?>
+				<?php include 'process/view_user.php' ?>
 			</div>
 			
-			<div class=switch-content id=changeuser-content>
+			<div class="switch-content" id="changeuser-content">
 				<p>Changeuser</p>
 			</div>
 			
-			<div class=switch-content id=adduser-content>
+			<div class="switch-content" id="adduser-content">
 				<h2>Auf dieser Seite k&ouml;nnen neue Benutzer erstellt werden:</h2>
 				<table>
 					<tr>
@@ -118,6 +118,7 @@ include 'granted.php';
 						</td>
 					</tr>
 				</table>
+				
 				<div class="register-error" id="user-empty">Bitte f&uuml;llen Sie dieses Feld</div>
 				<div class="register-error" id="password-empty">Bitte f&uuml;llen Sie dieses Feld</div>
 				<div class="register-error" id="password1-empty">Bitte f&uuml;llen Sie dieses Feld</div>
@@ -129,7 +130,7 @@ include 'granted.php';
 				<div class="register-error" id="admin-empty">Bitte w&auml;hlen Sie eine Option</div>
 				<div class="register-error" id="user-error">Dieser Benutzname ist bereits vergeben</div>
 				<div class="register-error" id="password-error">Die Passw&ouml;rter passen nicht zusammen</div>
-				<div class="register-error" id="register-error">Der Benutzer konnte nicht gespeichert werde. </br> Bitte versuchen Sie es sp&auml;ter erneut.</div>
+				<div class="register-error" id="register-error">Der Benutzer konnte nicht gespeichert werde. <br> Bitte versuchen Sie es sp&auml;ter erneut.</div>
 				<div class="register-error" id="register-success">Der Benutzer wurde erfolgreich gespeichert</div>
 			</div>
 			

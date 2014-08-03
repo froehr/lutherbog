@@ -1,7 +1,7 @@
 <?php
 session_start();
 $_SESSION['page'] = 'upload';
-include 'granted.php';
+include 'process/granted.php';
 ?>
 
 <!DOCTYPE HTML>
@@ -14,8 +14,8 @@ include 'granted.php';
 	<body>
 		<div id="page">
 			<header>
-                            <a href='http://www.uni-muenster.de/Landschaftsoekologie/'><img src=../img/iloek_logo.png></a>
-                            <a href='../index.php'><h1>LUTHERbog WebGIS</h1></a>
+                            <a href="http://www.uni-muenster.de/Landschaftsoekologie/"><img src="../img/iloek_logo.png"></a>
+                            <a href="../index.php"><h1>LUTHERbog WebGIS</h1></a>
 				<nav>
 					<ul>
 						<li><a href="logout.php" class="header-buttons" id="logout">Ausloggen</a></li>
@@ -29,6 +29,7 @@ include 'granted.php';
 				<form action="#" method="post">
 					<h1>Sie sind angemeldet als:</h1>
 					<p><?php echo $_SESSION['vorname']." ".$_SESSION['nachname']; ?></p>
+                                        <p><?php echo $_SESSION['email']?></p>
 				</form>
 			</div>
                         
@@ -42,26 +43,23 @@ include 'granted.php';
 			</div>
                         
                         <div class=switch-content id=calibration-content>
-				<h2>Auf dieser Seite k&ouml;nnen t&auml;gliche Messungen kalibriert werde:</h2>
-                                <table>
-					<form action="#" method="post">
-						<tr>
-							<td>Datum</td>
-							<td><input type="date" name="date" id="date" required/></td>
-						</tr>
-						
-						<tr>
-							<td colspan="2"><div class="submit"><input type="submit" value="Login &nbsp; &#9658;" id="submit" /></div></td>
-						</tr>
-					</form>
-				</table>
-				
+                            <h2>Auf dieser Seite k&ouml;nnen t&auml;gliche Messungen kalibriert werde:</h2>
+                            <table>
+                                <tr>
+                                        <td>Datum</td>
+                                        <td><input class="date" name="date" id="date" required/></td>
+                                </tr>
+                                
+                                <tr>
+                                        <td colspan="2"><div class="submit"><input type="submit" value="Login &nbsp; &#9658;" id="submit" /></div></td>
+                                </tr>
+                            </table>
 			</div>
                         
                         <div class=switch-content id=weather-content>
-				<h2>Auf dieser Seite k&ouml;nnen aktuelle Wetterdaten gespeichert werden:</h2>
+				<h2>Auf dieser Seite k&ouml;nnen Wetterdaten im CSV Format hochgeladen werden:</h2>
                                 
-                                <form enctype="multipart/form-data" action="#" method="POST">
+                                <form type="multipart/form-data" action="#" method="POST">
                                     <input type="hidden" name="MAX_FILE_SIZE" value="300000000" />
                                     <!-- Der Name des Input Felds bestimmt den Namen im $_FILES Array -->
                                     Diese Datei hochladen: <input name="userfile" type="file" />
@@ -110,7 +108,7 @@ include 'granted.php';
                             echo '<script src="../js/login.js"></script>';
                     }
 		?>
-		
+                </div>
 		<script src="../js/userinterface.js"></script>                
 	</body>
 </html>

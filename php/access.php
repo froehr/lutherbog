@@ -1,7 +1,7 @@
 <?php
 session_start();
 $_SESSION['page'] = 'access';
-include 'granted.php';
+include 'process/granted.php';
 ?>
 
 <!DOCTYPE HTML>
@@ -14,11 +14,11 @@ include 'granted.php';
 	<body>
 		<div id="page">
 			<header>
-                            <a href='http://www.uni-muenster.de/Landschaftsoekologie/'><img src=../img/iloek_logo.png></a>
-                            <a href='../index.php'><h1>LUTHERbog WebGIS</h1></a>
+                            <a href="http://www.uni-muenster.de/Landschaftsoekologie/"><img src="../img/iloek_logo.png"></a>
+                            <a href="../index.php"><h1>LUTHERbog WebGIS</h1></a>
 				<nav>
 					<ul>
-						<li><a href="logout.php" class="header-buttons" id="logout">Ausloggen</a></li>
+						<li><a href="process/logout.php" class="header-buttons" id="logout">Ausloggen</a></li>
 						<li><a href="upload.php" class="header-buttons" id="upload">Daten hinzuf&uuml;gen</a></li>
 						<li><a href="webgis.php" class="header-buttons" id="webgis">Webgis</a></li>
 					</ul>
@@ -43,13 +43,28 @@ include 'granted.php';
 			<div class="switch-content" id="plotten-content">
 				<h2>Auf dieser Seite k&ouml;nnen Daten geplottet werden:</h2>
                                 <div id="scatterplot">
+                                    <div id="dataplot">
+                                    </div>
                                 </div>
                                 <div id="scatterplot-settings">
-                                    <h3>Daten ausw&auml;hlen:</h3>
-                                    Von: <input type="date" id="start-date">
-                                    Bis: <input type="date" id="end-date"> </br>
-                                    Methan: <input type="radio" name="type"> </br>
+                                    <h3>Messadaten anzeigen: <input type="radio" name="choose"> </h3>
+                                    <h4>Datum von / bis:</h4>
+                                    Von: <input class="date" id="start-date">
+                                    Bis: <input class="date" id="end-date"> <br>
+                                    Methan: <input type="radio" name="type"> <br>
                                     Kohlendioxid: <input type="radio" name="type">
+                                    
+                                    <h3>Wetterdaten anzeigen: <input type="radio" name="choose"></h3>
+                                    <h4>Datum von / bis:</h4>
+                                    Von: <input class="date" id="weather-start-date">
+                                    Bis: <input class="date" id="weather-end-date"> <br>
+                                    Regen: <input type="checkbox" id="weather-rain"> <br>
+                                    Par: <input type="checkbox" id="weather-par"> <br>
+                                    Temperatur: <input type="checkbox" id="weather-temperatur"> <br>
+                                    Luftfeuchte: <input type="checkbox" id="weather-humidity"> <br>
+                                    Wind Geschwindigkeit: <input type="checkbox" id="weather-wind"> <br>
+                                    B&ouml;en Geschindigkeit: <input type="checkbox" id="weather-gust"> <br>
+                                    Bat: <input type="checkbox" id="weather-bat"> <br>
                                 </div>
 			</div>
 			
@@ -62,7 +77,7 @@ include 'granted.php';
 				<a href="#" id="help">Hilfe</a>
 				<a href="#" id="impressum">Impressum</a>
 			</footer>
-                        
+                </div>
                 <script src="../js/login.js"></script>';
                 <script src="../js/userinterface.js"></script>
                 <script src="../js/plotter.js"></script>

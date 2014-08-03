@@ -262,7 +262,7 @@ header nav ul li #upload:active {
 	display: none;
 }
 
-#scatterplot-settings{
+#scatterplot-settings {
 	width: 25%;
 	height: 80%;
 	position: realtive;
@@ -272,7 +272,11 @@ header nav ul li #upload:active {
 	border: solid;
 }
 
-#scatterplot{
+#scatterplot-settings h4{
+	margin-bottom: 0px;
+}
+
+#scatterplot {
 	width: 70%;
 	height: 80%;
 	position: realtive;
@@ -458,6 +462,7 @@ header nav ul li #upload:active {
 /* Bunutzer registrieren Button */
 #register-button {
 	background-color: #52CC52;
+	
 }
 
 #register-button:hover {
@@ -535,7 +540,7 @@ header nav ul li #upload:active {
 	top: 85px;
 	right: 0px;
 	width: 300px;
-	height: 170px;
+	height: 120px;
 	z-index: 9;
 	overflow: auto;
 	padding-bottom: 20px;
@@ -593,7 +598,7 @@ header nav ul li #upload:active {
 	display: none;
 }
 
-table {
+#adduser-content table, #viewuser-content table {
 	margin-left: 30px;
 	border:1px solid black;
 	border-collapse: collapse;
@@ -602,7 +607,7 @@ table {
 	font-family: 'Noto Sans', Arial, sans-serif;
 }
 
-td {
+#adduser-content td, #viewuser-content td {
 	padding: 5px;
 	height: 30px;
 	border:1px solid black;
@@ -610,12 +615,12 @@ td {
 	text-align: center;
 }
 
-td a {
+#adduser-contenttd a, #viewuser-content a {
 	text-decoration: underline;
 	color: #000000;
 }
 
-th {
+#adduser-content th, #viewuser-content th {
 	padding: 5px;
 	height: 30px;
 	border:1px solid black;

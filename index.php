@@ -44,19 +44,19 @@ if(!isset($_SESSION)){
 		<script src="js/lib/Leaflet.layerjson/leaflet.layerjson.js"></script>	
 		<script src="js/lib/introJS/intro.js"></script>
 		<?php
-			include 'php/login.php';
+			include 'php/process/login.php';
 		?>
 	</head>
 	<body>
 		<div id="page">
 			<header>
-                            <a href='http://www.uni-muenster.de/Landschaftsoekologie/'><img src=img/iloek_logo.png></a>
-                            <a href='#'><h1>LUTHERbog WebGIS</h1></a>
+                            <a href="http://www.uni-muenster.de/Landschaftsoekologie/"><img src="img/iloek_logo.png"></a>
+                            <a href="#"><h1>LUTHERbog WebGIS</h1></a>
 				<nav>
 					<ul>
 						<li><a href="#" class="header-buttons" id="login">Einloggen</a></li>
-						<li><a href=php/logout.php class="header-buttons" id="logout">Ausloggen</a></li>
-						<li><a href=php/administration.php class="header-buttons" id="admin">Administration</a></li>
+						<li><a href="php/process/logout.php" class="header-buttons" id="logout">Ausloggen</a></li>
+						<li><a href="php/administration.php" class="header-buttons" id="admin">Administration</a></li>
 						<li><a href="php/webgis.php" class="header-buttons" id="webgis">WebGIS</a></li>
 						<li><a href="http://www.uni-muenster.de/HydrologieBodenkunde/LUTHERbog.html" class="header-buttons" id="project" target="_blank">Das Projekt</a></li>
 					</ul>

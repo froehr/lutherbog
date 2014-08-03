@@ -1,7 +1,7 @@
 <?php
 session_start();
 $_SESSION['page'] = 'map';
-include 'granted.php';
+include 'process/granted.php';
 ?>
 
 <!DOCTYPE HTML>
@@ -14,11 +14,11 @@ include 'granted.php';
 	<body>
 		<div id="page">
 			<header>
-                            <a href='http://www.uni-muenster.de/Landschaftsoekologie/'><img src=../img/iloek_logo.png></a>
-                            <a href='../index.php'><h1>LUTHERbog WebGIS</h1></a>
+                            <a href="http://www.uni-muenster.de/Landschaftsoekologie/"><img src="../img/iloek_logo.png"></a>
+                            <a href="../index.php"><h1>LUTHERbog WebGIS</h1></a>
 				<nav>
 					<ul>
-						<li><a href=logout.php class="header-buttons" id="logout">Ausloggen</a></li>
+						<li><a href="process/logout.php" class="header-buttons" id="logout">Ausloggen</a></li>
 						<li><a href="upload.php" class="header-buttons" id="upload">Daten hinzuf&uuml;gen</a></li>
 						<li><a href="access.php" class="header-buttons" id="access">Daten einsehen</a></li>
 					</ul>
@@ -46,7 +46,7 @@ include 'granted.php';
 				<a href="#" id="help">Hilfe</a>
 				<a href="#" id="impressum">Impressum</a>
 			</footer>
-			
+		</div>	
 		<script src="../js/login.js"></script>
 		<script src="../js/map.js"></script>
 		<script src="../js/userinterface.js"></script>                

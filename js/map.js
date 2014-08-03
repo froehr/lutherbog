@@ -21,7 +21,7 @@ var marker;
 // get sites from database with ajax
 jQuery.ajax({
     type: "POST",
-    url: '../php/getSites.php',
+    url: '../php/process/get_sites.php',
     dataType: 'json',
     data: {Action:'GetAll'},
     async: false,

@@ -1,11 +1,102 @@
-$(function () {
-    $('#scatterplot').highcharts({
+function weatherplot() {
+    jQuery.ajax({
+            type: "POST",
+            url: '.php',
+            dataType: 'html',
+            data: {action:'getWeatherData'},
+            success: function(data) {
+                results = data;
+            },
+            async: false,
+        });
+    
+    $('#dataplot').highcharts({
+        chart: {
+            type : 'spline',
+            zoomType: 'xy'
+        },
+        title: {
+            text: 'Wetterdaten von ' + $('#weather-start-date').val() + ' bis ' + $('#weather-end-date').val()
+        },
+        subtitle: {
+            text: 'Daten Lutherbog Canada'
+        },
+        xAxis : {
+            type : 'datetime',
+            plotLines : [{
+                            dashStyle : 'longdashdot'
+                    }
+            ],
+            title: {
+                enabled: true,
+                text: 'Temperatur in Grad Celsius'
+            }
+	},
+        yAxis: {
+            title: {
+                text: ''
+            },
+            startOnTick: true,
+            endOnTick: true,
+            showLastLabel: true
+        },
+        legend: {
+            layout: 'vertical',
+            align: 'left',
+            verticalAlign: 'top',
+            x: 100,
+            y: 70,
+            floating: true,
+            backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF',
+            borderWidth: 1
+        },
+        plotOptions: {
+            scatter: {
+                marker: {
+                    radius: 5,
+                    states: {
+                        hover: {
+                            enabled: true,
+                            lineColor: 'rgb(100,100,100)'
+                        }
+                    }
+                },
+                states: {
+                    hover: {
+                        marker: {
+                            enabled: false
+                        }
+                    }
+                },
+                tooltip: {
+                    headerFormat: '<b>{series.name}</b><br>',
+                    pointFormat: '{point.x} cm, {point.y} kg'
+                }
+            }
+        },
+        series: [{
+            name: 'Female',
+            color: 'rgba(223, 83, 83, .5)',
+            data: []
+
+        }, {
+            name: 'Male',
+            color: 'rgba(119, 152, 191, .5)',
+            data: []
+        }]
+    });
+};
+    
+
+
+function dataplot() {
+    $('#dataplot').highcharts({
         chart: {
             type: 'scatter',
             zoomType: 'xy'
         },
         title: {
-            text: 'Temperatur gegen CH4 and CO2 Werte'
+            text: 'CH4 und CO2 Werte gegen Temperatur geplottet'
         },
         subtitle: {
             text: 'Daten Lutherbog Canada'
@@ -13,16 +104,16 @@ $(function () {
         xAxis: {
             title: {
                 enabled: true,
+                text: 'Temperatur in Grad Celsius'
+            }
+        },
+        yAxis: {
+            title: {
                 text: ''
             },
             startOnTick: true,
             endOnTick: true,
             showLastLabel: true
-        },
-        yAxis: {
-            title: {
-                text: 'Temperatur in Grad Celsius'
-            }
         },
         legend: {
             layout: 'vertical',
@@ -169,5 +260,6 @@ $(function () {
                 [180.3, 83.2], [180.3, 83.2]]
         }]
     });
-});
-    
+};
+
+   

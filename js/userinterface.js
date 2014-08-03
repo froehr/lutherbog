@@ -1,3 +1,6 @@
+$.datepicker.formatDate("dd.mm.yy");
+$('.date').datepicker({ autoSize: true, defaultDate: +7 });
+
 $('#impressum').click(function() {
 	$('#impressum-content').css('display', 'block');
 });
@@ -103,3 +106,13 @@ $('#admin-access').change(function(){
 	    $('#data-access').val('2');
         }
 });
+
+// Wetterplot updaten wenn Datum geändert wird
+$('#weather-start-date').change(function(){
+    weatherplot();
+});
+
+$('#weather-end-date').change(function(){
+    weatherplot();
+});
+// -----------------------------------------------

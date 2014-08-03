@@ -85,7 +85,7 @@ function register() {
     if ($('#username').val() != ''){
         jQuery.ajax({
             type: "POST",
-            url: 'register_user.php',
+            url: 'process/register_user.php',
             dataType: 'html',
             data: {username:$('#username').val(), action:'testUsername'},
             success: function(data) {
@@ -117,7 +117,7 @@ function register() {
     if (username == true && password == true && password1 == true && name == true && surname == true && email == true && mapaccess == true && dataaccess == true && adminaccess == true) {
         jQuery.ajax({
             type: "POST",
-            url: 'register_user.php',
+            url: 'process/register_user.php',
             dataType: 'html',
             data: {username:$('#username').val(), password:$('#password').val(), name:$('#name').val(), surname:$('#surname').val(), email:$('#email').val(), mapaccess:$('#map-access').val(), dataaccess:$('#data-access').val(), adminaccess:$('#admin-access').val(), action:'insertIntoDB'},
             success: function(data) {
@@ -128,16 +128,7 @@ function register() {
         if (results == 'success') {
             $('#register-success').css('display', 'block');
             setTimeout(function() {
-		$('#register-success').css('display', 'none');
-                $('#username').val('');
-                $('#password').val('');
-                $('#password1').val('');
-                $('#name').val('');
-                $('#surname').val('');
-                $('#email').val('');
-                $('#map-access').val('');
-                $('#data-access').val('');
-                $('#admin-access').val('');
+		location.reload();
 	    }, 1500);
         }
         else {

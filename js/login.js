@@ -8,7 +8,7 @@ function login() {
 		$('#input-error').css('display', 'none');
 		jQuery.ajax({
                     type: "POST",
-                    url: 'php/login.php',
+                    url: 'php/process/login.php',
                     dataType: 'html',
                     data: {username:$('#username').val(), password:$('#password').val()},
                     success: function(data) {
@@ -40,10 +40,10 @@ $('#input-error').css('display', 'none');
 
 // Url depending on the location of the calling page. Without php/ if index.php calls
 if((location.pathname).search("/php/") != -1){
-    link = 'login.php';
+    link = 'process/login.php';
 }
 else{
-    link = 'php/login.php';
+    link = 'php/process/login.php';
 }
     
 jQuery.ajax({
