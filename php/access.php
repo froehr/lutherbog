@@ -4,6 +4,8 @@ $_SESSION['page'] = 'access';
 include 'process/granted.php';
 ?>
 
+
+
 <!DOCTYPE HTML>
 <html>
 	<head>
@@ -45,16 +47,18 @@ include 'process/granted.php';
                                 <div id="scatterplot">
                                     <div id="dataplot">
                                     </div>
+                                    <div id="weatherplot">
+                                    </div>
                                 </div>
                                 <div id="scatterplot-settings">
-                                    <h3>Messadaten anzeigen: <input type="radio" name="choose"> </h3>
+                                    <h3>Messadaten anzeigen: <input id="plot-data" type="radio" name="choose"> </h3>
                                     <h4>Datum von / bis:</h4>
                                     Von: <input class="date" id="start-date">
                                     Bis: <input class="date" id="end-date"> <br>
                                     Methan: <input type="radio" name="type"> <br>
                                     Kohlendioxid: <input type="radio" name="type">
                                     
-                                    <h3>Wetterdaten anzeigen: <input type="radio" name="choose"></h3>
+                                    <h3>Wetterdaten anzeigen: <input id="plot-weather" type="radio" name="choose"></h3>
                                     <h4>Datum von / bis:</h4>
                                     Von: <input class="date" id="weather-start-date">
                                     Bis: <input class="date" id="weather-end-date"> <br>
@@ -62,8 +66,8 @@ include 'process/granted.php';
                                     Par: <input type="checkbox" id="weather-par"> <br>
                                     Temperatur: <input type="checkbox" id="weather-temperatur"> <br>
                                     Luftfeuchte: <input type="checkbox" id="weather-humidity"> <br>
-                                    Wind Geschwindigkeit: <input type="checkbox" id="weather-wind"> <br>
-                                    B&ouml;en Geschindigkeit: <input type="checkbox" id="weather-gust"> <br>
+                                    Wind: <input type="checkbox" id="weather-wind"> <br>
+                                    B&ouml;en: <input type="checkbox" id="weather-gust"> <br>
                                     Bat: <input type="checkbox" id="weather-bat"> <br>
                                 </div>
 			</div>

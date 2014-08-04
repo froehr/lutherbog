@@ -1,5 +1,4 @@
-$.datepicker.formatDate("dd.mm.yy");
-$('.date').datepicker({ autoSize: true, defaultDate: +7 });
+$('.date').datepicker({ autoSize: true, dateFormat: "dd.mm.yy"});
 
 $('#impressum').click(function() {
 	$('#impressum-content').css('display', 'block');
@@ -72,6 +71,7 @@ $('#weather').click(function() {
 	$('#calibration-content').css('display', 'none');
 	$('#viewuser-content').css('display', 'none');
 });
+// -----------------------------------------------
 
 $('#viewuser').css('background-color', '#CCCCCC');
 
@@ -83,6 +83,7 @@ $('#logout').hover(function() {
 $('header').hover(function() {
 	$('#logout-content').css('display', 'none');
 });
+// -----------------------------------------------
 
 
 // Register new users
@@ -106,13 +107,56 @@ $('#admin-access').change(function(){
 	    $('#data-access').val('2');
         }
 });
+// -----------------------------------------------
 
-// Wetterplot updaten wenn Datum geändert wird
+// Wetterplot updaten wenn Auswahl geändert wird
 $('#weather-start-date').change(function(){
     weatherplot();
 });
 
 $('#weather-end-date').change(function(){
     weatherplot();
+});
+
+$('#weather-rain').change(function(){
+    weatherplot();
+});
+
+$('#weather-par').change(function(){
+    weatherplot();
+});
+
+$('#weather-temperatur').change(function(){
+    weatherplot();
+});
+
+$('#weather-humidity').change(function(){
+    weatherplot();
+});
+
+$('#weather-wind').change(function(){
+    weatherplot();
+});
+
+$('#weather-gust').change(function(){
+    weatherplot();
+});
+
+$('#weather-bat').change(function(){
+    weatherplot();
+});
+// -----------------------------------------------
+
+// Data bzw. Weatherplot ein und ausblenden
+$('#plot-weather').click(function(){
+	$('#weatherplot').css('display', 'block');
+	$('#dataplot').css('display', 'none');
+	weatherplot();
+});
+
+$('#plot-data').click(function(){
+	$('#weatherplot').css('display', 'none');
+	$('#dataplot').css('display', 'block');
+	dataplot();
 });
 // -----------------------------------------------
