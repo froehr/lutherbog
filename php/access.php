@@ -53,10 +53,16 @@ include 'process/granted.php';
                                 <div id="scatterplot-settings">
                                     <h3>Messadaten anzeigen: <input id="plot-data" type="radio" name="choose"> </h3>
                                     <h4>Datum von / bis:</h4>
-                                    Von: <input class="date" id="start-date">
-                                    Bis: <input class="date" id="end-date"> <br>
-                                    Methan: <input type="radio" name="type"> <br>
-                                    Kohlendioxid: <input type="radio" name="type">
+                                    Von: <input class="date" id="data-start-date">
+                                    Bis: <input class="date" id="data-end-date"> <br>
+                                    Methan: <input type="checkbox" id="data-ch4">
+                                    Kohlendioxid: <input type="checkbox" id="data-co2"> <br>
+                                    Site 1: <input type="checkbox" id="data-site1">
+                                    Site 2: <input type="checkbox" id="data-site2">
+                                    Site 3: <input type="checkbox" id="data-site3">
+                                    Site 4: <input type="checkbox" id="data-site4">
+                                    Site 5: <input type="checkbox" id="data-site5">
+                                    Site 6: <input type="checkbox" id="data-site6">
                                     
                                     <h3>Wetterdaten anzeigen: <input id="plot-weather" type="radio" name="choose"></h3>
                                     <h4>Datum von / bis:</h4>
@@ -68,7 +74,6 @@ include 'process/granted.php';
                                     Luftfeuchte: <input type="checkbox" id="weather-humidity"> <br>
                                     Wind: <input type="checkbox" id="weather-wind"> <br>
                                     B&ouml;en: <input type="checkbox" id="weather-gust"> <br>
-                                    Bat: <input type="checkbox" id="weather-bat"> <br>
                                 </div>
 			</div>
 			

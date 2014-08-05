@@ -110,40 +110,14 @@ $('#admin-access').change(function(){
 // -----------------------------------------------
 
 // Wetterplot updaten wenn Auswahl geändert wird
-$('#weather-start-date').change(function(){
+$('#weather-start-date, #weather-end-date, #weather-rain, #weather-par, #weather-temperatur, #weather-humidity, #weather-wind, #weather-gust').change(function(){
     weatherplot();
 });
+// -----------------------------------------------
 
-$('#weather-end-date').change(function(){
-    weatherplot();
-});
-
-$('#weather-rain').change(function(){
-    weatherplot();
-});
-
-$('#weather-par').change(function(){
-    weatherplot();
-});
-
-$('#weather-temperatur').change(function(){
-    weatherplot();
-});
-
-$('#weather-humidity').change(function(){
-    weatherplot();
-});
-
-$('#weather-wind').change(function(){
-    weatherplot();
-});
-
-$('#weather-gust').change(function(){
-    weatherplot();
-});
-
-$('#weather-bat').change(function(){
-    weatherplot();
+// Dataplot updaten wenn Auswahl geändert wird
+$('#data-start-date, #data-end-date, #data-co2, #data-ch4, #data-site1, #data-site2, #data-site3, #data-site4, #data-site5, #data-site6').change(function(){
+    dataplot();
 });
 // -----------------------------------------------
 
