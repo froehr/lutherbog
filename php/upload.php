@@ -57,38 +57,22 @@ include 'process/granted.php';
 			</div>
                         
                         <div class=switch-content id=weather-content>
-				<h2>Auf dieser Seite k&ouml;nnen Wetterdaten im CSV Format hochgeladen werden:</h2>
+			    <h2>Auf dieser Seite k&ouml;nnen Wetterdaten im CSV Format hochgeladen werden:</h2>
                                 
-                                <form type="multipart/form-data" action="#" method="POST">
-                                    <input type="hidden" name="MAX_FILE_SIZE" value="300000000" />
-                                    <!-- Der Name des Input Felds bestimmt den Namen im $_FILES Array -->
-                                    Diese Datei hochladen: <input name="userfile" type="file" />
-                                    <input type="submit" value="Send File" />
-                                    
-                                    <?php
-                                    
-                                    print_r($_FILES['userfile']);
-                                    
-                                    $filename = $_FILES['userfile']['tmp_name'];
-                                    
-                                    $header = NULL;
-                                        $data = array();
-                                        if (($handle = fopen($filename, 'r')) !== FALSE)
-                                        {
-                                            while (($row = fgetcsv($handle, 0, ';')) !== FALSE)
-                                            {
-                                                if(!$header)
-                                                    $header = $row;
-                                                else
-                                                    $data[] = array_combine($header, $row);
-                                            }
-                                            fclose($handle);
-                                        }
-                                    print_r($data);
-                                    
-                
-                                    ?>
-                                </form>
+                            <input type="file" id="files" name="files"/>
+                            <div id="list"></div>
+                            
+                            Anzahl der Zeilen, die am Anfang ignoriert werden <input id="upload_offset" type="text" default="0"><br>
+                            <p>Da die Datenbank bestimmte Daten erwartet muss die Reihenfolge dieser Daten angegeben werden:<br>
+                            Mögliche Werte sind: date, rain, par, temp, rh, wind_speed, gust_speed<br>
+                            Es ist möglich die Reihenfolge zu variieren je nach Reihenfolge der Datei, die hochgeladen wird.<br>
+                            Es können Daten weggelassen werden, wenn diese nicht in der Datei enthalten sind.<br>
+                            Die Schreibweise darf sich jedoch nicht verändern.<br></p>
+                            Reihenfolge der Attribute mit Komma getrennt: <input id="upload_attributes" type="text" placeholder="Wert 1, Wert 2, ..., Wert n"><br>
+                            
+                            <div class="submit-button" id="upload-button">
+                                <p>Speichern</p>
+                            </div>
 			</div>
 			
 			<div id='impressum-content'>
@@ -109,6 +93,7 @@ include 'process/granted.php';
                     }
 		?>
                 </div>
-		<script src="../js/userinterface.js"></script>                
+		<script src="../js/userinterface.js"></script>
+                <script src="../js/upload.js"></script> 
 	</body>
 </html>

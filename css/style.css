@@ -290,6 +290,7 @@ header nav ul li #upload:active {
 	width: 100%;
 	height: 100%;
 }
+
 /* ------------------------------- */
 
 /* Map */
@@ -467,16 +468,16 @@ header nav ul li #upload:active {
 /* ------------------------------- */
 
 /* Bunutzer registrieren Button */
-#register-button {
+#register-button, #upload-button {
 	background-color: #52CC52;
 	
 }
 
-#register-button:hover {
+#register-button:hover, #upload-button:hover {
 	background-color: #86DB86;
 }
 
-#register-button:active {
+#register-button:active, #upload-button:active {
 	background-color: #9EE29E;
 }
 /* ------------------------------- */

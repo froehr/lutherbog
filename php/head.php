@@ -1,5 +1,6 @@
                 <meta charset="UTF-8">
 		<title>LUTHERbog Canada</title>
+                <link href="../img/favicon.ico" rel="icon" type="image/x-icon" />
 		<link href="../css/style.css" rel="stylesheet" type="text/css" />
 		<link href="../js/lib/jquery/jquery-ui-1.10.4.css" rel="stylesheet" type="text/css" />
 		<link href="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.css" rel="stylesheet" type="text/css" />

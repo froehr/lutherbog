@@ -109,15 +109,16 @@ $('#admin-access').change(function(){
 });
 // -----------------------------------------------
 
-// Wetterplot updaten wenn Auswahl geŠndert wird
+// Wetterplot updaten wenn Auswahl geÃ¤ndert wird
 $('#weather-start-date, #weather-end-date, #weather-rain, #weather-par, #weather-temperatur, #weather-humidity, #weather-wind, #weather-gust').change(function(){
-    weatherplot();
+	$('#weatherplot').html('<img src="../img/loading.gif" alt="Loading">')
+	weatherplot();
 });
 // -----------------------------------------------
 
-// Dataplot updaten wenn Auswahl geŠndert wird
+// Dataplot updaten wenn Auswahl geÃ¤ndert wird
 $('#data-start-date, #data-end-date, #data-co2, #data-ch4, #data-site1, #data-site2, #data-site3, #data-site4, #data-site5, #data-site6').change(function(){
-    dataplot();
+	dataplot();
 });
 // -----------------------------------------------
 
@@ -134,3 +135,7 @@ $('#plot-data').click(function(){
 	dataplot();
 });
 // -----------------------------------------------
+
+// MUSS gelÃ¶scht werden:
+$('#weather-content').css('display', 'block');
+
