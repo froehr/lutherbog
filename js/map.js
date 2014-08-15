@@ -191,7 +191,6 @@ $('#flooded_area_opacity').change(function (){
 });
 
 $('#flooded_area_gauge').change(function (){
-	lutherbog_ortho_tiles.setOpacity($('#flooded_area_gauge').val());
 	$('#flooded_area_gauge_value').val($('#flooded_area_gauge').val() + "m");
 });
 
