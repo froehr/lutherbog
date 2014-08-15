@@ -7,15 +7,48 @@ include 'process/granted.php';
 <!DOCTYPE HTML>
 <html>
 	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		
 		<?php
 			include 'head.php';
 		?>
+		
+		<link rel="stylesheet" href="http://js.arcgis.com/3.10/js/esri/css/esri.css">
+		<link rel="stylesheet" href="http://js.arcgis.com/3.10/js/dojo/dijit/themes/claro/claro.css">
+		<script src="http://js.arcgis.com/3.10/"></script>
 	</head>
-	<body>
+	
+	<body class="claro">
+		
+		<div id="map">
+			<div id="HomeButton"></div>
+			<div id="GPStatus"></div> 
+			<div id="BasemapFrame">
+				<div data-dojo-type="dijit/TitlePane" data-dojo-props="title:'Switch Basemap', closable:false, open:false">
+					<div data-dojo-type="dijit/layout/ContentPane" style="width:380px; height:280px; overflow:auto;">
+						<div id="basemapGallery"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div id="mapdetails">
+				<div id="layerList">
+					<input type='checkbox' id='hoehe' value=0 />Höhenmodel </br>
+					<input type="range" id="hoehe_opacity" min="0" max="1" step="0.01"> <input type="text" id="hoehe_opacity_value" size = "3" value = "50%" readonly> </br>
+					<input type='checkbox' id='ortho_tiles' value=1 />Luftbilder Tiles</br>
+					<input type="range" id="ortho_tiles_opacity" min="0" max="1" step="0.01"> <input type="text" id="ortho_tiles_opacity_value" size = "3" value = "50%" readonly></br>
+					<input type='checkbox' id='flooded_area' value=1 />Überflutete Gebiete</br>
+					<input type="range" id="flooded_area_gauge" min="460" max="500" step="0.01"> <input type="text" id="flooded_area_gauge_value" size = "3" value = "480m" readonly></br>
+					<input type="range" id="flooded_area_opacity" min="0" max="1" step="0.01"> <input type="text" id="flooded_area_opacity_value" size = "3" value = "50%" readonly></br>
+					<input type="submit" id="getAreas" onclick="app.getFlooded();">
+				</div>
+			</div> 
+		
 		<div id="page">
 			<header>
-                            <a href="http://www.uni-muenster.de/Landschaftsoekologie/"><img src="../img/iloek_logo.png"></a>
-                            <a href="../index.php"><h1>LUTHERbog WebGIS</h1></a>
+                    <a href="http://www.uni-muenster.de/Landschaftsoekologie/"><img src="../img/iloek_logo.png"></a>
+			     <a href="../index.php"><h1>LUTHERbog WebGIS</h1></a>
 				<nav>
 					<ul>
 						<li><a href="process/logout.php" class="header-buttons" id="logout">Ausloggen</a></li>
@@ -33,16 +66,14 @@ include 'process/granted.php';
 				</form>
 			</div>
 			
-			<div id='map'></div>
-			<div id='mapcontrol'></div>
 			<div id='impressum-content'>
 				<h1>Impressum</h1>
 				<p>Diese Website ist im Zuge der Bachelorarbeit von Fabian R&ouml;hr entstanden.</p>
 				<p>Die verarbeiteten Daten wurden von der Arbeitsgruppe Hydrologie, die von Prof. Dr. Blodau geleitet wird, gesammelt und zur Verf&uuml;gung gestellt.</p>	
 			</div>
                         
-                        <footer>
-                                <a href="http://www.uni-muenster.de/HydrologieBodenkunde/LUTHERbog.html" id="projectinfo">Projektinfomationen</a>
+               <footer>
+                    <a href="http://www.uni-muenster.de/HydrologieBodenkunde/LUTHERbog.html" id="projectinfo">Projektinfomationen</a>
 				<a href="#" id="help">Hilfe</a>
 				<a href="#" id="impressum">Impressum</a>
 			</footer>

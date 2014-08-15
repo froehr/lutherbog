@@ -1,116 +1,227 @@
-// create a map in the "map" div, set the view to a given place and zoom
-var map = new L.Map('map', {
-		center : [43.919083, -80.402833],
-		zoom : 15,
-		dragging : true,
-		touchZoom : true,
-		scrollWheelZoom : true,
-		doubleClickZoom : true,
-		boxZoom : true,
-		tap : true,
-		tapTolerance : 15,
-		trackResize : true,
-		worldCopyJump : false,
-		closePopupOnClick : true,
-		scale : true,
-	});
+var map;
+var lutherbog_elevation, lutherbog_ortho_tiles, flooded_area; 
 
-// array with many markers
-var marker;
+require([
+	'esri/map',
+	
+	'esri/layers/ArcGISDynamicMapServiceLayer',
+        'esri/layers/ImageParameters',
+	'esri/layers/FeatureLayer',
+	'esri/graphic',
+	'esri/tasks/Geoprocessor',
+        'esri/domUtils',
+	
+	'esri/dijit/Legend',
+	'esri/dijit/HomeButton',
+	'esri/dijit/Scalebar',
+	'esri/dijit/OverviewMap',
+	'esri/dijit/BasemapGallery',
+	
+	'esri/arcgis/utils',
+	
+	'dojo/dom', 
+	'dojo/parser',
+	'dojo/_base/array',
+	'dojo/date/locale',
+	
+	'dijit/layout/BorderContainer',
+	'dijit/layout/ContentPane',
+	'dijit/TitlePane',
+	'dijit/registry',
+	'dojo/domReady!',
+    ], 
+    function(
+	Map,
+	
+	ArcGISDynamicMapServiceLayer,
+	ImageParameters,
+	FeatureLayer,
+	graphic,
+	Geoprocessor,
+	domUtils,
+	
+	Legend,
+	HomeButton,
+	Scalebar,
+	OverviewMap,
+	BasemapGallery,
+	
+	utils,
+	
+	dom,
+	parser,
+	array,
+	locale,
+	
+	BorderContainer,
+	ContentPane,
+	TitlePane,
+	registry
+	) {
+	
+        parser.parse();
 
-// get sites from database with ajax
-jQuery.ajax({
-    type: "POST",
-    url: '../php/process/get_sites.php',
-    dataType: 'json',
-    data: {Action:'GetAll'},
-    async: false,
-    success: function(data) {
-                marker = data;
-    },
-    error: function(textStatus, error){
-    	console.log(textStatus);
-	console.log(error);
-    }
-        
-});
-
-// create markers with popups
-i = 0;
-while (marker.length > i) {
-                mark = L.marker([marker[i]['latitude'], marker[i]['longitude']]).addTo(map);
-                mark.bindPopup(marker[i]['name']).openPopup();
-                i++;
-}
-
-// Basemaps
-// add an OpenStreetMap tile layer
-var osm_mq = new L.tileLayer('http://{s}.mqcdn.com/tiles/1.0.0/osm/{z}/{x}/{y}.png', {
-		attribution : '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
-		subdomains: ['otile1','otile2','otile3','otile4']
-	}).addTo(map);
-
-var osm_hot = new L.tileLayer('http://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
-		attribution : '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        map = new Map("map", {
+		center: [-80.409833, 43.924083],
+		zoom: 14,
+		basemap: "osm"
 	});
 	
-var osm_mapnik = new L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-		attribution : '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-	});
+	var basemapGallery = new BasemapGallery({
+		showArcGISBasemaps: true,
+		map: map
+	}, "basemapGallery");
+	basemapGallery.startup();
+	
+	var home = new HomeButton({
+		map: map
+	}, "HomeButton");
+	home.startup();
+	
+	var scalebar = new Scalebar({
+		map: map,
+		scalebarUnit: "dual"
+        });
+	
+	var overviewMapDijit = new OverviewMap({
+		map: map,
+		visible: true
+        });
+        overviewMapDijit.startup();
+	
+        lutherbog_elevation = new ArcGISDynamicMapServiceLayer("http://geo-arcgis.uni-muenster.de:6080/arcgis/rest/services/LutherBog/lutherbog_elevation/MapServer", {});
+	lutherbog_ortho_tiles = new ArcGISDynamicMapServiceLayer("http://geo-arcgis.uni-muenster.de:6080/arcgis/rest/services/LutherBog/Luther_Marsch_Orthofotos_2006/MapServer", {});
+	
+        map.addLayer(lutherbog_elevation);
+	lutherbog_elevation.hide();
+	map.addLayer(lutherbog_ortho_tiles);
+	lutherbog_ortho_tiles.hide();
+	
+	// Geoprocessing flooded areas
+	var gpServiceUrl= "http://geo-arcgis.uni-muenster.de:6080/arcgis/rest/services/LutherBog/extract_flooded_areas/GPServer/flooded_areas";
+        var mapserviceurl= "http://geo-arcgis.uni-muenster.de:6080/arcgis/rest/services/LutherBog/extract_flooded_areas/MapServer/jobs/";
+	var legend;
 
-var LutherBog_ortho = new L.tileLayer.wms('http://geo-arcgis.uni-muenster.de:6080/arcgis/services/LutherBog/Luther_Marsch_Orthofotos_2006/MapServer/WMSServer', {
-                layers : '0,1,2,3,4,5,6,7,8,9,10,11,,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35',
-		format : 'image/png',
-		version : '1.3.0',
-		transparent : true,
-		opacity : 1
-	});
-
-var LutherBog_ortho_merged = new L.tileLayer.wms('http://geo-arcgis.uni-muenster.de:6080/arcgis/services/LutherBog/Luther_Marsch_Orthofotos_2006_Merged/ImageServer/WMSServer', {
-                layers : '0',
-		format : 'image/png',
-		version : '1.3.0',
-		transparent : true,
-		opacity : 1
-	});
-
-var LutherBog_elevation_grca = new L.tileLayer.wms('http://geo-arcgis.uni-muenster.de:6080/arcgis/services/LutherBog/lutherbog_elevation/MapServer/WMSServer', {
-                layers : '0',
-		format : 'image/png',
-		version : '1.3.0',
-		transparent : true,
-		opacity : 1
-	});
-
-// New minimap - Plugin magic goes here! Note that you cannot use the same layer object again, as that will confuse the two map controls
-var overviewMap = new L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-		maxZoom : 18,
-		attribution : 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap<\/a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA<\/a>, Imagery © <a href="http://cloudmade.com">CloudMade<\/a>'
-	});
-
-// Minimap
-var LminiMap = new L.Control.MiniMap(overviewMap, {
-		toggleDisplay : true,
-		mapOptions : {
-			panControl : false,
-			zoomsliderControl : false,
-			crs : L.CRS.Simple,
-		}
-	}).addTo(map);
-
-baseLayers = {
-                'Open Street Map MapQuest' : osm_mq,
-                'Open Street Map Humanitarian' : osm_hot,
-                'Open Street Map Mapnik' : osm_mapnik,
-};
-
-groupedOverLayers = {
-	"Additional Maps" : {
-                'LutherBog Luft Bilder 2006' : LutherBog_ortho,
-                'LutherBog Luft Bilder 2006 merged' : LutherBog_ortho_merged,
-                'Elevation model' : LutherBog_elevation_grca
+	function getFlooded(){
+		$('#flooded_area').prop('checked', true);
+		var gp = new Geoprocessor(gpServiceUrl);
+		var params = {
+			SQL_Expression: buildDefinitionQuery()
+		};
+		//cleanup any results from previous runs
+		cleanup();
+		gp.submitJob(params, gpJobComplete, gpJobStatus, gpJobFailed);
+        }
+	
+	function gpJobComplete(jobinfo){
+		//construct the result map service url using the id from jobinfo we'll add a new layer to the map
+		var mapurl = mapserviceurl + "/" + jobinfo.jobId;
+		flooded_area = new ArcGISDynamicMapServiceLayer(mapurl,{
+			"id":"HotspotLayer",
+			"opacity": 0.7
+		});
+		//add the hotspot layer to the map
+		map.addLayers([flooded_area]);
+	}      
+	
+	function gpJobStatus(jobinfo){
+		domUtils.show(dom.byId('GPStatus'));
+		var jobstatus = '';
+		switch (jobinfo.jobStatus) {
+			case 'esriJobSubmitted':
+				jobstatus = 'Submitted...';
+			break;
+			case 'esriJobExecuting':
+				jobstatus = 'Executing...';
+			break;
+			case 'esriJobSucceeded':
+				jobstatus = 'Success...';
+				setTimeout(function() {
+					domUtils.hide(dom.byId('GPStatus'));
+				}, 1500);
+				
+			break;
+			}
+		
+		dom.byId('GPStatus').innerHTML = jobstatus;
 	}
-};
+	
+	function buildDefinitionQuery(){
+		var defQuery;
+		//get input info from form and build definition expression
+		defQuery = "Value < " + $('#flooded_area_gauge').val();
+		defQuery = defQuery.replace('.',',');
+		return defQuery;
+	}
+	
+	function gpJobFailed(error){
+		dom.byId('GPStatus').innerHTML = error;
+		domUtils.hide(dom.byId('GPStatus'));
+	}
+	
+	function cleanup(){
+		//hide the legend and remove the existing hotspot layer
+		domUtils.hide(dom.byId('legendDiv'));
+		var hotspotLayer = map.getLayer('HotspotLayer');
+		if(hotspotLayer){
+			map.removeLayer(hotspotLayer);
+		}
+	}
+	
+	app = {
+		getFlooded: getFlooded
+	};
+	return app;
+});
 
-// Layer switcher
-var LlayerSwitcher = new L.control.groupedLayers(baseLayers, groupedOverLayers, {position: 'bottomleft'}).addTo(map);
+$('#hoehe_opacity').change(function (){
+	lutherbog_elevation.setOpacity($('#hoehe_opacity').val());
+	$('#hoehe_opacity_value').val(($('#hoehe_opacity').val()*100) + "%");
+	
+});
+
+$('#ortho_tiles_opacity').change(function (){
+	lutherbog_ortho_tiles.setOpacity($('#ortho_tiles_opacity').val());
+	$('#ortho_tiles_opacity_value').val(($('#ortho_tiles_opacity').val()*100) + "%");
+});
+
+$('#flooded_area_opacity').change(function (){
+	flooded_area.setOpacity($('#flooded_area_opacity').val());
+	$('#flooded_area_opacity_value').val(($('#flooded_area_opacity').val()*100) + "%");
+});
+
+$('#flooded_area_gauge').change(function (){
+	lutherbog_ortho_tiles.setOpacity($('#flooded_area_gauge').val());
+	$('#flooded_area_gauge_value').val($('#flooded_area_gauge').val() + "m");
+});
+
+$('#hoehe').change(function(){
+	if($('#hoehe').is(':checked') == true){
+		lutherbog_elevation.show();
+	}
+	else{
+		lutherbog_elevation.hide();
+	}
+});
+
+$('#ortho_tiles').change(function(){
+	if($('#ortho_tiles').is(':checked') == true){
+		lutherbog_ortho_tiles.show();
+	}
+	else{
+		lutherbog_ortho_tiles.hide();
+	}
+});
+
+$('#flooded_area').change(function(){
+	if($('#flooded_area').is(':checked') == true){
+		flooded_area.show();
+	}
+	else{
+		flooded_area.hide();
+	}
+});
+
+
+
+
