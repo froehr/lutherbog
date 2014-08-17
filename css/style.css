@@ -297,6 +297,7 @@ header nav ul li #upload:active {
 #map {
 	position: absolute;
 	top: 85px;
+	left:250px;
 	bottom: 28px;
 	width: 100%;
 	z-index: 5;
@@ -306,14 +307,14 @@ header nav ul li #upload:active {
 	position: absolute;
 	top: 85px;
 	bottom: 28px;
-	width: 300px;
-	padding: 10px;
+	width: 230px;
+	padding: 15px;
 	z-index: 6;
 	background-color: #FFFFFF;
 }
 
 #map_zoom_slider {
-	left: 350px !important;
+	left: 20px !important;
 }
 
 #BasemapFrame {
@@ -323,24 +324,20 @@ header nav ul li #upload:active {
       z-index: 6;
 }
 
-#GPStatus {
-      position:absolute;
-      top:20px;
-      left:400px;
-      padding: 5px;
-      height: 30px;
-      width: 140px;
-      border: solid 1px;
-      border-color: #000000;
-      border-radius: 5px;
-      background-color: #FFFFFF;
+.map-processing {
+      position: absolute;
+      top: 50%;
+      left:50%;
+      background: rgba(0, 0, 0, 0.5);
+      width: 200px;
+      height:200px;
+      border-radius: 20px;
       z-index: 6;
       display: none;
-      font-size: 22px;
 }
 
 .esriScalebar {
-	left: 350px !important;
+	left: 20px !important;
 }
 
 .ovwContainer {
@@ -351,7 +348,7 @@ header nav ul li #upload:active {
 #HomeButton {
       position: absolute;
       top: 95px;
-      left: 350px;
+      left: 20px;
       z-index: 3;
       border: solid 1px #FFFFFF;
       border-radius: 5px;
@@ -442,6 +439,71 @@ header nav ul li #upload:active {
 
 #register-button:active, #upload-button:active {
 	background-color: #9EE29E;
+}
+/* ------------------------------- */
+
+/* Geoprocressing flooding starten Button */
+#process-flooded-button {
+	background-color: #52CC52;
+	margin-top: 0px !important;
+	margin-left: 0px;
+}
+
+#process-flooded-button:hover {
+	background-color: #86DB86;
+}
+
+#process-flooded-button:active {
+	background-color: #9EE29E;
+}
+
+#process-flooded-button p {
+	padding: 7px 0px 0px 24px;
+	margin-top: 5px;
+}
+/* ------------------------------- */
+
+/* Geoprocressing flooding Part starten Button */
+#process-flooded-part-button {
+	background-color: #52CC52;
+	margin-top: 0px !important;
+	margin-left: 0px;
+}
+
+#process-flooded-part-button:hover {
+	background-color: #86DB86;
+}
+
+#process-flooded-part-button:active {
+	background-color: #9EE29E;
+}
+
+#process-flooded-part-button p {
+	padding: 7px 0px 0px 24px;
+	margin-top: 5px;
+}
+/* ------------------------------- */
+
+/* Geoprocressing isolines starten Button */
+#process-isolines-button {
+	background-color: #52CC52;
+	margin-top: 0px !important;
+	margin-bottom: 0px !important;
+	margin-left: 0px;
+}
+
+#process-isolines-button:hover {
+	background-color: #86DB86;
+}
+
+#process-isolines-button:active {
+	background-color: #9EE29E;
+}
+
+#process-isolines-button p {
+	padding: 7px 0px 0px 24px;
+	margin-top: 5px;
+	margin-bottom: 5px;
 }
 /* ------------------------------- */
 

@@ -89,87 +89,131 @@ require([
         });
         overviewMapDijit.startup();
 	
-        lutherbog_elevation = new ArcGISDynamicMapServiceLayer("http://geo-arcgis.uni-muenster.de:6080/arcgis/rest/services/LutherBog/lutherbog_elevation/MapServer", {});
-	lutherbog_ortho_tiles = new ArcGISDynamicMapServiceLayer("http://geo-arcgis.uni-muenster.de:6080/arcgis/rest/services/LutherBog/Luther_Marsch_Orthofotos_2006/MapServer", {});
-	
+        
+		
+	lutherbog_elevation = new ArcGISDynamicMapServiceLayer("http://geo-arcgis.uni-muenster.de:6080/arcgis/rest/services/LutherBog/lutherbog_elevation/MapServer", {});
         map.addLayer(lutherbog_elevation);
 	lutherbog_elevation.hide();
+	lutherbog_elevation.setOpacity(0.5);
+	
+	lutherbog_ortho_tiles = new ArcGISDynamicMapServiceLayer("http://geo-arcgis.uni-muenster.de:6080/arcgis/rest/services/LutherBog/Luther_Marsch_Orthofotos_2006/MapServer", {});
 	map.addLayer(lutherbog_ortho_tiles);
 	lutherbog_ortho_tiles.hide();
+	lutherbog_ortho_tiles.setOpacity(0.5);
+	
+	lutherbog_ortho_merged = new ArcGISDynamicMapServiceLayer("http://geo-arcgis.uni-muenster.de:6080/arcgis/rest/services/LutherBog/Luther_Marsch_Orthophotos_2006_merged/MapServer", {});
+	map.addLayer(lutherbog_ortho_merged);
+	lutherbog_ortho_merged.hide();
+	lutherbog_ortho_merged.setOpacity(0.5);
 	
 	// Geoprocessing flooded areas
 	var gpServiceUrl= "http://geo-arcgis.uni-muenster.de:6080/arcgis/rest/services/LutherBog/extract_flooded_areas/GPServer/flooded_areas";
-        var mapserviceurl= "http://geo-arcgis.uni-muenster.de:6080/arcgis/rest/services/LutherBog/extract_flooded_areas/MapServer/jobs/";
-	var legend;
+        var mapserviceurl= "http://geo-arcgis.uni-muenster.de:6080/arcgis/rest/services/LutherBog/extract_flooded_areas/MapServer/jobs";
+	
+	// Geoprocessing flooded areas part
+	var gpServiceUrlPart= "http://geo-arcgis.uni-muenster.de:6080/arcgis/rest/services/LutherBog/extract_flooded_areas/GPServer/flooded_areas";
+        var mapserviceurlPart= "http://geo-arcgis.uni-muenster.de:6080/arcgis/rest/services/LutherBog/extract_flooded_areas/MapServer/jobs";
+	
+	// Geoprocessing isolines
+	var gpServiceUrlIso= "http://geo-arcgis.uni-muenster.de:6080/arcgis/rest/services/LutherBog/isolines/GPServer/isolines";
+        var mapserviceurlIso= "http://geo-arcgis.uni-muenster.de:6080/arcgis/rest/services/LutherBog/isolines/MapServer/jobs";
 
 	function getFlooded(){
 		$('#flooded_area').prop('checked', true);
 		var gp = new Geoprocessor(gpServiceUrl);
 		var params = {
-			SQL_Expression: buildDefinitionQuery()
+			SQL_Expression: ("Value < " + $('#flooded_area_gauge').val()).replace('.',',')
 		};
 		//cleanup any results from previous runs
-		cleanup();
-		gp.submitJob(params, gpJobComplete, gpJobStatus, gpJobFailed);
+		cleanup("flooded_area");
+		gp.submitJob(params, gpJobCompleteFlooded, gpJobStatus, gpJobFailed);
         }
 	
-	function gpJobComplete(jobinfo){
+	function getFloodedPart(){
+		$('#flooded_area').prop('checked', true);
+		var gp = new Geoprocessor(gpServiceUrlPart);
+		var params = {
+			SQL_Expression: ("Value < " + $('#flooded_area_gauge_part').val()).replace('.',',')
+		};
+		//cleanup any results from previous runs
+		cleanup("flooded_area_part");
+		gp.submitJob(params, gpJobCompleteFloodedPart, gpJobStatus, gpJobFailed);
+        }
+	
+	function getIsolines(){
+		$('#isolines').prop('checked', true);
+		var gp = new Geoprocessor(gpServiceUrlIso);
+		var params = {
+			Double: ($('#isolines_difference').val())
+		};
+		//cleanup any results from previous runs
+		cleanup("isolines");
+		gp.submitJob(params, gpJobCompleteIsolines, gpJobStatus, gpJobFailed);
+        }
+	
+	function gpJobCompleteFlooded(jobinfo){
 		//construct the result map service url using the id from jobinfo we'll add a new layer to the map
 		var mapurl = mapserviceurl + "/" + jobinfo.jobId;
-		flooded_area = new ArcGISDynamicMapServiceLayer(mapurl,{
-			"id":"HotspotLayer",
-			"opacity": 0.7
-		});
+		flooded_area = new ArcGISDynamicMapServiceLayer(mapurl,{"id":"flooded_area", "opacity": 0.5});
 		//add the hotspot layer to the map
 		map.addLayers([flooded_area]);
-	}      
+	}
+	
+	function gpJobCompleteFloodedPart(jobinfo){
+		//construct the result map service url using the id from jobinfo we'll add a new layer to the map
+		var mapurl = mapserviceurlPart + "/" + jobinfo.jobId;
+		flooded_area_part = new ArcGISDynamicMapServiceLayer(mapurl,{"id":"flooded_area", "opacity": 0.5});
+		//add the hotspot layer to the map
+		map.addLayers([flooded_area_part]);
+	}
+	
+	function gpJobCompleteIsolines(jobinfo){
+		//construct the result map service url using the id from jobinfo we'll add a new layer to the map
+		var mapurl = mapserviceurlIso + "/" + jobinfo.jobId;
+		isolines = new ArcGISDynamicMapServiceLayer(mapurl,{"id":"isolines", "opacity": 0.5});
+		//add the hotspot layer to the map
+		map.addLayers([isolines]);
+	}
 	
 	function gpJobStatus(jobinfo){
-		domUtils.show(dom.byId('GPStatus'));
-		var jobstatus = '';
+		$('#map-error').css('display','none');
 		switch (jobinfo.jobStatus) {
 			case 'esriJobSubmitted':
-				jobstatus = 'Submitted...';
+				$('#map-submitted').css('display', 'block');
 			break;
 			case 'esriJobExecuting':
-				jobstatus = 'Executing...';
+				$('#map-submitted').css('display', 'none');
+				$('#map-loading').css('display', 'block');
 			break;
 			case 'esriJobSucceeded':
-				jobstatus = 'Success...';
+				$('#map-loading').css('display','none');
+				$('#map-success').css('display','block');
 				setTimeout(function() {
-					domUtils.hide(dom.byId('GPStatus'));
+					$('#map-success').css('display','none');
 				}, 1500);
 				
 			break;
 			}
-		
-		dom.byId('GPStatus').innerHTML = jobstatus;
-	}
-	
-	function buildDefinitionQuery(){
-		var defQuery;
-		//get input info from form and build definition expression
-		defQuery = "Value < " + $('#flooded_area_gauge').val();
-		defQuery = defQuery.replace('.',',');
-		return defQuery;
 	}
 	
 	function gpJobFailed(error){
-		dom.byId('GPStatus').innerHTML = error;
-		domUtils.hide(dom.byId('GPStatus'));
+		$('#map-error').css('display','block');
+		setTimeout(function() {
+			$('#map-error').css('display','none');
+		}, 1500);
 	}
 	
-	function cleanup(){
-		//hide the legend and remove the existing hotspot layer
-		domUtils.hide(dom.byId('legendDiv'));
-		var hotspotLayer = map.getLayer('HotspotLayer');
-		if(hotspotLayer){
-			map.removeLayer(hotspotLayer);
+	function cleanup(layer){
+		var removeLayer = map.getLayer(layer);
+		if(removeLayer){
+			map.removeLayer(removeLayer);
 		}
 	}
 	
 	app = {
-		getFlooded: getFlooded
+		getFlooded: getFlooded,
+		getFloodedPart: getFloodedPart,
+		getIsolines: getIsolines
 	};
 	return app;
 });
@@ -185,6 +229,11 @@ $('#ortho_tiles_opacity').change(function (){
 	$('#ortho_tiles_opacity_value').val(($('#ortho_tiles_opacity').val()*100) + "%");
 });
 
+$('#ortho_merged_opacity').change(function (){
+	lutherbog_ortho_merged.setOpacity($('#ortho_merged_opacity').val());
+	$('#ortho_merged_opacity_value').val(($('#ortho_merged_opacity').val()*100) + "%");
+});
+
 $('#flooded_area_opacity').change(function (){
 	flooded_area.setOpacity($('#flooded_area_opacity').val());
 	$('#flooded_area_opacity_value').val(($('#flooded_area_opacity').val()*100) + "%");
@@ -192,6 +241,10 @@ $('#flooded_area_opacity').change(function (){
 
 $('#flooded_area_gauge').change(function (){
 	$('#flooded_area_gauge_value').val($('#flooded_area_gauge').val() + "m");
+});
+
+$('#isolines_difference').change(function (){
+	$('#isolines_difference_value').val($('#isolines_difference').val() + "m");
 });
 
 $('#hoehe').change(function(){
@@ -212,6 +265,15 @@ $('#ortho_tiles').change(function(){
 	}
 });
 
+$('#ortho_merged').change(function(){
+	if($('#ortho_merged').is(':checked') == true){
+		lutherbog_ortho_merged.show();
+	}
+	else{
+		lutherbog_ortho_merged.hide();
+	}
+});
+
 $('#flooded_area').change(function(){
 	if($('#flooded_area').is(':checked') == true){
 		flooded_area.show();
@@ -221,6 +283,48 @@ $('#flooded_area').change(function(){
 	}
 });
 
+$('#isolines').change(function(){
+	if($('#isolines').is(':checked') == true){
+		isolines.show();
+	}
+	else{
+		isolines.hide();
+	}
+});
 
+$('#process-flooded-button').click(function(){
+	app.getFlooded();
+});
 
+$('#process-flooded-part-button').click(function(){
+	app.getFloodedPart();
+});
 
+$('#process-isolines-button').click(function(){
+	app.getIsolines();
+});
+
+// Mapbreite anpassen
+$('#map').css('width', $(window).width() - ($('#mapdetails').width()+20));
+$(window).resize(function(){
+        $('#map').css("width", $(window).width() - ($('#mapdetails').width()+20));
+});
+
+// Position von Loading anzeige anpassen
+var mapwidth = $('#map').width();
+var mapheight = $('#map').height();
+$('.map-processing').css('left', mapwidth/2-100);
+$('.map-processing').css('top', mapheight/2-100);
+$(window).resize(function(){
+	var mapwidth = $('#map').width();
+	var mapheight = $('#map').height();
+	$('.map-processing').css('left', mapwidth/2-100);
+	$('.map-processing').css('top', mapheight/2-100);
+});
+
+$('.map-processing').click(function(){
+	$('#map-submitted').css('display','none');
+	$('#map-loading').css('display','none');
+	$('#map-success').css('display','none');
+	$('#map-error').css('display','none');
+});

@@ -22,7 +22,10 @@ include 'process/granted.php';
 		
 		<div id="map">
 			<div id="HomeButton"></div>
-			<div id="GPStatus"></div> 
+			<div id="map-submitted" class="map-processing"><img src="../img/map/submitted.png" width="200" height="200"></div>
+			<div id="map-loading" class="map-processing"><img src="../img/map/loading.gif" width="200" height="200"></div>
+			<div id="map-success" class="map-processing"><img src="../img/map/success.png" width="200" height="200"></div>
+			<div id="map-error" class="map-processing"><img src="../img/map/error.png" width="200" height="200"></div>
 			<div id="BasemapFrame">
 				<div data-dojo-type="dijit/TitlePane" data-dojo-props="title:'Switch Basemap', closable:false, open:false">
 					<div data-dojo-type="dijit/layout/ContentPane" style="width:380px; height:280px; overflow:auto;">
@@ -34,14 +37,38 @@ include 'process/granted.php';
 		
 		<div id="mapdetails">
 				<div id="layerList">
-					<input type='checkbox' id='hoehe' value=0 />Höhenmodel </br>
+					<h3>Verfügbare Layer:</h3>
+					<input type='checkbox' id='hoehe' value=0 /> Höhenmodel </br>
 					<input type="range" id="hoehe_opacity" min="0" max="1" step="0.01"> <input type="text" id="hoehe_opacity_value" size = "3" value = "50%" readonly> </br>
-					<input type='checkbox' id='ortho_tiles' value=1 />Luftbilder Tiles</br>
+					
+					<input type='checkbox' id='isolines' value=0 /> Höhenlinien </br>
+					<input type="range" id="isolines_difference" min=".1" max="5" step="0.01"> <input type="text" id="isolines_difference_value" size = "3" value = "2.55m" readonly> </br>
+					<div class="submit-button" id="process-isolines-button">
+                                <p>Prozess starten</p>
+                         </div></br></br>
+					
+					<input type='checkbox' id='ortho_tiles' value=1 /> Luftbilder Tiles 2006</br>
 					<input type="range" id="ortho_tiles_opacity" min="0" max="1" step="0.01"> <input type="text" id="ortho_tiles_opacity_value" size = "3" value = "50%" readonly></br>
-					<input type='checkbox' id='flooded_area' value=1 />Überflutete Gebiete</br>
+					<input type='checkbox' id='ortho_merged' value=1 /> Luftbilder Merged 2006</br>
+					<input type="range" id="ortho_merged_opacity" min="0" max="1" step="0.01"> <input type="text" id="ortho_merged_opacity_value" size = "3" value = "50%" readonly></br></br>
+					
+					
+					
+					<input type='checkbox' id='flooded_area_part' value=1 /> Überflutete Teilgebiete</br>
+					<input type="range" id="flooded_area_gauge_part" min="480" max="494" step="0.01"> <input type="text" id="flooded_area_gauge_value_part" size = "3" value = "480m" readonly></br>
+					<input type="range" id="flooded_area_opacity_part" min="0" max="1" step="0.01"> <input type="text" id="flooded_area_opacity_value_part" size = "3" value = "50%" readonly></br>
+					
+					<div class="submit-button" id="process-flooded-part-button">
+                                <p>Prozess starten</p>
+                         </div></br>
+					
+					<input type='checkbox' id='flooded_area' value=1 /> Überflutete Gebiete</br>
 					<input type="range" id="flooded_area_gauge" min="460" max="500" step="0.01"> <input type="text" id="flooded_area_gauge_value" size = "3" value = "480m" readonly></br>
 					<input type="range" id="flooded_area_opacity" min="0" max="1" step="0.01"> <input type="text" id="flooded_area_opacity_value" size = "3" value = "50%" readonly></br>
-					<input type="submit" id="getAreas" onclick="app.getFlooded();">
+					
+					<div class="submit-button" id="process-flooded-button">
+                                <p>Prozess starten</p>
+                         </div>
 				</div>
 			</div> 
 		
