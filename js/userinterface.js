@@ -111,7 +111,6 @@ $('#admin-access').change(function(){
 
 // Wetterplot updaten wenn Auswahl geändert wird
 $('#weather-start-date, #weather-end-date, #weather-rain, #weather-par, #weather-temperatur, #weather-humidity, #weather-wind, #weather-gust').change(function(){
-	$('#weatherplot').html('<img src="../img/loading.gif" alt="Loading">')
 	weatherplot();
 });
 // -----------------------------------------------

@@ -26,6 +26,7 @@ include 'process/granted.php';
 			<div id="map-loading" class="map-processing"><img src="../img/map/loading.gif" width="200" height="200"></div>
 			<div id="map-success" class="map-processing"><img src="../img/map/success.png" width="200" height="200"></div>
 			<div id="map-error" class="map-processing"><img src="../img/map/error.png" width="200" height="200"></div>
+			<div id="map-wrongIP" class="map-processing"><img src="../img/map/wrongIP.png" width="200" height="200"></div>
 			<div id="BasemapFrame">
 				<div data-dojo-type="dijit/TitlePane" data-dojo-props="title:'Switch Basemap', closable:false, open:false">
 					<div data-dojo-type="dijit/layout/ContentPane" style="width:380px; height:280px; overflow:auto;">

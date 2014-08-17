@@ -264,7 +264,7 @@ header nav ul li #upload:active {
 
 /* Plotter auf access.php */
 #scatterplot-settings {
-	width: 25%;
+	width: 26%;
 	height: 80%;
 	position: realtive;
 	margin: 10px;
@@ -284,11 +284,23 @@ header nav ul li #upload:active {
 	margin: 10px;
 	float: right;
 	border: solid;
+	background-color: #FFFFFF;
 }
 
 #weatherplot, #dataplot {
-	width: 100%;
 	height: 100%;
+	width: 100%;
+	display: none;
+}
+
+.plotter-processing {
+      position: absolute;
+      background: rgba(0, 0, 0, 0.5);
+      width: 200px;
+      height:200px;
+      border-radius: 20px;
+      z-index: 6;
+      display: none;
 }
 
 /* ------------------------------- */

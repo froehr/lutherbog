@@ -328,3 +328,14 @@ $('.map-processing').click(function(){
 	$('#map-success').css('display','none');
 	$('#map-error').css('display','none');
 });
+
+// Wenn die Anfrage nicht aus dem Uninetz kommt fehlermeldung
+jQuery.ajax({
+    type: "POST",
+    url: 'process/getIP.php',
+    dataType: 'html',
+    data: {action:"ip"},
+    success: function(data) {
+        $('#map-wrongIP').css('display',data);
+    },
+});

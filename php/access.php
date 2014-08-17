@@ -45,10 +45,10 @@ include 'process/granted.php';
 			<div class="switch-content" id="plotten-content">
 				<h2>Auf dieser Seite k&ouml;nnen Daten geplottet werden:</h2>
                                 <div id="scatterplot">
-                                    <div id="dataplot">
-                                    </div>
-                                    <div id="weatherplot">
-                                    </div>
+                                    <div id="dataplot"></div>
+                                    <div id="weatherplot"></div>
+                                    <div id="plotter-loading" class="plotter-processing"><img src="../img/map/loading.gif" width="200" height="200"></div>
+                                    <div id="plotter-success" class="plotter-processing"><img src="../img/map/success.png" width="200" height="200"></div>
                                 </div>
                                 <div id="scatterplot-settings">
                                     <h3>Messadaten anzeigen: <input id="plot-data" type="radio" name="choose"> </h3>

@@ -1,29 +1,38 @@
 function dataplot() {
     // Benötigte Daten aus der Datenbank holen
     jQuery.ajax({
-            type: "POST",
-            url: 'process/get_plotter_data.php',
-            dataType: 'html',
-            data: { action:'dataplot',
-                    data_start_date:$('#data-start-date').val(),
-                    data_end_date:$('#data-end-date').val(),
-                    ch4:$('#data-ch4').is(':checked'),
-                    co2:$('#data-co2').is(':checked'),
-                    site1:$('#data-site1').is(':checked'),
-                    site2:$('#data-site2').is(':checked'),
-                    site3:$('#data-site3').is(':checked'),
-                    site4:$('#data-site4').is(':checked'),
-                    site5:$('#data-site5').is(':checked'),
-                    site6:$('#data-site6').is(':checked'),
-                    },
-            success: function(data) {
-                results = data;
-            },
-            async: false,
-        });
-    
-    console.log(results);
-    
+        type: "POST",
+        url: 'process/get_plotter_data.php',
+        dataType: 'html',
+        data: { action:'dataplot',
+                data_start_date:$('#data-start-date').val(),
+                data_end_date:$('#data-end-date').val(),
+                ch4:$('#data-ch4').is(':checked'),
+                co2:$('#data-co2').is(':checked'),
+                site1:$('#data-site1').is(':checked'),
+                site2:$('#data-site2').is(':checked'),
+                site3:$('#data-site3').is(':checked'),
+                site4:$('#data-site4').is(':checked'),
+                site5:$('#data-site5').is(':checked'),
+                site6:$('#data-site6').is(':checked'),
+                },
+        beforeSend: function(data) {
+            $('#plotter-loading').css('display','block');
+        },
+        success: function(data) {
+            weatherplotter(data);
+            $('#plotter-success').css('display','block');
+        },
+        complete:function(data) {
+            $('#plotter-loading').css('display','none');
+            setTimeout(function() {
+			$('#plotter-success').css('display','none');
+	    }, 1000);
+        }
+    });
+}
+
+function dataplotter(results) {
     // Arrays für daten initialisieren
     var ch4data = [];
     var co2data = [];
@@ -100,25 +109,37 @@ function dataplot() {
 function weatherplot() {
     // Benötigte Daten aus der Datenbank holen
     jQuery.ajax({
-            type: "POST",
-            url: 'process/get_plotter_data.php',
-            dataType: 'json',
-            data: { action:'weatherplot',
-                    weather_start_date:$('#weather-start-date').val(),
-                    weather_end_date:$('#weather-end-date').val(),
-                    rain:$('#weather-rain').is(':checked'),
-                    par:$('#weather-par').is(':checked'),
-                    temp:$('#weather-temperatur').is(':checked'),
-                    rh:$('#weather-humidity').is(':checked'),
-                    wind_speed:$('#weather-wind').is(':checked'),
-                    gust_speed:$('#weather-gust').is(':checked')
-                    },
-            success: function(data) {
-                results = data;
-            },
-            async: false,
-        });
+        type: "POST",
+        url: 'process/get_plotter_data.php',
+        dataType: 'json',
+        data: { action:'weatherplot',
+                weather_start_date:$('#weather-start-date').val(),
+                weather_end_date:$('#weather-end-date').val(),
+                rain:$('#weather-rain').is(':checked'),
+                par:$('#weather-par').is(':checked'),
+                temp:$('#weather-temperatur').is(':checked'),
+                rh:$('#weather-humidity').is(':checked'),
+                wind_speed:$('#weather-wind').is(':checked'),
+                gust_speed:$('#weather-gust').is(':checked')
+                },
+        beforeSend: function(data) {
+            $('#plotter-loading').css('display','block');
+        },
+        success: function(data) {
+            weatherplotter(data);
+            $('#plotter-success').css('display','block');
+        },
+        complete:function(data) {
+            $('#plotter-loading').css('display','none');
+            setTimeout(function() {
+			$('#plotter-success').css('display','none');
+	    }, 1000);
+        }
+    });
+}
 
+function weatherplotter(results) {
+    
     // Arrays für daten initialisieren
     var raindata = [];
     var pardata = [];
@@ -256,4 +277,24 @@ function weatherplot() {
     });
 };
 
-   
+// Position von Loading anzeige anpassen
+left = $('#scatterplot').offset().left;
+up = $('#scatterplot').offset().top;
+width = $('#scatterplot').width()/2-100;
+height = $('#scatterplot').height()/2-210;
+$('.plotter-processing').css('left',left + width);
+$('.plotter-processing').css('top',up + height);
+
+$(window).resize(function(){
+    left = $('#scatterplot').offset().left;
+    up = $('#scatterplot').offset().top;
+    width = $('#scatterplot').width()/2-100;
+    height = $('#scatterplot').height()/2-210;
+    $('.plotter-processing').css('left',left + width);
+    $('.plotter-processing').css('top',up + height);        
+});
+
+$('.plotter-processing').click(function(){
+	$('#plotter-loading').css('display','none');
+	$('#plotter-success').css('display','none');
+});
