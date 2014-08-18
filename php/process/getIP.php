@@ -36,6 +36,11 @@ if ($_POST['action'] == "ip"){
     if (validateIpV4Range($client_ip, '[128].[176].[0-255].[0-255]')) {
         echo ("none");
     }
+    
+    if (validateIpV4Range($client_ip, '[127].[0].[0].[1]')) {
+        echo ("none");
+    }
+    
     else {
         echo ("block");
     }

@@ -56,7 +56,7 @@ include 'process/granted.php';
 					
 					
 					<input type='checkbox' id='flooded_area_part' value=1 /> Überflutete Teilgebiete</br>
-					<input type="range" id="flooded_area_gauge_part" min="480" max="494" step="0.01"> <input type="text" id="flooded_area_gauge_value_part" size = "3" value = "480m" readonly></br>
+					<input type="range" id="flooded_area_gauge_part" min="480" max="494" step="0.01"> <input type="text" id="flooded_area_gauge_value_part" size = "3" value = "487m" readonly></br>
 					<input type="range" id="flooded_area_opacity_part" min="0" max="1" step="0.01"> <input type="text" id="flooded_area_opacity_value_part" size = "3" value = "50%" readonly></br>
 					
 					<div class="submit-button" id="process-flooded-part-button">

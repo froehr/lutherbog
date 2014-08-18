@@ -1,5 +1,5 @@
 var map;
-var lutherbog_elevation, lutherbog_ortho_tiles, flooded_area; 
+var lutherbog_elevation, lutherbog_ortho_tiles, flooded_area, part_flooded; 
 
 require([
 	'esri/map',
@@ -111,8 +111,8 @@ require([
         var mapserviceurl= "http://geo-arcgis.uni-muenster.de:6080/arcgis/rest/services/LutherBog/extract_flooded_areas/MapServer/jobs";
 	
 	// Geoprocessing flooded areas part
-	var gpServiceUrlPart= "http://geo-arcgis.uni-muenster.de:6080/arcgis/rest/services/LutherBog/extract_flooded_areas/GPServer/flooded_areas";
-        var mapserviceurlPart= "http://geo-arcgis.uni-muenster.de:6080/arcgis/rest/services/LutherBog/extract_flooded_areas/MapServer/jobs";
+	var gpServiceUrlPart= "http://geo-arcgis.uni-muenster.de:6080/arcgis/rest/services/LutherBog/extract_flooded_areas_part/GPServer/flooded_areas_part2";
+        var mapserviceurlPart= "http://geo-arcgis.uni-muenster.de:6080/arcgis/rest/services/LutherBog/extract_flooded_areas_part/MapServer/jobs";
 	
 	// Geoprocessing isolines
 	var gpServiceUrlIso= "http://geo-arcgis.uni-muenster.de:6080/arcgis/rest/services/LutherBog/isolines/GPServer/isolines";
@@ -130,13 +130,13 @@ require([
         }
 	
 	function getFloodedPart(){
-		$('#flooded_area').prop('checked', true);
+		$('#flooded_area_part').prop('checked', true);
 		var gp = new Geoprocessor(gpServiceUrlPart);
 		var params = {
 			SQL_Expression: ("Value < " + $('#flooded_area_gauge_part').val()).replace('.',',')
 		};
 		//cleanup any results from previous runs
-		cleanup("flooded_area_part");
+		cleanup("part_flooded");
 		gp.submitJob(params, gpJobCompleteFloodedPart, gpJobStatus, gpJobFailed);
         }
 	
@@ -162,9 +162,9 @@ require([
 	function gpJobCompleteFloodedPart(jobinfo){
 		//construct the result map service url using the id from jobinfo we'll add a new layer to the map
 		var mapurl = mapserviceurlPart + "/" + jobinfo.jobId;
-		flooded_area_part = new ArcGISDynamicMapServiceLayer(mapurl,{"id":"flooded_area", "opacity": 0.5});
+		part_flooded = new ArcGISDynamicMapServiceLayer(mapurl,{"id":"part_flooded", "opacity": 0.5});
 		//add the hotspot layer to the map
-		map.addLayers([flooded_area_part]);
+		map.addLayers([part_flooded]);
 	}
 	
 	function gpJobCompleteIsolines(jobinfo){
@@ -219,28 +219,37 @@ require([
 });
 
 $('#hoehe_opacity').change(function (){
-	lutherbog_elevation.setOpacity($('#hoehe_opacity').val());
 	$('#hoehe_opacity_value').val(($('#hoehe_opacity').val()*100) + "%");
+	lutherbog_elevation.setOpacity($('#hoehe_opacity').val());
 	
 });
 
 $('#ortho_tiles_opacity').change(function (){
-	lutherbog_ortho_tiles.setOpacity($('#ortho_tiles_opacity').val());
 	$('#ortho_tiles_opacity_value').val(($('#ortho_tiles_opacity').val()*100) + "%");
+	lutherbog_ortho_tiles.setOpacity($('#ortho_tiles_opacity').val());
 });
 
 $('#ortho_merged_opacity').change(function (){
-	lutherbog_ortho_merged.setOpacity($('#ortho_merged_opacity').val());
 	$('#ortho_merged_opacity_value').val(($('#ortho_merged_opacity').val()*100) + "%");
+	lutherbog_ortho_merged.setOpacity($('#ortho_merged_opacity').val());
 });
 
-$('#flooded_area_opacity').change(function (){
-	flooded_area.setOpacity($('#flooded_area_opacity').val());
-	$('#flooded_area_opacity_value').val(($('#flooded_area_opacity').val()*100) + "%");
+$('#flooded_area_gauge_part').change(function (){
+	$('#flooded_area_gauge_value_part').val($('#flooded_area_gauge_part').val() + "m");
+});
+
+$('#flooded_area_opacity_part').change(function (){
+	$('#flooded_area_opacity_value_part').val(($('#flooded_area_opacity_part').val()*100) + "%");
+	part_flooded.setOpacity($('#flooded_area_opacity_part').val());
 });
 
 $('#flooded_area_gauge').change(function (){
 	$('#flooded_area_gauge_value').val($('#flooded_area_gauge').val() + "m");
+});
+
+$('#flooded_area_opacity').change(function (){
+	$('#flooded_area_opacity_value').val(($('#flooded_area_opacity').val()*100) + "%");
+	flooded_area.setOpacity($('#flooded_area_opacity').val());
 });
 
 $('#isolines_difference').change(function (){
@@ -271,6 +280,15 @@ $('#ortho_merged').change(function(){
 	}
 	else{
 		lutherbog_ortho_merged.hide();
+	}
+});
+
+$('#flooded_area_part').change(function(){
+	if($('#flooded_area_part').is(':checked') == true){
+		part_flooded.show();
+	}
+	else{
+		part_flooded.hide();
 	}
 });
 
