@@ -57,12 +57,13 @@ include 'process/granted.php';
                                     Bis: <input class="date" id="data-end-date"> <br>
                                     Methan: <input type="checkbox" id="data-ch4">
                                     Kohlendioxid: <input type="checkbox" id="data-co2"> <br>
-                                    Site 1: <input type="checkbox" id="data-site1">
-                                    Site 2: <input type="checkbox" id="data-site2">
-                                    Site 3: <input type="checkbox" id="data-site3">
-                                    Site 4: <input type="checkbox" id="data-site4">
-                                    Site 5: <input type="checkbox" id="data-site5">
-                                    Site 6: <input type="checkbox" id="data-site6">
+                                    
+                                    <a href="webgis.php?site=1">Site 1:</a> <input type="checkbox" id="data-site1">
+                                    <a href="webgis.php?site=2">Site 2:</a> <input type="checkbox" id="data-site2">
+                                    <a href="webgis.php?site=3">Site 3:</a> <input type="checkbox" id="data-site3">
+                                    <a href="webgis.php?site=4">Site 4:</a> <input type="checkbox" id="data-site4">
+                                    <a href="webgis.php?site=5">Site 5:</a> <input type="checkbox" id="data-site5">
+                                    <a href="webgis.php?site=6">Site 6:</a> <input type="checkbox" id="data-site6">
                                     
                                     <h3>Wetterdaten anzeigen: <input id="plot-weather" type="radio" name="choose"></h3>
                                     <h4>Datum von / bis:</h4>

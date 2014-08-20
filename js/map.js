@@ -12,6 +12,7 @@ require([
 	'esri/tasks/GeometryService',
 	'esri/symbols/SimpleFillSymbol',
 	'esri/symbols/SimpleLineSymbol',
+	'esri/geometry/Point',
 	
         'esri/domUtils',	
 	
@@ -47,6 +48,8 @@ require([
 	GeometryService,
 	SimpleFillSymbol,
 	SimpleLineSymbol,
+	Point,
+	
 	domUtils,
 	
 	Legend,
@@ -104,6 +107,23 @@ require([
 		title: '{name}',
 		description: 'Daten dieser Site <a href="access.php">anzeigen</a>',
 	});
+	
+	//LÖSCHEN
+	
+	map.on("click", addPoint);
+
+          function addPoint(evt) {
+            var latitude = evt.mapPoint.getLatitude();
+            var longitude = evt.mapPoint.getLongitude();
+            map.infoWindow.setTitle("Coordinates");
+            map.infoWindow.setContent(
+              "lat/lon : " + latitude.toFixed(10) + ", " + longitude.toFixed(10) + 
+              "<br>screen x/y : " + evt.screenPoint.x + ", " + evt.screenPoint.y
+            );
+            map.infoWindow.show(evt.mapPoint, map.getInfoWindowAnchor(evt.screenPoint));
+          }
+	
+	// BIS HIER
 		
 	lutherbog_elevation = new ArcGISDynamicMapServiceLayer("http://geo-arcgis.uni-muenster.de:6080/arcgis/rest/services/LutherBog/lutherbog_elevation/MapServer", {});
         map.addLayer(lutherbog_elevation);
@@ -232,13 +252,49 @@ require([
 		}
 	}
 	
+	function SetZoomSite(siteID){
+	if (siteID > 0) {
+		$('#sites').prop('checked', true);
+		lutherbog_sites.show();
+	}
+	switch (siteID) {
+		case '1':
+			var mapPoint = new Point(-80.4038194656, 43.9170864435);
+			map.centerAndZoom(mapPoint, 18);
+		break;
+		case '2':
+			var mapPoint = new Point(-80.4060081482, 43.9190958081);
+			map.centerAndZoom(mapPoint, 18);
+		break;
+		case '3':
+			var mapPoint = new Point(-80.4071668624, 43.9203323064);
+			map.centerAndZoom(mapPoint, 18);
+		break;
+		case '4':
+			var mapPoint = new Point(-80.4085401535, 43.9223570170);
+			map.centerAndZoom(mapPoint, 18);
+		break;
+		case '5':
+			var mapPoint = new Point(-80.4092482566, 43.9233152529);
+			map.centerAndZoom(mapPoint, 18);
+		break;
+		case '6':
+			var mapPoint = new Point(-80.4096559524, 43.9239643717);
+			map.centerAndZoom(mapPoint, 18);
+		break;
+		}
+	}
+	
+	SetZoomSite($('#AcessSideID').val());
+	
 	app = {
 		getFlooded: getFlooded,
 		getFloodedPart: getFloodedPart,
-		getIsolines: getIsolines
+		getIsolines: getIsolines,
+		SetZoomSite: SetZoomSite
 	};
 	return app;
-	
+
 });
 
 $('#hoehe_opacity').change(function (){

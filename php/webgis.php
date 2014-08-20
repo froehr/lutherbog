@@ -2,6 +2,14 @@
 session_start();
 $_SESSION['page'] = 'map';
 include 'process/granted.php';
+
+
+if (isset($_GET['site'])) {
+	echo '<input type="hidden" id="AcessSideID" value='. $_GET['site'];
+}
+else{
+	echo '<input type="hidden" id="AccesSideID" value="0"';
+}
 ?>
 
 <!DOCTYPE HTML>
@@ -54,8 +62,6 @@ include 'process/granted.php';
 					<input type='checkbox' id='ortho_merged' value=1 /> Luftbilder Merged 2006</br>
 					<input type="range" id="ortho_merged_opacity" min="0" max="1" step="0.01"> <input type="text" id="ortho_merged_opacity_value" size = "3" value = "50%" readonly></br></br>
 					
-					
-					
 					<input type='checkbox' id='flooded_area_part' value=1 /> Überflutete Teilgebiete</br>
 					<input type="range" id="flooded_area_gauge_part" min="480" max="494" step="0.01"> <input type="text" id="flooded_area_gauge_value_part" size = "3" value = "487m" readonly></br>
 					<input type="range" id="flooded_area_opacity_part" min="0" max="1" step="0.01"> <input type="text" id="flooded_area_opacity_value_part" size = "3" value = "50%" readonly></br>
@@ -106,9 +112,9 @@ include 'process/granted.php';
 				<a href="#" id="help">Hilfe</a>
 				<a href="#" id="impressum">Impressum</a>
 			</footer>
-		</div>	
+		</div>
 		<script src="../js/login.js"></script>
 		<script src="../js/map.js"></script>
-		<script src="../js/userinterface.js"></script>                
+		<script src="../js/userinterface.js"></script>
 	</body>
 </html>
