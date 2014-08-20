@@ -39,6 +39,7 @@ include 'process/granted.php';
 		<div id="mapdetails">
 				<div id="layerList">
 					<h3>Verfügbare Layer:</h3>
+					<input type='checkbox' id='sites' value=0 /> Sites </br>
 					<input type='checkbox' id='hoehe' value=0 /> Höhenmodel </br>
 					<input type="range" id="hoehe_opacity" min="0" max="1" step="0.01"> <input type="text" id="hoehe_opacity_value" size = "3" value = "50%" readonly> </br>
 					

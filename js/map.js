@@ -9,13 +9,19 @@ require([
 	'esri/layers/FeatureLayer',
 	'esri/graphic',
 	'esri/tasks/Geoprocessor',
-        'esri/domUtils',
+	'esri/tasks/GeometryService',
+	'esri/symbols/SimpleFillSymbol',
+	'esri/symbols/SimpleLineSymbol',
+	
+        'esri/domUtils',	
 	
 	'esri/dijit/Legend',
 	'esri/dijit/HomeButton',
 	'esri/dijit/Scalebar',
 	'esri/dijit/OverviewMap',
 	'esri/dijit/BasemapGallery',
+	'esri/dijit/Popup',
+	'esri/dijit/PopupTemplate',
 	
 	'esri/arcgis/utils',
 	
@@ -38,6 +44,9 @@ require([
 	FeatureLayer,
 	graphic,
 	Geoprocessor,
+	GeometryService,
+	SimpleFillSymbol,
+	SimpleLineSymbol,
 	domUtils,
 	
 	Legend,
@@ -45,6 +54,8 @@ require([
 	Scalebar,
 	OverviewMap,
 	BasemapGallery,
+	Popup,
+	PopupTemplate,
 	
 	utils,
 	
@@ -89,7 +100,10 @@ require([
         });
         overviewMapDijit.startup();
 	
-        
+	var popupTemplate = new PopupTemplate({
+		title: '{name}',
+		description: 'Daten dieser Site <a href="access.php">anzeigen</a>',
+	});
 		
 	lutherbog_elevation = new ArcGISDynamicMapServiceLayer("http://geo-arcgis.uni-muenster.de:6080/arcgis/rest/services/LutherBog/lutherbog_elevation/MapServer", {});
         map.addLayer(lutherbog_elevation);
@@ -105,6 +119,14 @@ require([
 	map.addLayer(lutherbog_ortho_merged);
 	lutherbog_ortho_merged.hide();
 	lutherbog_ortho_merged.setOpacity(0.5);
+	
+	lutherbog_sites = new FeatureLayer("http://geo-arcgis.uni-muenster.de:6080/arcgis/rest/services/LutherBog/Sites_lutherbog/FeatureServer/0", {
+		mode: FeatureLayer.MODE_SNAPSHOT,
+		infoTemplate: popupTemplate,
+		outFields: ["*"]
+	});
+	map.addLayer(lutherbog_sites);
+	lutherbog_sites.hide();
 	
 	// Geoprocessing flooded areas
 	var gpServiceUrl= "http://geo-arcgis.uni-muenster.de:6080/arcgis/rest/services/LutherBog/extract_flooded_areas/GPServer/flooded_areas";
@@ -216,6 +238,7 @@ require([
 		getIsolines: getIsolines
 	};
 	return app;
+	
 });
 
 $('#hoehe_opacity').change(function (){
@@ -254,6 +277,15 @@ $('#flooded_area_opacity').change(function (){
 
 $('#isolines_difference').change(function (){
 	$('#isolines_difference_value').val($('#isolines_difference').val() + "m");
+});
+
+$('#sites').change(function(){
+	if($('#sites').is(':checked') == true){
+		lutherbog_sites.show();
+	}
+	else{
+		lutherbog_sites.hide();
+	}
 });
 
 $('#hoehe').change(function(){
