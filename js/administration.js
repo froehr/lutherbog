@@ -10,7 +10,7 @@ function register() {
     var dataaccess = false;
     var adminaccess = false;
     
-    // Testen ob alle Felder gefüllt sind
+    // Testen ob alle Felder gef√ºllt sind
     if ($('#username').val() == ''){
         $('#user-empty').css('display', 'block');
         username = false;
