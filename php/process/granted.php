@@ -1,4 +1,13 @@
 <?php
+
+if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 1800)) {
+    // Letzter Zugriffe mehr als X Sekunden her --> Logout
+    session_unset();
+    session_destroy();
+}
+
+$_SESSION['LAST_ACTIVITY'] = time();
+
 if(isset($_SESSION['map'])){
     // In diesem Switch wird entschieden, ob ein bestimmter Benutzer zuggriff auf eine bestimmte Funktion der Seite hat. Falls ein Recht nicht besteht wird er auf
     // die Index umgeleitet. 

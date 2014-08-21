@@ -13,6 +13,7 @@ require([
 	'esri/symbols/SimpleFillSymbol',
 	'esri/symbols/SimpleLineSymbol',
 	'esri/geometry/Point',
+	'esri/geometry/Extent',
 	
         'esri/domUtils',	
 	
@@ -49,6 +50,7 @@ require([
 	SimpleFillSymbol,
 	SimpleLineSymbol,
 	Point,
+	Extent,
 	
 	domUtils,
 	
@@ -108,7 +110,7 @@ require([
 		description: 'Daten dieser Site <a href="access.php">anzeigen</a>',
 	});
 	
-	//LÖSCHEN
+	/*LÖSCHEN
 	
 	map.on("click", addPoint);
 
@@ -123,7 +125,7 @@ require([
             map.infoWindow.show(evt.mapPoint, map.getInfoWindowAnchor(evt.screenPoint));
           }
 	
-	// BIS HIER
+	BIS HIER */
 		
 	lutherbog_elevation = new ArcGISDynamicMapServiceLayer("http://geo-arcgis.uni-muenster.de:6080/arcgis/rest/services/LutherBog/lutherbog_elevation/MapServer", {});
         map.addLayer(lutherbog_elevation);
@@ -435,7 +437,7 @@ $('.map-processing').click(function(){
 	$('#map-error').css('display','none');
 });
 
-// Wenn die Anfrage nicht aus dem Uninetz kommt fehlermeldung
+// Wenn die Anfrage nicht aus dem Uninetz kommt Fehlermeldung anzeigen
 jQuery.ajax({
     type: "POST",
     url: 'process/getIP.php',

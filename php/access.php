@@ -4,8 +4,6 @@ $_SESSION['page'] = 'access';
 include 'process/granted.php';
 ?>
 
-
-
 <!DOCTYPE HTML>
 <html>
 	<head>
@@ -58,12 +56,12 @@ include 'process/granted.php';
                                     Methan: <input type="checkbox" id="data-ch4">
                                     Kohlendioxid: <input type="checkbox" id="data-co2"> <br>
                                     
-                                    <a href="webgis.php?site=1">Site 1:</a> <input type="checkbox" id="data-site1">
-                                    <a href="webgis.php?site=2">Site 2:</a> <input type="checkbox" id="data-site2">
-                                    <a href="webgis.php?site=3">Site 3:</a> <input type="checkbox" id="data-site3">
-                                    <a href="webgis.php?site=4">Site 4:</a> <input type="checkbox" id="data-site4">
-                                    <a href="webgis.php?site=5">Site 5:</a> <input type="checkbox" id="data-site5">
-                                    <a href="webgis.php?site=6">Site 6:</a> <input type="checkbox" id="data-site6">
+                                    <a href="webgis.php?site=1" target="_blank">Site 1:</a> <input type="checkbox" id="data-site1">
+                                    <a href="webgis.php?site=2" target="_blank">Site 2:</a> <input type="checkbox" id="data-site2">
+                                    <a href="webgis.php?site=3" target="_blank">Site 3:</a> <input type="checkbox" id="data-site3">
+                                    <a href="webgis.php?site=4" target="_blank">Site 4:</a> <input type="checkbox" id="data-site4">
+                                    <a href="webgis.php?site=5" target="_blank">Site 5:</a> <input type="checkbox" id="data-site5">
+                                    <a href="webgis.php?site=6" target="_blank">Site 6:</a> <input type="checkbox" id="data-site6">
                                     
                                     <h3>Wetterdaten anzeigen: <input id="plot-weather" type="radio" name="choose"></h3>
                                     <h4>Datum von / bis:</h4>
