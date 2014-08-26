@@ -164,14 +164,15 @@ function weatherplotter(results) {
         gustdata.push([time, results[i].gust_speed]);       
         i++;
     }
-    
+
     // Niederschlagsdaten aktivieren
     if ($('#weather-rain').is(':checked') == true) {
-        yaxis.push({title: {text: 'Niederschlag in mm',style: {color: '#6699FF'}},
-                    labels: {format: '{value} mm', style: {color: '#6699FF'}},
+        var ChartColor = "#"+ $('#rain-color').val();
+        yaxis.push({title: {text: 'Niederschlag in mm',style: {color: ChartColor}},
+                    labels: {format: '{value} mm', style: {color: ChartColor}},
                     id: 'rain-axis'});
         serie.push({name: 'Niederschlag',
-                    color: '#6699FF',
+                    color: ChartColor,
                     type: 'spline',
                     tooltip: {valueSuffix: 'mm'},
                     yAxis: 'rain-axis',
@@ -180,11 +181,12 @@ function weatherplotter(results) {
     
     // PAR-Strahlung aktivieren
     if ($('#weather-par').is(':checked') == true) {
-        yaxis.push({title: {text: 'PAR-Strahlung in uE',style: {color: '#FFFF00'}},
-                    labels: {format: '{value}uE', style: {color: '#FFFF00'}},
+        var ChartColor = "#"+ $('#par-color').val();
+        yaxis.push({title: {text: 'PAR-Strahlung in uE',style: {color: ChartColor}},
+                    labels: {format: '{value}uE', style: {color: ChartColor}},
                     id: 'par-axis'});
         serie.push({name: 'PAR-Strahlung',
-                    color: '#FFFF00',
+                    color: ChartColor,
                     type: 'spline',
                     tooltip: {valueSuffix: 'uE'},
                     yAxis: 'par-axis',
@@ -193,11 +195,12 @@ function weatherplotter(results) {
     
     // Temperatur aktivieren
     if ($('#weather-temperatur').is(':checked') == true) {
-        yaxis.push({title: {text: 'Temperatur in °C',style: {color: '#FF0000'}},
-                    labels: {format: '{value}°C', style: {color: '#FF0000'}},
+        var ChartColor = "#"+ $('#temperatur-color').val();
+        yaxis.push({title: {text: 'Temperatur in °C',style: {color: ChartColor}},
+                    labels: {format: '{value}°C', style: {color: ChartColor}},
                     id: 'temp-axis'});
         serie.push({name: 'Temperatur',
-                    color: '#FF0000',
+                    color: ChartColor,
                     type: 'spline',
                     tooltip: {valueSuffix: '°C'},
                     yAxis: 'temp-axis',
@@ -206,12 +209,13 @@ function weatherplotter(results) {
     
     // Luftfeuchtigkeit aktivieren
     if ($('#weather-humidity').is(':checked') == true) {
-        yaxis.push({title: {text: 'Relative Luftfeuchte in %',style: {color: '#FF0000'}},
-                    labels: {format: '{value}%', style: {color: '#FF0000'}},
+        var ChartColor = "#"+ $('#humidity-color').val();
+        yaxis.push({title: {text: 'Relative Luftfeuchte in %',style: {color: ChartColor}},
+                    labels: {format: '{value}%', style: {color: ChartColor}},
                     id: 'rh-axis',
                     max: 100});
         serie.push({name: 'rel. Luftfeuchtigkeit',
-                    color: '#FF0000',
+                    color: ChartColor,
                     type: 'spline',
                     tooltip: {valueSuffix: '%'},
                     yAxis: 'rh-axis',
@@ -220,11 +224,12 @@ function weatherplotter(results) {
     
     // Wind aktivieren
     if ($('#weather-wind').is(':checked') == true) {
-        yaxis.push({title: {text: 'Windgeschwindigkeit in m/s',style: {color: '#FF0000'}},
-                    labels: {format: '{value}m/s', style: {color: '#FF0000'}},
+        var ChartColor = "#"+ $('#wind-color').val();
+        yaxis.push({title: {text: 'Windgeschwindigkeit in m/s',style: {color: ChartColor}},
+                    labels: {format: '{value}m/s', style: {color: ChartColor}},
                     id: 'wind-axis'});
         serie.push({name: 'Windgeschwindigkeit',
-                    color: '#FF0000',
+                    color: ChartColor,
                     type: 'spline',
                     tooltip: {valueSuffix: 'm/s'},
                     yAxis: 'wind-axis',
@@ -233,11 +238,12 @@ function weatherplotter(results) {
     
     // Wind aktivieren
     if ($('#weather-gust').is(':checked') == true) {
-        yaxis.push({title: {text: 'Böengeschwindigkeit in m/s',style: {color: '#FF0000'}},
-                    labels: {format: '{value}m/s', style: {color: '#FF0000'}},
+        var ChartColor = "#"+ $('#gust-color').val();
+        yaxis.push({title: {text: 'Böengeschwindigkeit in m/s',style: {color: ChartColor}},
+                    labels: {format: '{value}m/s', style: {color: ChartColor}},
                     id: 'gust-axis'});
         serie.push({name: 'Böengeschwindigkeit',
-                    color: '#FF0000',
+                    color: ChartColor,
                     type: 'spline',
                     tooltip: {valueSuffix: 'm/s'},
                     yAxis: 'gust-axis',

@@ -83,7 +83,7 @@ include 'process/granted.php';
                         
                         <footer>
                                 <a href="http://www.uni-muenster.de/HydrologieBodenkunde/LUTHERbog.html" id="projectinfo">Projektinfomationen</a>
-				<a href="#" id="help">Hilfe</a>
+				<a href="help.php" id="help">Hilfe</a>
 				<a href="#" id="impressum">Impressum</a>
 			</footer>
                         

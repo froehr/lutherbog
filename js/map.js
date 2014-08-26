@@ -142,6 +142,11 @@ require([
 	lutherbog_ortho_merged.hide();
 	lutherbog_ortho_merged.setOpacity(0.5);
 	
+	lutherbog_uav_merged = new ArcGISDynamicMapServiceLayer("dsd", {});
+	map.addLayer(lutherbog_uav_merged);
+	lutherbog_uav_merged.hide();
+	lutherbog_uav_merged.setOpacity(0.5);
+	
 	lutherbog_sites = new FeatureLayer("http://geo-arcgis.uni-muenster.de:6080/arcgis/rest/services/LutherBog/Sites_lutherbog/FeatureServer/0", {
 		mode: FeatureLayer.MODE_SNAPSHOT,
 		infoTemplate: popupTemplate,
@@ -315,6 +320,11 @@ $('#ortho_merged_opacity').change(function (){
 	lutherbog_ortho_merged.setOpacity($('#ortho_merged_opacity').val());
 });
 
+$('#ortho_uav_opacity').change(function (){
+	$('#ortho_uav_opacity_value').val(($('#ortho_uav_opacity').val()*100) + "%");
+	lutherbog_uav_merged.setOpacity($('#ortho_uav_opacity').val());
+});
+
 $('#flooded_area_gauge_part').change(function (){
 	$('#flooded_area_gauge_value_part').val($('#flooded_area_gauge_part').val() + "m");
 });
@@ -370,6 +380,15 @@ $('#ortho_merged').change(function(){
 	}
 	else{
 		lutherbog_ortho_merged.hide();
+	}
+});
+
+$('#ortho_uav').change(function(){
+	if($('#ortho_uav').is(':checked') == true){
+		lutherbog_uav_merged.show();
+	}
+	else{
+		lutherbog_uav_merged.hide();
 	}
 });
 

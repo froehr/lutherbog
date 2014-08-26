@@ -11,7 +11,7 @@ html {
 }
 
 body {
-	background-color: #8E8461;
+	background-color: #CCCCCC;
 	font-family: 'Noto Sans', Arial, sans-serif;
 	font-size: 15px;
 	height: 100%;
@@ -142,6 +142,7 @@ header nav ul li #webgis:hover {
 header nav ul li #webgis:active {
 	background-color: #8ba6c9;
 }
+/* ------------------------------- */
 
 /* Header Project Button */
 header nav ul li #project {
@@ -156,6 +157,37 @@ header nav ul li #project:hover {
 header nav ul li #project:active {
 	background-color: #8ba6c9;
 }
+/* ------------------------------- */
+
+/* Header Help Button */
+header nav ul li #help-button {
+	background-color: #546a86;
+	width: 140px;
+}
+
+header nav ul li #help-button:hover {
+	background-color: #6a85a8;
+}
+
+header nav ul li #help-button:active {
+	background-color: #8ba6c9;
+}
+/* ------------------------------- */
+
+/* Header Home Button */
+header nav ul li #home {
+	background-color: #546a86;
+	width: 120px;
+}
+
+header nav ul li #home:hover {
+	background-color: #6a85a8;
+}
+
+header nav ul li #home:active {
+	background-color: #8ba6c9;
+}
+/* ------------------------------- */
 
 /* Zugriff auf Daten Button */
 header nav ul li #access {
@@ -170,6 +202,7 @@ header nav ul li #access:hover {
 header nav ul li #access:active {
 	background-color: #8ba6c9;
 }
+/* ------------------------------- */
 
 /* Upload Button */
 header nav ul li #upload {
@@ -184,7 +217,29 @@ header nav ul li #upload:hover {
 header nav ul li #upload:active {
 	background-color: #8ba6c9;
 }
+/* ------------------------------- */
 
+/* Welcome Page */
+#welcome {
+	position: absolute;
+	text-align: center;
+}
+
+#welcome-about, #welcome-from, #welcome-technologies, #welcome-news {
+	top: 150px;
+	width: 300px;
+	height: 600px;
+	z-index: 10;
+	float: left;
+	margin: 10px;
+	padding: 10px;
+}
+
+#welcome-about p, #welcome-from p, #welcome-technologies p, #welcome-news p {
+	text-align: left;
+}
+
+/* ------------------------------- */
 #switch {
 	background-color: #3c4245;
 	height: 30px;
@@ -236,6 +291,31 @@ header nav ul li #upload:active {
 	height: 100%;
 	z-index: 7;
 	overflow: auto;
+	margin: 0 auto;
+}
+
+.help-content {
+	position: absolute;
+	top: 0px;
+	left: 25%;
+	bottom: -28px;
+	width: 50%;
+	z-index: 8;
+	text-align: justify;
+}
+
+.help-content li{
+	margin-bottom: 5px;
+}
+
+.help-content img{
+	display: block;
+	margin: 0 auto;
+	border: solid 1px;
+}
+
+.help-content h1, .help-content h2 , .help-content h3{
+	text-align: center;
 }
 
 #viewuser-content {
@@ -380,6 +460,7 @@ header nav ul li #upload:active {
 	display: none;
 	box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.8);
 }
+
 /* Meldungen im Login Fenster */
 #input-error{
 	margin: 10px 0px 0px 15px;
@@ -684,7 +765,7 @@ footer {
 	bottom: 0px;
 	left: 0px;
 	right: 0px;
-	z-index: 9;
+	z-index: 10;
 	text-align: right;
 	vertical-align: middle;
 	overflow: hidden;

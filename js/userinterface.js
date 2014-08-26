@@ -1,12 +1,18 @@
+// Datepicker per jQuery
 $('.date').datepicker({ autoSize: true, dateFormat: "dd.mm.yy"});
+// -----------------------------------------------
 
+// Impressum unten rechts einblenden
 $('#impressum').click(function() {
 	$('#impressum-content').css('display', 'block');
 });
+// -----------------------------------------------
 
+// Impressum unten rechts ausblenden
 $('#impressum-content').click(function() {
 	$('#impressum-content').css('display', 'none');
 });
+// -----------------------------------------------
 
 // Usermanagement
 $('#login').click(function() {
@@ -17,10 +23,12 @@ $('#login').click(function() {
 		$('#login-content').css('display', 'none');
 	}
 });
+// -----------------------------------------------
 
 // Anpassen der Breite der lis auf Grund der Anzahl in der Unternavigation
 var length = 100 / $("div#switch ul li").length;
 $('#switch ul li').css('width', length + "%");
+// -----------------------------------------------
 
 // viewuser button
 $('#viewuser').click(function() {
@@ -31,6 +39,7 @@ $('#viewuser').click(function() {
 	$('#changeuser-content').css('display', 'none');
 	$('#adduser-content').css('display', 'none');
 });
+// -----------------------------------------------
 
 // changeuser button
 $('#changeuser').click(function() {
@@ -41,6 +50,7 @@ $('#changeuser').click(function() {
 	$('#viewuser-content').css('display', 'none');
 	$('#adduser-content').css('display', 'none');
 });
+// -----------------------------------------------
 
 // adduser button
 $('#adduser').click(function() {
@@ -51,6 +61,7 @@ $('#adduser').click(function() {
 	$('#changeuser-content').css('display', 'none');
 	$('#viewuser-content').css('display', 'none');
 });
+// -----------------------------------------------
 
 // calibration button
 $('#calibration').click(function() {
@@ -61,6 +72,7 @@ $('#calibration').click(function() {
 	$('#weather-content').css('display', 'none');
 	$('#viewuser-content').css('display', 'none');
 });
+// -----------------------------------------------
 
 // weather button
 $('#weather').click(function() {
@@ -132,6 +144,61 @@ $('#plot-data').click(function(){
 	$('#weatherplot').css('display', 'none');
 	$('#dataplot').css('display', 'block');
 	dataplot();
+});
+// -----------------------------------------------
+
+// Switches Helpseite
+$('#map-help').click(function() {
+	$('#map-help').css('background-color', '#CCCCCC');
+	$('#access-help').css('background-color', '#3c4245');
+	$('#upload-help').css('background-color', '#3c4245');
+	$('#technical-help').css('background-color', '#3c4245');
+	$('#map-help-content').css('display', 'block');
+	$('#access-help-content').css('display', 'none');
+	$('#upload-help-content').css('display', 'none');
+	$('#technical-help-content').css('display', 'none');
+});
+
+$('#access-help').click(function() {
+	$('#access-help').css('background-color', '#CCCCCC');
+	$('#map-help').css('background-color', '#3c4245');
+	$('#upload-help').css('background-color', '#3c4245');
+	$('#technical-help').css('background-color', '#3c4245');
+	$('#access-help-content').css('display', 'block');
+	$('#map-help-content').css('display', 'none');
+	$('#upload-help-content').css('display', 'none');
+	$('#technical-help-content').css('display', 'none');
+});
+
+$('#upload-help').click(function() {
+	$('#upload-help').css('background-color', '#CCCCCC');
+	$('#access-help').css('background-color', '#3c4245');
+	$('#map-help').css('background-color', '#3c4245');
+	$('#technical-help').css('background-color', '#3c4245');
+	$('#upload-help-content').css('display', 'block');
+	$('#access-help-content').css('display', 'none');
+	$('#map-help-content').css('display', 'none');
+	$('#technical-help-content').css('display', 'none');
+});
+
+$('#technical-help').click(function() {
+	$('#technical-help').css('background-color', '#CCCCCC');
+	$('#upload-help').css('background-color', '#3c4245');
+	$('#access-help').css('background-color', '#3c4245');
+	$('#map-help').css('background-color', '#3c4245');
+	$('#technical-help-content').css('display', 'block');
+	$('#upload-help-content').css('display', 'none');
+	$('#access-help-content').css('display', 'none');
+	$('#map-help-content').css('display', 'none');
+});
+// -----------------------------------------------
+
+// Welcome zentrieren
+var windowwidth = $(window).width();
+$('#welcome').css('left', (windowwidth-1360)/2);
+$(window).resize(function(){
+	var windowwidth = $(window).width();
+	$('#welcome').css('left', (windowwidth-1360)/2);
 });
 // -----------------------------------------------
 

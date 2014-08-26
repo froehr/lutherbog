@@ -49,30 +49,31 @@ else{
 					<h3>Verfügbare Layer:</h3>
 					<input type='checkbox' id='sites' value=0 /> Sites </br>
 					<input type='checkbox' id='hoehe' value=0 /> Höhenmodel </br>
-					<input type="range" id="hoehe_opacity" min="0" max="1" step="0.01"> <input type="text" id="hoehe_opacity_value" size = "3" value = "50%" readonly> </br>
+					<input type="range" id="hoehe_opacity" min="0" max="1" step="0.01"> <input type="text" id="hoehe_opacity_value" size = "4" value = "50%" readonly> </br>
 					
 					<input type='checkbox' id='isolines' value=0 /> Höhenlinien </br>
-					<input type="range" id="isolines_difference" min=".1" max="5" step="0.01"> <input type="text" id="isolines_difference_value" size = "3" value = "2.55m" readonly> </br>
+					<input type="range" id="isolines_difference" min=".1" max="5" step="0.01"> <input type="text" id="isolines_difference_value" size = "4" value = "2.55m" readonly> </br>
 					<div class="submit-button" id="process-isolines-button">
                                 <p>Prozess starten</p>
                          </div></br></br>
 					
 					<input type='checkbox' id='ortho_tiles' value=1 /> Luftbilder Tiles 2006</br>
-					<input type="range" id="ortho_tiles_opacity" min="0" max="1" step="0.01"> <input type="text" id="ortho_tiles_opacity_value" size = "3" value = "50%" readonly></br>
+					<input type="range" id="ortho_tiles_opacity" min="0" max="1" step="0.01"> <input type="text" id="ortho_tiles_opacity_value" size = "4" value = "50%" readonly></br>
 					<input type='checkbox' id='ortho_merged' value=1 /> Luftbilder Merged 2006</br>
-					<input type="range" id="ortho_merged_opacity" min="0" max="1" step="0.01"> <input type="text" id="ortho_merged_opacity_value" size = "3" value = "50%" readonly></br></br>
+					<input type="range" id="ortho_merged_opacity" min="0" max="1" step="0.01"> <input type="text" id="ortho_merged_opacity_value" size = "4" value = "50%" readonly></br>
+					<input type='checkbox' id='ortho_uav' value=1 /> IfGi UAV Luftbilder 2013</br>
+					<input type="range" id="ortho_uav_opacity" min="0" max="1" step="0.01"> <input type="text" id="ortho_uav_opacity_value" size = "4" value = "50%" readonly></br></br>
 					
 					<input type='checkbox' id='flooded_area_part' value=1 /> Überflutete Teilgebiete</br>
-					<input type="range" id="flooded_area_gauge_part" min="480" max="494" step="0.01"> <input type="text" id="flooded_area_gauge_value_part" size = "3" value = "487m" readonly></br>
-					<input type="range" id="flooded_area_opacity_part" min="0" max="1" step="0.01"> <input type="text" id="flooded_area_opacity_value_part" size = "3" value = "50%" readonly></br>
-					
+					<input type="range" id="flooded_area_gauge_part" min="480" max="494" step="0.01"> <input type="text" id="flooded_area_gauge_value_part" size = "4" value = "487m" readonly></br>
+					<input type="range" id="flooded_area_opacity_part" min="0" max="1" step="0.01"> <input type="text" id="flooded_area_opacity_value_part" size = "4" value = "50%" readonly></br>
 					<div class="submit-button" id="process-flooded-part-button">
                                 <p>Prozess starten</p>
                          </div></br>
 					
 					<input type='checkbox' id='flooded_area' value=1 /> Überflutete Gebiete</br>
-					<input type="range" id="flooded_area_gauge" min="460" max="500" step="0.01"> <input type="text" id="flooded_area_gauge_value" size = "3" value = "480m" readonly></br>
-					<input type="range" id="flooded_area_opacity" min="0" max="1" step="0.01"> <input type="text" id="flooded_area_opacity_value" size = "3" value = "50%" readonly></br>
+					<input type="range" id="flooded_area_gauge" min="460" max="500" step="0.01"> <input type="text" id="flooded_area_gauge_value" size = "4" value = "480m" readonly></br>
+					<input type="range" id="flooded_area_opacity" min="0" max="1" step="0.01"> <input type="text" id="flooded_area_opacity_value" size = "4" value = "50%" readonly></br>
 					
 					<div class="submit-button" id="process-flooded-button">
                                 <p>Prozess starten</p>
@@ -103,13 +104,13 @@ else{
 			
 			<div id='impressum-content'>
 				<h1>Impressum</h1>
-				<p>Diese Website ist im Zuge der Bachelorarbeit von Fabian R&ouml;hr entstanden.</p>
-				<p>Die verarbeiteten Daten wurden von der Arbeitsgruppe Hydrologie, die von Prof. Dr. Blodau geleitet wird, gesammelt und zur Verf&uuml;gung gestellt.</p>	
+				<p>Diese Website ist im Zuge der Bachelorarbeit von Fabian Röhr entstanden.</p>
+				<p>Die verarbeiteten Daten wurden von der Arbeitsgruppe Hydrologie, die von Prof. Dr. Blodau geleitet wird, gesammelt und zur Verfügung gestellt.</p>	
 			</div>
                         
                <footer>
                     <a href="http://www.uni-muenster.de/HydrologieBodenkunde/LUTHERbog.html" id="projectinfo">Projektinfomationen</a>
-				<a href="#" id="help">Hilfe</a>
+				<a href="help.php" id="help">Hilfe</a>
 				<a href="#" id="impressum">Impressum</a>
 			</footer>
 		</div>

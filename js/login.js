@@ -61,5 +61,6 @@ if (results == 'true') {
     $('#login').css('display', 'none');
     $('#logout').css('display', 'block');
     $('#webgis').css('display', 'block');
-    $('#admin').css('display', 'block');    
+    $('#admin').css('display', 'block');
+    $('#help-button').css('display', 'none');
 }

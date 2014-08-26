@@ -65,14 +65,14 @@ include 'process/granted.php';
                                     
                                     <h3>Wetterdaten anzeigen: <input id="plot-weather" type="radio" name="choose"></h3>
                                     <h4>Datum von / bis:</h4>
-                                    Von: <input class="date" id="weather-start-date">
-                                    Bis: <input class="date" id="weather-end-date"> <br>
-                                    Regen: <input type="checkbox" id="weather-rain"> <br>
-                                    Par: <input type="checkbox" id="weather-par"> <br>
-                                    Temperatur: <input type="checkbox" id="weather-temperatur"> <br>
-                                    Luftfeuchte: <input type="checkbox" id="weather-humidity"> <br>
-                                    Wind: <input type="checkbox" id="weather-wind"> <br>
-                                    B&ouml;en: <input type="checkbox" id="weather-gust"> <br>
+                                    Von:        <input class="date" id="weather-start-date">
+                                    Bis:        <input class="date" id="weather-end-date"> <br>
+                                    Regen:      <input type="checkbox" id="weather-rain"        class="color {valueElement:'rain-color',styleElement:'rain-color-show'}">               <input type="hidden" id="rain-color" value="#000000">       <input type="text" size = "1" id="rain-color-show" readonly><br>
+                                    Par:        <input type="checkbox" id="weather-par"         class="color {valueElement:'par-color',styleElement:'par-color-show'}">                 <input type="hidden" id="par-color" value="#000000">        <input type="text" size = "1" id="par-color-show" readonly><br>
+                                    Temperatur: <input type="checkbox" id="weather-temperatur"  class="color {valueElement:'temperatur-color',styleElement:'temperatur-color-show'}">   <input type="hidden" id="temperatur-color" value="#000000"> <input type="text" size = "1" id="temperatur-color-show" readonly><br>
+                                    Luftfeuchte:<input type="checkbox" id="weather-humidity"    class="color {valueElement:'humidity-color',styleElement:'humidity-color-show'}">       <input type="hidden" id="humidity-color" value="#000000">   <input type="text" size = "1" id="humidity-color-show" readonly><br>
+                                    Wind:       <input type="checkbox" id="weather-wind"        class="color {valueElement:'wind-color',styleElement:'wind-color-show'}">               <input type="hidden" id="wind-color" value="#000000">       <input type="text" size = "1" id="wind-color-show" readonly><br>
+                                    Böen:       <input type="checkbox" id="weather-gust"        class="color {valueElement:'gust-color',styleElement:'gust-color-show'}">               <input type="hidden" id="gust-color" value="#000000">       <input type="text" size = "1" id="gust-color-show" readonly><br>
                                 </div>
 			</div>
 			
@@ -82,7 +82,7 @@ include 'process/granted.php';
                         
                         <footer>
                                 <a href="http://www.uni-muenster.de/HydrologieBodenkunde/LUTHERbog.html" id="projectinfo">Projektinfomationen</a>
-				<a href="#" id="help">Hilfe</a>
+				<a href="help.php" id="help">Hilfe</a>
 				<a href="#" id="impressum">Impressum</a>
 			</footer>
                 </div>

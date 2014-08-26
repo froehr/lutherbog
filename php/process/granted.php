@@ -36,7 +36,7 @@ if(isset($_SESSION['map'])){
                 echo '<script>window.location = "../php/webgis.php";</script>';
                 break;
             }
-         case 'administration':
+        case 'administration':
             if($_SESSION['admin'] > 0){
                 break;
             }

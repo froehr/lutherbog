@@ -10,39 +10,11 @@ if(!isset($_SESSION)){
 		<title>LUTHERbog Canada</title>
 		<link href="img/favicon.ico" rel="icon" type="image/x-icon" />
 		<link href="css/style.css" rel="stylesheet" type="text/css" />
-		<link href="js/lib/jquery/jquery-ui-1.10.4.css" rel="stylesheet" type="text/css" />
-		<link href="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.css" rel="stylesheet" type="text/css" />
-		<link href="js/lib/Leaflet.locator/L.Control.Locate.css" rel="stylesheet" type="text/css" />
-		<link href="js/lib/Leaflet.minimap/Control.MiniMap.css" rel="stylesheet" type="text/css" />
-		<link href="js/lib/Leaflet.geosearch/l.geosearch.css" rel="stylesheet" type="text/css" />
-		<link href="js/lib/Leaflet.coordinates/Control.Coordinates.css" rel="stylesheet" type="text/css" />
-		<link href="js/lib/Leaflet.coordinates/Control.Coordinates.ie.css" rel="stylesheet" type="text/css" />
-		<link href="js/lib/Leaflet.locationfilter/locationfilter.css" rel="stylesheet" type="text/css" />
-		<link href="js/lib/Leaflet.markercluster/MarkerCluster.css" rel="stylesheet" type="text/css" />
-		<link href="js/lib/Leaflet.markercluster/MarkerCluster.Default.css" rel="stylesheet" type="text/css" />
-		<link href="js/lib/Leaflet.draw/leaflet.draw.css" rel="stylesheet" type="text/css" />
-		<link href="js/lib/Leaflet.measureControl/leaflet.measurecontrol.css" rel="stylesheet" type="text/css" />
-		<link href="js/lib/Leaflet.fusesearch/leaflet.fusesearch.css" rel="stylesheet" type="text/css" />	
+		<link href="js/lib/jquery/jquery-ui-1.10.4.css" rel="stylesheet" type="text/css" />	
 		<link href="js/lib/introJS/themes/introjs-nassim.css" rel="stylesheet" type="text/css" >
 		
 		<script src="js/lib/jquery/jquery-2.1.0.min.js"></script>
 		<script src="js/lib/jquery/jquery-ui-1.10.4.js"></script>
-		<!-- Leaflet version 0.7.3 -->
-		<script src="js/lib/Leaflet/leaflet.js"></script>
-		<script src="js/lib/Leaflet.minimap/Control.MiniMap.js"></script>
-		<script src="js/lib/Leaflet.geosearch/l.control.geosearch.js"></script>
-		<script src="js/lib/Leaflet.geosearch/l.geosearch.provider.google.js"></script>
-		<script src="js/lib/Leaflet.locator/L.Control.Locate.js"></script>
-		<script src="js/lib/Leaflet.groupedlayercontrol/leaflet.groupedlayercontrol.js"></script>
-		<script src="js/lib/Leaflet.coordinates/Control.Coordinates.js"></script>
-		<script src="js/lib/Leaflet.locationfilter/locationfilter.js"></script>
-		<script src="js/lib/Leaflet.slidercontrol/SliderControl.js"></script>
-		<script src="js/lib/Leaflet.markercluster/leaflet.markercluster-src.js"></script>
-		<script src="js/lib/Leaflet.draw/leaflet.draw.js"></script>
-		<script src="js/lib/Leaflet.measureControl/leaflet.measurecontrol.js"></script>
-		<script src="js/lib/Leaflet.fusesearch/fuse.js"></script>
-		<script src="js/lib/Leaflet.fusesearch/leaflet.fusesearch.js"></script>
-		<script src="js/lib/Leaflet.layerjson/leaflet.layerjson.js"></script>	
 		<script src="js/lib/introJS/intro.js"></script>
 		<?php
 			include 'php/process/login.php';
@@ -60,6 +32,7 @@ if(!isset($_SESSION)){
 						<li><a href="php/administration.php" class="header-buttons" id="admin">Administration</a></li>
 						<li><a href="php/webgis.php" class="header-buttons" id="webgis">WebGIS</a></li>
 						<li><a href="http://www.uni-muenster.de/HydrologieBodenkunde/LUTHERbog.html" class="header-buttons" id="project" target="_blank">Das Projekt</a></li>
+						<li><a href="php/help.php" class="header-buttons" id="help-button">Hilfe / About</a></li>
 					</ul>
 				</nav>
 			</header>
@@ -82,16 +55,6 @@ if(!isset($_SESSION)){
 				</div>
 			</div>
 			
-			<div id="switch">
-				<ul>
-					<li id="viewuser"><h1>Die Karte</h1></li>
-					<li id="changeuser"><h1>Messungen zeigen</h1></li>
-					<li id="adduser"><h1>Messungen &auml;ndern</h1></li>
-					<li id="adduser"><h1>Messungen verarbeiten</h1></li>
-					<li id="adduser"><h1>Administration</h1></li>
-				</ul>
-			</div>
-			
 			<div id="logout-content">
 				<form action="#" method="post">
 					<h1>Sie sind angemeldet als:</h1>
@@ -100,20 +63,52 @@ if(!isset($_SESSION)){
 				</form>
 			</div>
 			
+			<div id="welcome">
+				<h1>Willkommen zum WebGIS der Arbeitsgruppe Hydrologie</h1>
+				<div id="welcome-about">
+					<h2>Informationen</h2>
+					<p>Dieses Websystem soll die Arbeit der Arbeitsgruppe Hydrologie erheblich erleichtern und nebensächliche Arbeiten wie Sortierung und Speicherung übernehmen.</p>
+					<p>Gleichzeitig soll aber auch die Möglichkeit bestehen erste Auswertungen durchzuführen.</p>
+					<img src="img/welcome/luther_bog_fotos.png" width="300px">
+				</div>
+				<div id="welcome-from">
+					<h2>Entwicklung</h2>
+					<p>Dieses webbasierte GIS System wurde im Zuge einer Bachelorarbeit von Fabian Röhr im Sommer 2014 entwickelt.</p>
+					<p>Bis zum jetzigen Zeitpunkt handelt es sich jedoch nur um einen ersten Schritt,der das Grundgerüst und die wichtigsten Funktionen bereitstellt und auf dem in Zukunft aufgebaut werden kann.</p>
+				</div>
+				<div id="welcome-technologies">
+					<h2>Technologien</h2>
+					<p>Das System beruht zu großen Teilen auf ESRIs ArcGIS Server und der ArcGIS API for JavaScript 3.10. Damit können auf einfache Art und Weise Karten und Prozesse eingebunden werden</p>
+					<p>Hinzu kommen natürlich noch andere Webtechnologien wie HTML, PHP und andere...</p>
+					<img src="img/welcome/html-css-js.png" width="300px">
+					<img src="img/welcome/php.png" width="200px"><br><br>
+					<img src="img/welcome/mysql.jpg" width="200px">
+				</div>
+				<div id="welcome-news">
+					<h2>Neuigkeiten</h2>
+					<p>20.08.2014 - Umstellung von Leaflet auf die ArcGIS API for JavaScript zur Ermöglichung von Web Processing Services.</p>
+					<p>17.08.2014 - Asychrone Datenübertragung führt zu besserer Geschwindigkeit.</p>
+					<p>06.08.2014 - Erste KArtenansicht basierend auf Leaflet veröffentlicht. Grundlegende Aktionen sind damit bereits möglich.</p>
+					<p>05.08.2014 - Wetterdaten können in einer Diagrammansicht dynamisch angezeigt werden.</p>
+					<p>20.08.2014 - Login System eingefügt. Der Zugriff auf alle Daten ist nur noch nach vorherigem Einloggen möglich.</p>
+					<p>11.07.2014 - Start der Programmierarbeit.</p>
+				</div>
+			</div>
+			
 			<div id='impressum-content'>
 				<h1>Impressum</h1>
-				<p>Diese Website ist im Zuge der Bachelorarbeit von Fabian R&ouml;hr entstanden.</p>
-				<p>Die verarbeiteten Daten wurden von der Arbeitsgruppe Hydrologie, die von Prof. Dr. Blodau geleitet wird, gesammelt und zur Verf&uuml;gung gestellt.</p>	
+				<p>Diese Website ist im Zuge der Bachelorarbeit von Fabian Röhr entstanden.</p>
+				<p>Die verarbeiteten Daten wurden von der Arbeitsgruppe Hydrologie, die von Prof. Dr. Blodau geleitet wird, gesammelt und zur Verfügung gestellt.</p>	
 			</div>
                         
                         <footer>
                                 <a href="http://www.uni-muenster.de/HydrologieBodenkunde/LUTHERbog.html" id="projectinfo">Projektinfomationen</a>
-				<a href="#" id="help">Hilfe</a>
+				<a href="php/help.php" id="help">Hilfe</a>
 				<a href="#" id="impressum">Impressum</a>
 			</footer>
 		</div>
 		
-		<script src="js/login.js"></script>';
+		<script src="js/login.js"></script>
 		<script src="js/userinterface.js"></script>
 		
 	</body>
