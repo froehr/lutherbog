@@ -88,10 +88,11 @@ if(!isset($_SESSION)){
 					<h2>Neuigkeiten</h2>
 					<p>20.08.2014 - Umstellung von Leaflet auf die ArcGIS API for JavaScript zur Ermöglichung von Web Processing Services.</p>
 					<p>17.08.2014 - Asychrone Datenübertragung führt zu besserer Geschwindigkeit.</p>
-					<p>06.08.2014 - Erste KArtenansicht basierend auf Leaflet veröffentlicht. Grundlegende Aktionen sind damit bereits möglich.</p>
+					<p>06.08.2014 - Erste Kartenansicht basierend auf Leaflet veröffentlicht. Grundlegende Aktionen sind damit bereits möglich.</p>
 					<p>05.08.2014 - Wetterdaten können in einer Diagrammansicht dynamisch angezeigt werden.</p>
-					<p>20.08.2014 - Login System eingefügt. Der Zugriff auf alle Daten ist nur noch nach vorherigem Einloggen möglich.</p>
+					<p>20.07.2014 - Login System eingefügt. Der Zugriff auf alle Daten ist nur noch nach vorherigem Einloggen möglich.</p>
 					<p>11.07.2014 - Start der Programmierarbeit.</p>
+					
 				</div>
 			</div>
 			

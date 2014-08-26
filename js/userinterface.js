@@ -200,6 +200,19 @@ $(window).resize(function(){
 	var windowwidth = $(window).width();
 	$('#welcome').css('left', (windowwidth-1360)/2);
 });
+
+var windowheight = $(window).height();
+$('#welcome-about').css('height', (windowheight-85-25-120));
+$('#welcome-from').css('height', (windowheight-85-25-120));
+$('#welcome-technologies').css('height', (windowheight-85-25-120));
+$('#welcome-news').css('height', (windowheight-85-25-120));
+$(window).resize(function(){
+	var windowheight = $(window).height();
+	$('#welcome-about').css('height', (windowheight-85-25-120));
+	$('#welcome-from').css('height', (windowheight-85-25-120));
+	$('#welcome-technologies').css('height', (windowheight-85-25-120));
+	$('#welcome-news').css('height', (windowheight-85-25-120));
+});
 // -----------------------------------------------
 
 // MUSS gelöscht werden:
