@@ -345,7 +345,7 @@ header nav ul li #upload:active {
 
 /* Plotter auf access.php */
 #scatterplot-settings {
-	width: 26%;
+	width: 20%;
 	height: 80%;
 	position: realtive;
 	margin: 10px;
@@ -359,7 +359,7 @@ header nav ul li #upload:active {
 }
 
 #scatterplot {
-	width: 70%;
+	width: 75%;
 	height: 80%;
 	position: realtive;
 	margin: 10px;

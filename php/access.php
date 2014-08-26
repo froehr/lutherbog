@@ -53,15 +53,15 @@ include 'process/granted.php';
                                     <h4>Datum von / bis:</h4>
                                     Von: <input class="date" id="data-start-date">
                                     Bis: <input class="date" id="data-end-date"> <br>
-                                    Methan: <input type="checkbox" id="data-ch4">
-                                    Kohlendioxid: <input type="checkbox" id="data-co2"> <br>
+                                    Temperatur: <input type="radio" id="data-temp" name="data-radio">
+                                    Pegelstand: <input type="radio" id="data-gauge" name="data-radio"> <br>
+                                    Methan: <input type="radio" id="data-ch4" name="data-radio1">
+                                    Kohlendioxid: <input type="radio" id="data-co2" name="data-radio1"> <br>
                                     
                                     <a href="webgis.php?site=1" target="_blank">Site 1:</a> <input type="checkbox" id="data-site1">
                                     <a href="webgis.php?site=2" target="_blank">Site 2:</a> <input type="checkbox" id="data-site2">
                                     <a href="webgis.php?site=3" target="_blank">Site 3:</a> <input type="checkbox" id="data-site3">
                                     <a href="webgis.php?site=4" target="_blank">Site 4:</a> <input type="checkbox" id="data-site4">
-                                    <a href="webgis.php?site=5" target="_blank">Site 5:</a> <input type="checkbox" id="data-site5">
-                                    <a href="webgis.php?site=6" target="_blank">Site 6:</a> <input type="checkbox" id="data-site6">
                                     
                                     <h3>Wetterdaten anzeigen: <input id="plot-weather" type="radio" name="choose"></h3>
                                     <h4>Datum von / bis:</h4>

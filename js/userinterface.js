@@ -128,7 +128,7 @@ $('#weather-start-date, #weather-end-date, #weather-rain, #weather-par, #weather
 // -----------------------------------------------
 
 // Dataplot updaten wenn Auswahl geändert wird
-$('#data-start-date, #data-end-date, #data-co2, #data-ch4, #data-site1, #data-site2, #data-site3, #data-site4, #data-site5, #data-site6').change(function(){
+$('#data-start-date, #data-end-date, #data-temp, #data-gauge, #data-co2, #data-ch4, #data-site1, #data-site2, #data-site3, #data-site4').change(function(){
 	dataplot();
 });
 // -----------------------------------------------

@@ -3,7 +3,7 @@ function dataplot() {
     jQuery.ajax({
         type: "POST",
         url: 'process/get_plotter_data.php',
-        dataType: 'html',
+        dataType: 'json',
         data: { action:'dataplot',
                 data_start_date:$('#data-start-date').val(),
                 data_end_date:$('#data-end-date').val(),
@@ -13,14 +13,13 @@ function dataplot() {
                 site2:$('#data-site2').is(':checked'),
                 site3:$('#data-site3').is(':checked'),
                 site4:$('#data-site4').is(':checked'),
-                site5:$('#data-site5').is(':checked'),
-                site6:$('#data-site6').is(':checked'),
                 },
         beforeSend: function(data) {
             $('#plotter-loading').css('display','block');
         },
         success: function(data) {
-            weatherplotter(data);
+            console.log(data);
+            dataplotter(data);
             $('#plotter-success').css('display','block');
         },
         complete:function(data) {
@@ -34,45 +33,55 @@ function dataplot() {
 
 function dataplotter(results) {
     // Arrays für daten initialisieren
-    var ch4data = [];
-    var co2data = [];
-    var yaxis = [];
     var serie = [];
     
-    // Arrays mit daten aus JSON füllen, damit sie dargestellt werden können.
-    var i = 0;
-    while (i < results.length) {
-        var date = new Date(results[i]['unixdate']);
-        var time = Date.UTC(date.getFullYear(), date.getMonth(), date.getDate(), date.getHours(), date.getMinutes(), date.getSeconds());
-        ch4data.push([time, results[i].ch4]);
-        co2data.push([time, results[i].co2]);     
-        i++;
+    if ($('#data-temp').is(':checked')) {
+        var xAxisTitle = 'Temperatur in °C';
+        
+        if ($('#data-ch4').is(':checked')) {
+            var pointFormat = 'Temp: {point.x} °C, <br> CH4: {point.y} mmol/m^2';
+            var yAxisTitle = 'CH4 Fluss in mmol/m^2';
+            var i = 0;
+            while (i < results.length) {
+                var array = {showInLegend: false, color: 'rgba(223, 83, 83, .5)', marker: {symbol: 'circle'}, name: results[i]['ch4']['collar'] + " am " + results[i]['ch4']['date'], data: [[results[i]['ch4']['temp_value'] , results[i]['ch4']['ch4_value']]]};
+                serie.push(array);
+                i++;
+            }
+        }
+        if ($('#data-co2').is(':checked')) {
+            var pointFormat = 'Temp: {point.x} °C, <br> CO2: {point.y} mmol/m^2';
+            var yAxisTitle = 'CO2 Fluss in mmol/m^2';
+            var i = 0;
+            while (i < results.length) {
+                var array = {showInLegend: false, color: 'rgba(223, 83, 83, .5)', marker: {symbol: 'circle'}, name: results[i]['co2']['collar'] + " am " + results[i]['co2']['date'], data: [[results[i]['co2']['temp_value'] , results[i]['co2']['co2_value']]]};
+                serie.push(array);
+                i++;
+            }
+        }
     }
-    
-    // Ch4-Werte aktivieren
-    if ($('#data-ch4').is(':checked') == true) {
-        yaxis.push({title: {text: 'CH4-Werte in',style: {color: '#6699FF'}},
-                    labels: {format: '{value} ', style: {color: '#6699FF'}},
-                    id: 'ch4-axis'});
-                    serie.push({name: 'CH4-Werte',
-                    color: '#6699FF',
-                    type: 'scatter',
-                    tooltip: {valueSuffix: ''},
-                    yAxis: 'ch4-axis',
-                    data: ch4data});
-    }
-    
-    // CO2-Werte aktivieren
-    if ($('#data-co2').is(':checked') == true) {
-        yaxis.push({title: {text: 'CO2-Werte in ',style: {color: '#FFFF00'}},
-                    labels: {format: '{value}', style: {color: '#FFFF00'}},
-                    id: 'co2-axis'});
-                    serie.push({name: 'CO2-Werte',
-                    color: '#FFFF00',
-                    type: 'scatter',
-                    tooltip: {valueSuffix: ''},
-                    yAxis: 'co2-axis',
-                    data: co2data});
+    if ($('#data-gauge').is(':checked')) {
+        var xAxisTitle = 'Pegelstand in cm';
+        
+        if ($('#data-ch4').is(':checked')) {
+            var pointFormat = 'Pegel: {point.x} cm, <br> CH4: {point.y} mmol/m^2';
+            var yAxisTitle = 'CH4 Fluss in mmol/m^2';
+            var i = 0;
+            while (i < results.length) {
+                var array = {showInLegend: false, color: 'rgba(223, 83, 83, .5)', marker: {symbol: 'circle'}, name: results[i]['ch4']['collar'] + " am " + results[i]['ch4']['date'], data: [[results[i]['ch4']['gauge_value'] , results[i]['ch4']['ch4_value']]]};
+                serie.push(array);
+                i++;
+            }
+        }
+        if ($('#data-co2').is(':checked')) {
+            var pointFormat = 'Pegel: {point.x} cm, <br> CO2: {point.y} mmol/m^2';
+            var yAxisTitle = 'CO2 Fluss in mmol/m^2';
+            var i = 0;
+            while (i < results.length) {
+                var array = {showInLegend: false, color: 'rgba(223, 83, 83, .5)', marker: {symbol: 'circle'}, name: results[i]['co2']['collar'] + " am " + results[i]['co2']['date'], data: [[results[i]['co2']['gauge_value'] , results[i]['co2']['co2_value']]]};
+                serie.push(array);
+                i++;
+            }
+        }
     }
     
     $('#dataplot').highcharts({
@@ -81,28 +90,30 @@ function dataplotter(results) {
             zoomType: 'xy'
         },
         title: {
-            text: 'Daten von ' + $('#data-start-date').val() + ' bis ' + $('#data-end-date').val()
+            text: 'Daten vom ' + $('#data-start-date').val() + ' bis zum ' + $('#data-end-date').val()
         },
         subtitle: {
             text: 'Daten Lutherbog Canada'
         },
         xAxis : {
-            type : 'linear',
-            plotLines : [{
-                            dashStyle : 'longdashdot'
-                    }
-            ],
             title: {
-                enabled: true,
-                text: 'Temperatur'
+                text: xAxisTitle
             }
 	},
-        yAxis: yaxis,
-        series: serie,
-        tooltip : {
-            crosshairs : true,
-            shared : true
+        yAxis : {
+            title: {
+                text: yAxisTitle
+            }
 	},
+        series: serie,
+        plotOptions: {
+            scatter: {
+                tooltip: {
+                    headerFormat: '<b>{series.name}</b><br>',
+                    pointFormat: pointFormat
+                }
+            }
+        },
     });
 };
 
