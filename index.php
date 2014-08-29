@@ -74,7 +74,7 @@ if(!isset($_SESSION)){
 				<div id="welcome-from">
 					<h2>Entwicklung</h2>
 					<p>Dieses webbasierte GIS System wurde im Zuge einer Bachelorarbeit von Fabian Röhr im Sommer 2014 entwickelt.</p>
-					<p>Bis zum jetzigen Zeitpunkt handelt es sich jedoch nur um einen ersten Schritt,der das Grundgerüst und die wichtigsten Funktionen bereitstellt und auf dem in Zukunft aufgebaut werden kann.</p>
+					<p>Bis zum jetzigen Zeitpunkt handelt es sich jedoch nur um einen ersten Schritt, der das Grundgerüst und die wichtigsten Funktionen bereitstellt und auf dem in Zukunft aufgebaut werden kann.</p>
 				</div>
 				<div id="welcome-technologies">
 					<h2>Technologien</h2>

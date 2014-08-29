@@ -109,23 +109,6 @@ require([
 		title: '{name}',
 		description: 'Daten dieser Site <a href="access.php">anzeigen</a>',
 	});
-	
-	/*LÖSCHEN
-	
-	map.on("click", addPoint);
-
-          function addPoint(evt) {
-            var latitude = evt.mapPoint.getLatitude();
-            var longitude = evt.mapPoint.getLongitude();
-            map.infoWindow.setTitle("Coordinates");
-            map.infoWindow.setContent(
-              "lat/lon : " + latitude.toFixed(10) + ", " + longitude.toFixed(10) + 
-              "<br>screen x/y : " + evt.screenPoint.x + ", " + evt.screenPoint.y
-            );
-            map.infoWindow.show(evt.mapPoint, map.getInfoWindowAnchor(evt.screenPoint));
-          }
-	
-	BIS HIER */
 		
 	lutherbog_elevation = new ArcGISDynamicMapServiceLayer("http://geo-arcgis.uni-muenster.de:6080/arcgis/rest/services/LutherBog/lutherbog_elevation/MapServer", {});
         map.addLayer(lutherbog_elevation);

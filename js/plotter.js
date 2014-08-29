@@ -18,7 +18,6 @@ function dataplot() {
             $('#plotter-loading').css('display','block');
         },
         success: function(data) {
-            console.log(data);
             dataplotter(data);
             $('#plotter-success').css('display','block');
         },

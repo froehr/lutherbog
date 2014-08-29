@@ -132,7 +132,6 @@ function register() {
 	    }, 1500);
         }
         else {
-            console.log(results);
             $('#register-error').css('display', 'block');
         }
     }

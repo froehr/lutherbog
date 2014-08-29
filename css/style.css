@@ -404,6 +404,7 @@ header nav ul li #upload:active {
 	padding: 15px;
 	z-index: 6;
 	background-color: #FFFFFF;
+	overflow: scroll;
 }
 
 #map_zoom_slider {
