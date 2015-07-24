@@ -15,6 +15,8 @@ require([
 	'esri/geometry/Point',
 	'esri/geometry/Extent',
 	
+	
+	
         'esri/domUtils',	
 	
 	'esri/dijit/Legend',
