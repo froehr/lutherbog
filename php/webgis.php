@@ -32,7 +32,7 @@ else{
 	
 	<body class="claro">
 		
-		<div id="map">
+		<div id="map" data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'center'">
 			<div id="HomeButton"></div>
 			<div id="map-submitted" class="map-processing"><img src="../img/map/submitted.png" width="200" height="200"></div>
 			<div id="map-loading" class="map-processing"><img src="../img/map/loading.gif" width="200" height="200"></div>
@@ -47,8 +47,10 @@ else{
 				</div>
 			</div>
 			<div id="Measurement">
+				<div style="position:absolute; right:20px; top:10px; z-Index:999;">
 				<div id="titlePane" data-dojo-type="dijit/TitlePane" data-dojo-props="title:'Measurement', closable:'false', open:'false'">
 						<div id="measurementDiv"></div>
+				</div>
 				</div>
 			</div>
 		</div>

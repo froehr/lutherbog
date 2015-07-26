@@ -18,6 +18,7 @@ require([
 	'esri/sniff',
 	'esri/SnappingManager',
 	'esri/renderers/SimpleRenderer',
+	'esri/form/CheckBox',
 	
 	
         'esri/domUtils',	
@@ -37,7 +38,7 @@ require([
 	'dojo/parser',
 	'dojo/_base/array',
 	'dojo/date/locale',
-	'dojo/Keys',
+	'dojo/keys',
 	'dojo/parser',
 	
 	'dijit/layout/BorderContainer',

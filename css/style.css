@@ -395,6 +395,9 @@ header nav ul li #upload:active {
 	width: 100%;
 	z-index: 5;
 }
+#titlePane{
+	width:240px;
+	}
       .claro .dijitTitlePaneTitle {
         background: #fff;
         font-weight:600;
