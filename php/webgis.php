@@ -43,11 +43,8 @@ else{
 				</div>
 			</div>
 			<div id="Measurement">
-				<div style="position:absolute; right:20px; top:10px; z-Index:999;">
-					<div id="titlePane" data-dojo-type="dijit/TitlePane" data-dojo-props="title:'Measurement', closable:'false', open:'false'">
+				<div id="titlePane" data-dojo-type="dijit/TitlePane" data-dojo-props="title:'Measurement', closable:'false', open:'false'">
 						<div id="measurementDiv"></div>
-					<span style="font-size:smaller;padding:5px 5px;">Press <b>CTRL</b> to enable snapping.</span>
-				</div>
 				</div>
 			</div>
 		</div>
