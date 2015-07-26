@@ -23,6 +23,9 @@ else{
 		
 		<link rel="stylesheet" href="http://js.arcgis.com/3.10/js/esri/css/esri.css">
 		<link rel="stylesheet" href="http://js.arcgis.com/3.10/js/dojo/dijit/themes/claro/claro.css">
+		<link rel="stylesheet" href="http://js.arcgis.com/3.14/dijit/themes/claro/claro.css">
+		<link rel="stylesheet" href="http://js.arcgis.com/3.14/esri/css/esri.css">
+
 		<script src="http://js.arcgis.com/3.10/"></script>
 		<script src="http://js.arcgis.com/3.14/"></script>
 	</head>

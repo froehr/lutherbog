@@ -12,3 +12,4 @@
                 <script src="../js/lib/Highcharts/js/highcharts.js"></script>
 		<script src="../js/lib/Highcharts/js/modules/data.js"></script>
 		<script src="../js/lib/Highcharts/js/modules/exporting.js"></script>
+		
