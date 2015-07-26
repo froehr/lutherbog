@@ -21,8 +21,8 @@ else{
 			include 'head.php';
 		?>
 		
-		<link rel="stylesheet" href="http://js.arcgis.com/3.14/js/esri/css/esri.css">
-		<link rel="stylesheet" href="http://js.arcgis.com/3.14/js/dojo/dijit/themes/claro/claro.css">
+		<!--<link rel="stylesheet" href="http://js.arcgis.com/3.10/js/esri/css/esri.css">
+		<link rel="stylesheet" href="http://js.arcgis.com/3.10/js/dojo/dijit/themes/claro/claro.css"> -->
 		<link rel="stylesheet" href="http://js.arcgis.com/3.14/dijit/themes/claro/claro.css">
 		<link rel="stylesheet" href="http://js.arcgis.com/3.14/esri/css/esri.css">
 
@@ -46,7 +46,7 @@ else{
 			</div>
 			<div id="Measurement">
 				<div id="titlePane" data-dojo-type="dijit/TitlePane" data-dojo-props="title:'Measurement', closable:'false', open:'false'">
-					<div data-dojo-type="dijit/layout/ContentPane" style="width:380px; height:200px; overflow:auto;">
+					<div data-dojo-type="dijit/layout/ContentPane" style="posotion:absolute; right:20px; top:200; overflow:auto;">
 						<div id="measurementDiv"></div>
 					</div>
 				</div>
