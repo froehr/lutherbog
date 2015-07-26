@@ -127,7 +127,7 @@ require([
 		description: 'Daten dieser Site <a href="access.php">anzeigen</a>',
 	});
 		
-	/*var snapManager = map.enableSnapping({
+	var snapManager = map.enableSnapping({
           snapKey: has("mac") ? keys.META : keys.CTRL
         });
     var layerInfos = [{
@@ -161,7 +161,7 @@ require([
           layer: parcelsLayer
         }];
         snapManager.setLayerInfos(layerInfos);
-*/
+
 	
 		
 	lutherbog_elevation = new ArcGISDynamicMapServiceLayer("http://geo-arcgis.uni-muenster.de:6080/arcgis/rest/services/LutherBog/lutherbog_elevation/MapServer", {});
