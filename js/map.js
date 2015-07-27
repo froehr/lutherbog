@@ -154,9 +154,9 @@ require([
         map.addLayers([parcelsLayer]);
 
         //dojo.keys.copyKey maps to CTRL on windows and Cmd on Mac., but has wrong code for Chrome on Mac
-    /*var snapManager = map.enableSnapping({
+    var snapManager = map.enableSnapping({
           snapKey: has("mac") ? keys.META : keys.CTRL
-        });*/
+        });
     var layerInfos = [{
           layer: parcelsLayer
         }];
