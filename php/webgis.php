@@ -49,6 +49,7 @@ else{
 				<div style="width:380px; height:200px; overflow:auto;"> 
 					<div id="titlePane" data-dojo-type="dijit/TitlePane" data-dojo-props="title:'Measurement', closable:'false', open:'false'">
 						<div id="measurementDiv"></div>
+						<span style="font-size:smaller;padding:5px 5px;">Press <b>CTRL</b> to enable snapping.testtestestestestestsetstetst</span>
 					</div>
 				</div>
 			</div>
