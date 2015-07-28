@@ -21,8 +21,8 @@ else{
 			include 'head.php';
 		?>
 		
-		<!--<link rel="stylesheet" href="http://js.arcgis.com/3.10/js/esri/css/esri.css">
-		<link rel="stylesheet" href="http://js.arcgis.com/3.10/js/dojo/dijit/themes/claro/claro.css"> -->
+		<link rel="stylesheet" href="http://js.arcgis.com/3.10/js/esri/css/esri.css">
+		<link rel="stylesheet" href="http://js.arcgis.com/3.10/js/dojo/dijit/themes/claro/claro.css"> 
 		<link rel="stylesheet" href="http://js.arcgis.com/3.14/dijit/themes/claro/claro.css">
 		<link rel="stylesheet" href="http://js.arcgis.com/3.14/esri/css/esri.css">
 
@@ -30,7 +30,7 @@ else{
 	</head>
 	
 	<body class="claro">
-		<div id="map" data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'center'">
+		<div id="map">
 			<div id="HomeButton"></div>
 			<div id="map-submitted" class="map-processing"><img src="../img/map/submitted.png" width="200" height="200"></div>
 			<div id="map-loading" class="map-processing"><img src="../img/map/loading.gif" width="200" height="200"></div>
@@ -46,8 +46,8 @@ else{
 			</div>
 			
 			<div id="Measurement">
-				<div style="width:380px; height:200px; overflow:auto;"> 
-					<div id="titlePane" data-dojo-type="dijit/TitlePane" data-dojo-props="title:'Measurement', closable:'false', open:'false'">
+				<div data-dojo-type="dijit/TitlePane" data-dojo-props="title:'Measurement', closable:false, open:false">
+					<div data-dojo-type="dijit/layout/ContentPane" style="width:380px; height:200px; overflow:auto;">
 						<div id="measurementDiv"></div>
 						<span style="font-size:smaller;padding:5px 5px;">Press <b>CTRL</b> to enable snapping.</span>
 					</div>
