@@ -127,13 +127,26 @@ require([
 		description: 'Daten dieser Site <a href="access.php">anzeigen</a>',
 	});
 		
+	var snapManager = map.enableSnapping({
+          snapKey: has("mac") ? keys.META : keys.CTRL
+        });
+    var layerInfos = [{
+          layer: parcelsLayer
+        }];
+        snapManager.setLayerInfos(layerInfos);
+
+    var measurement = new Measurement({
+          map: map
+        }, dom.byId("measurementDiv"));
+        measurement.startup();
+		
 	var sfs = new SimpleFillSymbol(
           "solid",
           new SimpleLineSymbol("solid", new Color([195, 176, 23]), 2), 
           null
         );
-
-    var parcelsLayer = new FeatureLayer("osm", {
+		
+	var parcelsLayer = new FeatureLayer("osm", {
           mode: FeatureLayer.MODE_ONDEMAND,
           outFields: ["*"]
         });
@@ -148,12 +161,6 @@ require([
           layer: parcelsLayer
         }];
         snapManager.setLayerInfos(layerInfos);
-
-    var measurement = new Measurement({
-          map: map
-        }, dom.byId("measurementDiv"));
-        measurement.startup();
-      });
 
 	
 		
