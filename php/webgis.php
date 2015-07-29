@@ -44,6 +44,7 @@ else{
 			</div>
 		</div>
 		
+		
 		<div id="mapdetails">
 				<div id="layerList">
 					<h3>Verfügbare Layer:</h3>
