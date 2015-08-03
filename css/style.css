@@ -417,6 +417,34 @@ header nav ul li #upload:active {
         border-left: none;
       }
 
+#feedback {
+         background: #fff;
+         color: #444;
+         position: absolute;
+         font-family: arial;
+         height: 300px;
+         left: 30px;
+         margin: 5px;
+         padding: 10px;
+         top: 30px;
+         width: 300px;
+         z-index: 40;
+      }
+#note,
+#hint {
+         font-size: 80%;
+      }
+#note {
+         font-weight: 700;
+         padding: 0 0 10px 0;
+      }
+#layerList {
+         width: 200px;
+      }
+      .dojoDndItemOver {
+         background: #ccc;
+      }
+
 
 #mapdetails {
 	position: absolute;

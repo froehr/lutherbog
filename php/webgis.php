@@ -23,7 +23,12 @@ else{
 		
 		<link rel="stylesheet" href="http://js.arcgis.com/3.10/js/esri/css/esri.css">
 		<link rel="stylesheet" href="http://js.arcgis.com/3.10/js/dojo/dijit/themes/claro/claro.css">
+		<!--<link rel="stylesheet" href="http://js.arcgis.com/3.14/dijit/themes/claro/claro.css">
+		<link rel="stylesheet" href="http://js.arcgis.com/3.14/esri/css/esri.css">-->
+
 		<script src="http://js.arcgis.com/3.10/"></script>
+		<!--<script src="http://js.arcgis.com/3.14/"></script>-->
+
 	</head>
 	
 	<body class="claro">
@@ -42,6 +47,13 @@ else{
 					</div>
 				</div>
 			</div>
+			
+			<div id="Measurement">
+				<div id="titlePane" data-dojo-type="dijit/TitlePane" data-dojo-props="title:'Measurement', closable:'false', open:'false'">
+					<div id="measurementDiv"></div>
+				<span style="font-size:smaller;padding:5px 5px;">Press <b>CTRL</b> to enable snapping.</span>
+            </div>
+						
 		</div>
 		
 		
@@ -59,11 +71,11 @@ else{
                          </div></br></br>
 					
 					<input type='checkbox' id='ortho_tiles' value=1 /> Luftbilder Tiles 2006</br>
-					<input type="range" id="ortho_tiles_opacity" min="0" max="1" step="0.01"> <input type="text" id="ortho_tiles_opacity_value" size = "4" value = "50%" readonly></br>
+					<!--<input type="range" id="ortho_tiles_opacity" min="0" max="1" step="0.01"> <input type="text" id="ortho_tiles_opacity_value" size = "4" value = "50%" readonly></br>-->
 					<input type='checkbox' id='ortho_merged' value=1 /> Luftbilder Merged 2006</br>
-					<input type="range" id="ortho_merged_opacity" min="0" max="1" step="0.01"> <input type="text" id="ortho_merged_opacity_value" size = "4" value = "50%" readonly></br>
+					<!--<input type="range" id="ortho_merged_opacity" min="0" max="1" step="0.01"> <input type="text" id="ortho_merged_opacity_value" size = "4" value = "50%" readonly></br>-->
 					<input type='checkbox' id='ortho_uav' value=1 /> IfGi UAV Luftbilder 2013</br>
-					<input type="range" id="ortho_uav_opacity" min="0" max="1" step="0.01"> <input type="text" id="ortho_uav_opacity_value" size = "4" value = "50%" readonly></br></br>
+					<!--<input type="range" id="ortho_uav_opacity" min="0" max="1" step="0.01"> <input type="text" id="ortho_uav_opacity_value" size = "4" value = "50%" readonly></br></br>-->
 					
 					<input type='checkbox' id='flooded_area_part' value=1 /> Überflutete Teilgebiete</br>
 					<input type="range" id="flooded_area_gauge_part" min="480" max="494" step="0.01"> <input type="text" id="flooded_area_gauge_value_part" size = "4" value = "487m" readonly></br>

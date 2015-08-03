@@ -3,7 +3,7 @@ var lutherbog_elevation, lutherbog_ortho_tiles, flooded_area, part_flooded;
 
 require([
 	'esri/map',
-	'esri/Color',
+	
 	'esri/layers/ArcGISDynamicMapServiceLayer',
         'esri/layers/ImageParameters',
 	'esri/layers/FeatureLayer',
@@ -14,12 +14,6 @@ require([
 	'esri/symbols/SimpleLineSymbol',
 	'esri/geometry/Point',
 	'esri/geometry/Extent',
-	'esri/config',
-	'esri/sniff',
-	'esri/SnappingManager',
-	'esri/renderers/SimpleRenderer',
-	'esri/form/CheckBox',
-	
 	
         'esri/domUtils',	
 	
@@ -30,7 +24,6 @@ require([
 	'esri/dijit/BasemapGallery',
 	'esri/dijit/Popup',
 	'esri/dijit/PopupTemplate',
-	'esri/dijit/Measurement',
 	
 	'esri/arcgis/utils',
 	
@@ -38,8 +31,6 @@ require([
 	'dojo/parser',
 	'dojo/_base/array',
 	'dojo/date/locale',
-	'dojo/keys',
-	'dojo/parser',
 	
 	'dijit/layout/BorderContainer',
 	'dijit/layout/ContentPane',
@@ -72,14 +63,6 @@ require([
 	PopupTemplate,
 	
 	utils,
-	Color,
-	keys,
-	parser,
-	esriConfig,
-	has,
-	SnappingManager,
-	Measurement,
-	SimpleRenderer,
 	
 	dom,
 	parser,
@@ -126,37 +109,6 @@ require([
 		title: '{name}',
 		description: 'Daten dieser Site <a href="access.php">anzeigen</a>',
 	});
-		
-	var sfs = new SimpleFillSymbol(
-          "solid",
-          new SimpleLineSymbol("solid", new Color([195, 176, 23]), 2), 
-          null
-        );
-
-    var parcelsLayer = new FeatureLayer("http://sampleserver1.arcgisonline.com/ArcGIS/rest/services/Louisville/LOJIC_LandRecords_Louisville/MapServer/0", {
-          mode: FeatureLayer.MODE_ONDEMAND,
-          outFields: ["*"]
-        });
-        parcelsLayer.setRenderer(new SimpleRenderer(sfs));
-        map.addLayers([parcelsLayer]);
-
-        //dojo.keys.copyKey maps to CTRL on windows and Cmd on Mac., but has wrong code for Chrome on Mac
-    var snapManager = map.enableSnapping({
-          snapKey: has("mac") ? keys.META : keys.CTRL
-        });
-    var layerInfos = [{
-          layer: parcelsLayer
-        }];
-        snapManager.setLayerInfos(layerInfos);
-
-    var measurement = new Measurement({
-          map: map
-        }, dom.byId("measurementDiv"));
-        measurement.startup();
-      });
-
-
-	
 		
 	lutherbog_elevation = new ArcGISDynamicMapServiceLayer("http://geo-arcgis.uni-muenster.de:6080/arcgis/rest/services/LutherBog/lutherbog_elevation/MapServer", {});
         map.addLayer(lutherbog_elevation);
