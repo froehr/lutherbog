@@ -454,6 +454,16 @@ header nav ul li #upload:active {
       z-index: 6;
 }
 
+#Funktionen {
+		position: absolute;
+		top: 200px;
+		right: 10px;
+		z-index: 6;
+		width: 300px;
+		height: 280px;
+		overflow: auto;
+}
+
 .map-processing {
       position: absolute;
       top: 50%;

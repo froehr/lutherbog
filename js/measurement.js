@@ -28,11 +28,7 @@
       ) {
         parser.parse();
         
-        map /*= new Map("map", {
-          basemap: "osm",
-          center: [-80.409833, 43.924083],
-          zoom: 14
-        });*/
+        map 
 
         var sfs = new SimpleFillSymbol(
           "solid",

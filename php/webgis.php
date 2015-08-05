@@ -29,6 +29,9 @@ else{
 		<!--<script src="http://js.arcgis.com/3.10/"></script>-->
 		<script src="http://js.arcgis.com/3.14/"></script>
 
+		<script>dojoConfig = {async: true, parseOnLoad: false}</script>
+		<script src="//ajax.googleapis.com/ajax/libs/dojo/1.10.4/dojo/dojo.js"></script>
+		
 	</head>
 	
 	<body class="claro">
@@ -40,7 +43,7 @@ else{
 			<div id="map-success" class="map-processing"><img src="../img/map/success.png" width="200" height="200"></div>
 			<div id="map-error" class="map-processing"><img src="../img/map/error.png" width="200" height="200"></div>
 			<div id="map-wrongIP" class="map-processing"><img src="../img/map/wrongIP.png" width="200" height="200"></div>
-			<div id="BasemapFrame">
+			<!--<div id="BasemapFrame">
 				<div data-dojo-type="dijit/TitlePane" data-dojo-props="title:'Switch Basemap', closable:false, open:false">
 					<div data-dojo-type="dijit/layout/ContentPane" style="width:380px; height:280px; overflow:auto;">
 						<div id="basemapGallery"></div>
@@ -54,8 +57,20 @@ else{
 				<span style="font-size:smaller;padding:5px 5px;">Press <b>CTRL</b> to enable snapping.</span>
 				</div>
 
+			</div>-->
+			
+		<div id="Funktionen">
+			<div data-dojo-type="dijit/TitlePane" data-dojo-props="title: 'Switch Basemap',closable:false, open:false">
+				<!--<div data-dojo-type="dijit/layout/ContentPane" style="width:380px; height:280px; overflow:auto;">-->
+						<div id="basemapGallery"></div>
+				<!--</div>-->
 			</div>
-						
+			<div data-dojo-type="dijit/TitlePane" data-dojo-props="title: 'Measurement', closable:false, open:false">
+				<div id="measurementDiv"></div>
+				<span style="font-size:smaller;padding:5px 5px;">Press <b>CTRL</b> to enable snapping.</span>
+			</div>
+		</div>
+			
 		</div>
 		
 		
