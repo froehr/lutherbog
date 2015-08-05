@@ -21,13 +21,13 @@ else{
 			include 'head.php';
 		?>
 		
-		<link rel="stylesheet" href="http://js.arcgis.com/3.10/js/esri/css/esri.css">
-		<link rel="stylesheet" href="http://js.arcgis.com/3.10/js/dojo/dijit/themes/claro/claro.css">
-		<!--<link rel="stylesheet" href="http://js.arcgis.com/3.14/dijit/themes/claro/claro.css">
-		<link rel="stylesheet" href="http://js.arcgis.com/3.14/esri/css/esri.css">-->
+		<!--<link rel="stylesheet" href="http://js.arcgis.com/3.10/js/esri/css/esri.css">
+		<link rel="stylesheet" href="http://js.arcgis.com/3.10/js/dojo/dijit/themes/claro/claro.css">-->
+		<link rel="stylesheet" href="http://js.arcgis.com/3.14/dijit/themes/claro/claro.css">
+		<link rel="stylesheet" href="http://js.arcgis.com/3.14/esri/css/esri.css">
 
-		<script src="http://js.arcgis.com/3.10/"></script>
-		<!--<script src="http://js.arcgis.com/3.14/"></script>-->
+		<!--<script src="http://js.arcgis.com/3.10/"></script>-->
+		<script src="http://js.arcgis.com/3.14/"></script>
 
 	</head>
 	
@@ -52,7 +52,9 @@ else{
 				<div id="titlePane" data-dojo-type="dijit/TitlePane" data-dojo-props="title:'Measurement', closable:'false', open:'false'">
 					<div id="measurementDiv"></div>
 				<span style="font-size:smaller;padding:5px 5px;">Press <b>CTRL</b> to enable snapping.</span>
-            </div>
+				</div>
+
+			</div>
 						
 		</div>
 		
@@ -129,6 +131,7 @@ else{
 		</div>
 		<script src="../js/login.js"></script>
 		<script src="../js/map.js"></script>
+		<script src="../js/measurement.js"></script>
 		<script src="../js/userinterface.js"></script>
 	</body>
 </html>

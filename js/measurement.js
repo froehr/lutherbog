@@ -1,5 +1,4 @@
-    <script>
-    var map;
+ var map;
     require([
         "dojo/dom",
         "esri/Color",
@@ -29,7 +28,12 @@
       ) {
         parser.parse();
         
-        
+        map /*= new Map("map", {
+          basemap: "osm",
+          center: [-80.409833, 43.924083],
+          zoom: 14
+        });*/
+
         var sfs = new SimpleFillSymbol(
           "solid",
           new SimpleLineSymbol("solid", new Color([195, 176, 23]), 2), 
@@ -57,6 +61,4 @@
         }, dom.byId("measurementDiv"));
         measurement.startup();
       });
-    </script>
-
-  
+ 

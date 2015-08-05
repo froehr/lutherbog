@@ -395,27 +395,6 @@ header nav ul li #upload:active {
 	width: 100%;
 	z-index: 5;
 }
-#titlePane{
-	width:240px;
-	}
-      .claro .dijitTitlePaneTitle {
-        background: #fff;
-        font-weight:600;
-        border: none;
-        border-bottom:solid 1px #29201A;
-        border-top:solid 1px #29201A;
-      }
-      .claro .dijitTitlePaneTitleHover {
-        background:#eee;
-      }
-      .claro .dijitTitlePaneTitleActive {
-        background:#808775;
-      }
-      .claro .dijitTitlePaneContentOuter {
-        border-right: none;
-        border-bottom: none;
-        border-left: none;
-      }
 
 #feedback {
          background: #fff;
@@ -459,6 +438,13 @@ header nav ul li #upload:active {
 
 #map_zoom_slider {
 	left: 20px !important;
+}
+
+#Measurement {
+		position: absolute;
+		top: 270px;
+		right: 10px;
+		z-index: 7;
 }
 
 #BasemapFrame {
