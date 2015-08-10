@@ -31,7 +31,7 @@ else{
 
 		<script>dojoConfig = {async: true, parseOnLoad: false}</script>
 		<script src="//ajax.googleapis.com/ajax/libs/dojo/1.10.4/dojo/dojo.js"></script>
-		
+				
 	</head>
 	
 	<body class="claro">
@@ -43,33 +43,18 @@ else{
 			<div id="map-success" class="map-processing"><img src="../img/map/success.png" width="200" height="200"></div>
 			<div id="map-error" class="map-processing"><img src="../img/map/error.png" width="200" height="200"></div>
 			<div id="map-wrongIP" class="map-processing"><img src="../img/map/wrongIP.png" width="200" height="200"></div>
-			<!--<div id="BasemapFrame">
-				<div data-dojo-type="dijit/TitlePane" data-dojo-props="title:'Switch Basemap', closable:false, open:false">
-					<div data-dojo-type="dijit/layout/ContentPane" style="width:380px; height:280px; overflow:auto;">
-						<div id="basemapGallery"></div>
-					</div>
+						
+			<div id="Funktionen">
+				<div data-dojo-type="dijit/TitlePane" data-dojo-props="title: 'Switch Basemap',closable:false, open:false">
+					<!--<div data-dojo-type="dijit/layout/ContentPane" style="width:380px; height:280px; overflow:auto;">-->
+							<div id="basemapGallery"></div>
+					<!--</div>-->
 				</div>
-			</div>
-			
-			<div id="Measurement">
-				<div id="titlePane" data-dojo-type="dijit/TitlePane" data-dojo-props="title:'Measurement', closable:'false', open:'false'">
+				<div data-dojo-type="dijit/TitlePane" data-dojo-props="title: 'Measurement', closable:false, open:false">
 					<div id="measurementDiv"></div>
-				<span style="font-size:smaller;padding:5px 5px;">Press <b>CTRL</b> to enable snapping.</span>
+					<span style="font-size:smaller;padding:5px 5px;">Press <b>CTRL</b> to enable snapping.</span>
 				</div>
-
-			</div>-->
-			
-		<div id="Funktionen">
-			<div data-dojo-type="dijit/TitlePane" data-dojo-props="title: 'Switch Basemap',closable:false, open:false">
-				<!--<div data-dojo-type="dijit/layout/ContentPane" style="width:380px; height:280px; overflow:auto;">-->
-						<div id="basemapGallery"></div>
-				<!--</div>-->
 			</div>
-			<div data-dojo-type="dijit/TitlePane" data-dojo-props="title: 'Measurement', closable:false, open:false">
-				<div id="measurementDiv"></div>
-				<span style="font-size:smaller;padding:5px 5px;">Press <b>CTRL</b> to enable snapping.</span>
-			</div>
-		</div>
 			
 		</div>
 		
@@ -93,6 +78,7 @@ else{
 					<!--<input type="range" id="ortho_merged_opacity" min="0" max="1" step="0.01"> <input type="text" id="ortho_merged_opacity_value" size = "4" value = "50%" readonly></br>-->
 					<input type='checkbox' id='ortho_uav' value=1 /> IfGi UAV Luftbilder 2013</br>
 					<!--<input type="range" id="ortho_uav_opacity" min="0" max="1" step="0.01"> <input type="text" id="ortho_uav_opacity_value" size = "4" value = "50%" readonly></br></br>-->
+					<input type='checkbox' id='uas_flight' value=1 /> alle UAS Flights</br>
 					
 					<input type='checkbox' id='flooded_area_part' value=1 /> Überflutete Teilgebiete</br>
 					<input type="range" id="flooded_area_gauge_part" min="480" max="494" step="0.01"> <input type="text" id="flooded_area_gauge_value_part" size = "4" value = "487m" readonly></br>
@@ -107,9 +93,28 @@ else{
 					
 					<div class="submit-button" id="process-flooded-button">
                                 <p>Prozess starten</p>
-                         </div>
+                    </div>
 				</div>
-			</div> 
+				<br>  </br>
+				<div id="mainWindow" data-dojo-type="dijit/layout/BorderContainer" data-dojo-props="design:'headline',gutters:false" style="width:100%; height:100%;">
+					<!--<div data-dojo-type="dijit/layout/ContentPane" id="rightPane" data-dojo-props="region:'right'">-->
+						<!--<div style='margin-left:5px;'>-->
+							<p> Add zipped Shapefile to the map. </p>
+							<form enctype="multipart/form-data" method="post" id="uploadForm">
+								<div class="field">
+									<label class="file-upload">
+										<!--<span><strong><p>-->Add File<!--</p></strong></span>-->
+										<input type="file" name="file" id="inFile" />
+									</label>
+								</div>
+							</form>
+							<span class="file-upload-status" style="opacity:0;" id="upload-status"></span>
+							<div id="fileInfo">&nbsp;</div>
+							<!--<div id="mapCanvas" data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'center'"></div>-->
+						<!--</div>-->
+					<!--</div> -->
+				</div>
+		</div>
 		
 		<div id="page">
 			<header>
@@ -147,6 +152,7 @@ else{
 		<script src="../js/login.js"></script>
 		<script src="../js/map.js"></script>
 		<script src="../js/measurement.js"></script>
+		<script src="../js/addShapefile.js"></script>
 		<script src="../js/userinterface.js"></script>
 	</body>
 </html>

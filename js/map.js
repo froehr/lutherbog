@@ -79,7 +79,7 @@ require([
 
         map = new Map("map", {
 		center: [-80.409833, 43.924083],
-		zoom: 14,
+		zoom: 16,
 		basemap: "osm"
 	});
 	
@@ -124,6 +124,12 @@ require([
 	map.addLayer(lutherbog_ortho_merged);
 	lutherbog_ortho_merged.hide();
 	lutherbog_ortho_merged.setOpacity(0.5);
+	
+	lutherbog_alle_flights = new ArcGISDynamicMapServiceLayer("https://geo-arcgis.uni-muenster.de:6443/arcgis/rest/services/LutherBog/uasFlight1/MapServer")
+	map.addLayer(lutherbog_alle_flights);
+	lutherbog_alle_flights.hide();
+	lutherbog_alle_flights.setOpacity(0.5);
+	
 	
 	lutherbog_uav_merged = new ArcGISDynamicMapServiceLayer("dsd", {});
 	map.addLayer(lutherbog_uav_merged);
@@ -372,6 +378,15 @@ $('#ortho_uav').change(function(){
 	}
 	else{
 		lutherbog_uav_merged.hide();
+	}
+});
+
+$('#uas_flight').change(function(){
+	if($('#uas_flight').is(':checked') == true){
+		lutherbog_alle_flights.show();
+	}
+	else{
+		lutherbog_alle_flights.hide();
 	}
 });
 
