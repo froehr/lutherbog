@@ -80,6 +80,14 @@ else{
 					<!--<input type="range" id="ortho_uav_opacity" min="0" max="1" step="0.01"> <input type="text" id="ortho_uav_opacity_value" size = "4" value = "50%" readonly></br></br>-->
 					<input type='checkbox' id='uas_flight' value=1 /> alle UAS Flights</br>
 					
+					<input type='checkbox' id='flug1' value=1 /> Flug 1</br>
+					<input type='checkbox' id='flug2' value=1 /> Flug 2</br>
+					<input type='checkbox' id='flug3' value=1 /> Flug 3</br>
+					<input type='checkbox' id='flug4' value=1 /> Flug 4</br>
+					<input type='checkbox' id='flug5' value=1 /> Flug 5</br>
+					 
+					
+					
 					<input type='checkbox' id='flooded_area_part' value=1 /> Überflutete Teilgebiete</br>
 					<input type="range" id="flooded_area_gauge_part" min="480" max="494" step="0.01"> <input type="text" id="flooded_area_gauge_value_part" size = "4" value = "487m" readonly></br>
 					<input type="range" id="flooded_area_opacity_part" min="0" max="1" step="0.01"> <input type="text" id="flooded_area_opacity_value_part" size = "4" value = "50%" readonly></br>

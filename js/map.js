@@ -79,7 +79,7 @@ require([
 
         map = new Map("map", {
 		center: [-80.409833, 43.924083],
-		zoom: 16,
+		zoom: 14,
 		basemap: "osm"
 	});
 	
@@ -129,6 +129,31 @@ require([
 	map.addLayer(lutherbog_alle_flights);
 	lutherbog_alle_flights.hide();
 	lutherbog_alle_flights.setOpacity(0.5);
+	
+	lutherbog_flight1 = new ArcGISDynamicMapServiceLayer("https://geo-arcgis.uni-muenster.de:6443/arcgis/rest/services/LutherBog/Flight1/MapServer ")
+	map.addLayer(lutherbog_flight1);
+	lutherbog_flight1.hide();
+	lutherbog_flight1.setOpacity(0.5);
+	
+	lutherbog_flight2 = new ArcGISDynamicMapServiceLayer("https://geo-arcgis.uni-muenster.de:6443/arcgis/rest/services/LutherBog/Flight2/MapServer ")
+	map.addLayer(lutherbog_flight2);
+	lutherbog_flight2.hide();
+	lutherbog_flight2.setOpacity(0.5);
+	
+	lutherbog_flight3 = new ArcGISDynamicMapServiceLayer("https://geo-arcgis.uni-muenster.de:6443/arcgis/rest/services/LutherBog/Flight3/MapServer ")
+	map.addLayer(lutherbog_flight3);
+	lutherbog_flight3.hide();
+	lutherbog_flight3.setOpacity(0.5);
+	
+	lutherbog_flight4 = new ArcGISDynamicMapServiceLayer("https://geo-arcgis.uni-muenster.de:6443/arcgis/rest/services/LutherBog/Flight4/MapServer ")
+	map.addLayer(lutherbog_flight4);
+	lutherbog_flight4.hide();
+	lutherbog_flight4.setOpacity(0.5);
+	
+	lutherbog_flight5 = new ArcGISDynamicMapServiceLayer("https://geo-arcgis.uni-muenster.de:6443/arcgis/rest/services/LutherBog/Flight5/MapServer ")
+	map.addLayer(lutherbog_flight5);
+	lutherbog_flight5.hide();
+	lutherbog_flight5.setOpacity(0.5);
 	
 	
 	lutherbog_uav_merged = new ArcGISDynamicMapServiceLayer("dsd", {});
@@ -387,6 +412,51 @@ $('#uas_flight').change(function(){
 	}
 	else{
 		lutherbog_alle_flights.hide();
+	}
+});
+
+$('#flug1').change(function(){
+	if($('#flug1').is(':checked') == true){
+		lutherbog_flight1.show();
+	}
+	else{
+		lutherbog_flight1.hide();
+	}
+});
+
+$('#flug2').change(function(){
+	if($('#flug2').is(':checked') == true){
+		lutherbog_flight2.show();
+	}
+	else{
+		lutherbog_flight2.hide();
+	}
+});
+
+$('#flug3').change(function(){
+	if($('#flug3').is(':checked') == true){
+		lutherbog_flight3.show();
+	}
+	else{
+		lutherbog_flight3.hide();
+	}
+});
+
+$('#flug4').change(function(){
+	if($('#flug4').is(':checked') == true){
+		lutherbog_flight4.show();
+	}
+	else{
+		lutherbog_flight4.hide();
+	}
+});
+
+$('#flug5').change(function(){
+	if($('#flug5').is(':checked') == true){
+		lutherbog_flight5.show();
+	}
+	else{
+		lutherbog_flight5.hide();
 	}
 });
 
