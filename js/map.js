@@ -111,7 +111,7 @@ require([
 	});
 		
 	lutherbog_elevation = new ArcGISDynamicMapServiceLayer("http://geo-arcgis.uni-muenster.de:6080/arcgis/rest/services/LutherBog/lutherbog_elevation/MapServer", {});
-        map.addLayer(lutherbog_elevation);
+    map.addLayer(lutherbog_elevation);
 	lutherbog_elevation.hide();
 	lutherbog_elevation.setOpacity(0.5);
 	
@@ -125,32 +125,32 @@ require([
 	lutherbog_ortho_merged.hide();
 	lutherbog_ortho_merged.setOpacity(0.5);
 	
-	lutherbog_alle_flights = new ArcGISDynamicMapServiceLayer("https://geo-arcgis.uni-muenster.de:6443/arcgis/rest/services/LutherBog/uasFlight1/MapServer")
+	lutherbog_alle_flights = new ArcGISDynamicMapServiceLayer("http://geo-arcgis.uni-muenster.de:6080/arcgis/rest/services/LutherBog/uasFlight1/MapServer", {});
 	map.addLayer(lutherbog_alle_flights);
 	lutherbog_alle_flights.hide();
 	lutherbog_alle_flights.setOpacity(0.5);
 	
-	lutherbog_flight1 = new ArcGISDynamicMapServiceLayer("https://geo-arcgis.uni-muenster.de:6443/arcgis/rest/services/LutherBog/Flight1/MapServer ")
+	lutherbog_flight1 = new ArcGISDynamicMapServiceLayer("http://geo-arcgis.uni-muenster.de:6080/arcgis/rest/services/LutherBog/Flight1/MapServer", {});
 	map.addLayer(lutherbog_flight1);
 	lutherbog_flight1.hide();
 	lutherbog_flight1.setOpacity(0.5);
 	
-	lutherbog_flight2 = new ArcGISDynamicMapServiceLayer("https://geo-arcgis.uni-muenster.de:6443/arcgis/rest/services/LutherBog/Flight2/MapServer ")
+	lutherbog_flight2 = new ArcGISDynamicMapServiceLayer("http://geo-arcgis.uni-muenster.de:6080/arcgis/rest/services/LutherBog/Flight2/MapServer", {});
 	map.addLayer(lutherbog_flight2);
 	lutherbog_flight2.hide();
 	lutherbog_flight2.setOpacity(0.5);
 	
-	lutherbog_flight3 = new ArcGISDynamicMapServiceLayer("https://geo-arcgis.uni-muenster.de:6443/arcgis/rest/services/LutherBog/Flight3/MapServer ")
+	lutherbog_flight3 = new ArcGISDynamicMapServiceLayer("http://geo-arcgis.uni-muenster.de:6080/arcgis/rest/services/LutherBog/Flight3/MapServer", {});
 	map.addLayer(lutherbog_flight3);
 	lutherbog_flight3.hide();
 	lutherbog_flight3.setOpacity(0.5);
 	
-	lutherbog_flight4 = new ArcGISDynamicMapServiceLayer("https://geo-arcgis.uni-muenster.de:6443/arcgis/rest/services/LutherBog/Flight4/MapServer ")
+	lutherbog_flight4 = new ArcGISDynamicMapServiceLayer("http://geo-arcgis.uni-muenster.de:6080/arcgis/rest/services/LutherBog/Flight4/MapServer", {});
 	map.addLayer(lutherbog_flight4);
 	lutherbog_flight4.hide();
 	lutherbog_flight4.setOpacity(0.5);
 	
-	lutherbog_flight5 = new ArcGISDynamicMapServiceLayer("https://geo-arcgis.uni-muenster.de:6443/arcgis/rest/services/LutherBog/Flight5/MapServer ")
+	lutherbog_flight5 = new ArcGISDynamicMapServiceLayer("http://geo-arcgis.uni-muenster.de:6080/arcgis/rest/services/LutherBog/Flight5/MapServer", {});
 	map.addLayer(lutherbog_flight5);
 	lutherbog_flight5.hide();
 	lutherbog_flight5.setOpacity(0.5);
