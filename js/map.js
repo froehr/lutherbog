@@ -156,22 +156,31 @@ require([
 	lutherbog_flight5.hide();
 	lutherbog_flight5.setOpacity(0.5);
 	
+	lutherbog_ndviAll = new ArcGISDynamicMapServiceLayer("http://geo-arcgis.uni-muenster.de:6080/arcgis/rest/services/LutherBog/NDVIAll/MapServer", {});
+	map.addLayer(lutherbog_ndviAll);
+	lutherbog_ndviAll.hide();
+	lutherbog_ndviAll.setOpacity(0.5);
+	
 	lutherbog_ndvi2 = new ArcGISDynamicMapServiceLayer("http://geo-arcgis.uni-muenster.de:6080/arcgis/rest/services/LutherBog/NDVI2/MapServer", {});
 	map.addLayer(lutherbog_ndvi2);
 	lutherbog_ndvi2.hide();
 	lutherbog_ndvi2.setOpacity(0.5);
+	
 	lutherbog_ndvi1 = new ArcGISDynamicMapServiceLayer("http://geo-arcgis.uni-muenster.de:6080/arcgis/rest/services/LutherBog/NDVI1/MapServer", {});
 	map.addLayer(lutherbog_ndvi1);
 	lutherbog_ndvi1.hide();
 	lutherbog_ndvi1.setOpacity(0.5);
+	
 	lutherbog_ndvi3 = new ArcGISDynamicMapServiceLayer("http://geo-arcgis.uni-muenster.de:6080/arcgis/rest/services/LutherBog/NDVI3/MapServer", {});
 	map.addLayer(lutherbog_ndvi3);
 	lutherbog_ndvi3.hide();
 	lutherbog_ndvi3.setOpacity(0.5);
+	
 	lutherbog_ndvi4 = new ArcGISDynamicMapServiceLayer("http://geo-arcgis.uni-muenster.de:6080/arcgis/rest/services/LutherBog/NDVI4/MapServer", {});
 	map.addLayer(lutherbog_ndvi4);
 	lutherbog_ndvi4.hide();
 	lutherbog_ndvi4.setOpacity(0.5);
+	
 	lutherbog_ndvi5 = new ArcGISDynamicMapServiceLayer("http://geo-arcgis.uni-muenster.de:6080/arcgis/rest/services/LutherBog/NDVI5/MapServer", {});
 	map.addLayer(lutherbog_ndvi5);
 	lutherbog_ndvi5.hide();
@@ -536,18 +545,10 @@ $('#flug5').change(function(){
 
 $('#uas_ndvi').change(function(){
 	if($('#uas_ndvi').is(':checked') == true){
-		lutherbog_ndvi2.show();
-		lutherbog_ndvi1.show();
-		lutherbog_ndvi3.show();
-		lutherbog_ndvi4.show();
-		lutherbog_ndvi5.show();
+		lutherbog_ndviAll.show();
 	}
 	else{
-		lutherbog_ndvi2.hide();
-		lutherbog_ndvi1.show();
-		lutherbog_ndvi3.show();
-		lutherbog_ndvi4.show();
-		lutherbog_ndvi5.show();
+		lutherbog_ndviAll.hide();
 	}
 });
 $('#ndvi1').change(function(){
