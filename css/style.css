@@ -648,6 +648,28 @@ header nav ul li #upload:active {
 }
 /* ------------------------------- */
 
+/* Geoprocressing ndvi1 starten Button */
+#process-ndvi1-button {
+	background-color: #52CC52;
+	margin-top: 0px !important;
+	margin-left: 0px;
+}
+
+#process-ndvi1-button:hover {
+	background-color: #86DB86;
+}
+
+#process-ndvi1-button:active {
+	background-color: #9EE29E;
+}
+
+#process-ndvi1-button p {
+	padding: 7px 0px 0px 24px;
+	margin-top: 5px;
+}
+/* ------------------------------- */
+
+
 .dropdown-check-list {
   display: inline-block;
 }

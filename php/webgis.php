@@ -21,16 +21,18 @@ else{
 			include 'head.php';
 		?>
 		
-		<!--<link rel="stylesheet" href="http://js.arcgis.com/3.10/js/esri/css/esri.css">
-		<link rel="stylesheet" href="http://js.arcgis.com/3.10/js/dojo/dijit/themes/claro/claro.css">-->
-		<link rel="stylesheet" href="http://js.arcgis.com/3.14/dijit/themes/claro/claro.css">
-		<link rel="stylesheet" href="http://js.arcgis.com/3.14/esri/css/esri.css">
+		<link rel="stylesheet" href="http://js.arcgis.com/3.10/js/esri/css/esri.css">
+		<link rel="stylesheet" href="http://js.arcgis.com/3.10/js/dojo/dijit/themes/claro/claro.css">
+		<!--<link rel="stylesheet" href="http://js.arcgis.com/3.14/dijit/themes/claro/claro.css">
+		<link rel="stylesheet" href="http://js.arcgis.com/3.14/esri/css/esri.css">-->
 
-		<!--<script src="http://js.arcgis.com/3.10/"></script>-->
-		<script src="http://js.arcgis.com/3.14/"></script>
+		<script src="http://js.arcgis.com/3.10/"></script>
+		<!--<script src="http://js.arcgis.com/3.14/"></script>-->
 
 		<script>dojoConfig = {async: true, parseOnLoad: false}</script>
 		<script src="//ajax.googleapis.com/ajax/libs/dojo/1.10.4/dojo/dojo.js"></script>
+		<!--<script>require(["dojo/parser", "dijit/layout/AccordionContainer", "dijit/layout/ContentPane"]);</script>-->
+
 				
 	</head>
 	
@@ -45,12 +47,12 @@ else{
 			<div id="map-wrongIP" class="map-processing"><img src="../img/map/wrongIP.png" width="200" height="200"></div>
 						
 			<div id="Funktionen">
-				<div data-dojo-type="dijit/TitlePane" data-dojo-props="title: 'Switch Basemap',closable:false, open:false">
+				<div data-dojo-type="dijit/TitlePane" data-dojo-props="title: 'Hintergrundkarten',closable:false, open:false">
 					<!--<div data-dojo-type="dijit/layout/ContentPane" style="width:380px; height:280px; overflow:auto;">-->
 							<div id="basemapGallery"></div>
 					<!--</div>-->
 				</div>
-				<div data-dojo-type="dijit/TitlePane" data-dojo-props="title: 'Measurement', closable:false, open:false">
+				<div data-dojo-type="dijit/TitlePane" data-dojo-props="title: 'Messungen und Koordinaten', closable:false, open:false">
 					<div id="measurementDiv"></div>
 					<span style="font-size:smaller;padding:5px 5px;">Press <b>CTRL</b> to enable snapping.</span>
 				</div>
@@ -61,8 +63,12 @@ else{
 		
 		<div id="mapdetails">
 				<div id="layerList">
-					<h3>Verfügbare Layer:</h3>
-					<input type='checkbox' id='sites' value=0 /> Messpunkte (Sites)</br>
+					<!--<div style="width: auto"-->
+						<!--<div data-dojo-type="dijit/layout/AccordionContainer">-->
+						<div data-dojo-type="dijit/TitlePane" data-dojo-props="title:'Verfügbare Layer'"> 
+
+					
+					<!--<input type='checkbox' id='sites' value=0 /> Messpunkte (Sites)</br>-->
 					<input type='checkbox' id='hoehe' value=0 /> Höhenmodel (DTM) </br>
 					<input type="range" id="hoehe_opacity" min="0" max="1" step="0.01"> <input type="text" id="hoehe_opacity_value" size = "4" value = "50%" readonly> </br>
 					
@@ -70,7 +76,7 @@ else{
 					<input type="range" id="isolines_difference" min=".1" max="5" step="0.01"> <input type="text" id="isolines_difference_value" size = "4" value = "2.55m" readonly> </br>
 					<div class="submit-button" id="process-isolines-button">
                                 <p>Prozess starten</p>
-                         </div></br></br>
+                         </div></br>
 					
 					<input type='checkbox' id='ortho_tiles' value=1 /> <a onclick=window.open("https://geo-arcgis.uni-muenster.de:6443/arcgis/services/LutherBog/Luther_Marsch_Orthofotos_2006/MapServer/WFSServer?SERVICE=WFS&VERSION=1.1.0&REQUEST=GetCapabilities") title="GetCapabilities" style="cursor: pointer"> Luftbilder 2006 (Tiles)</a> </br>
 					<!--<input type="range" id="ortho_tiles_opacity" min="0" max="1" step="0.01"> <input type="text" id="ortho_tiles_opacity_value" size = "4" value = "50%" readonly></br>-->
@@ -78,10 +84,14 @@ else{
 					<!--<input type="range" id="ortho_merged_opacity" min="0" max="1" step="0.01"> <input type="text" id="ortho_merged_opacity_value" size = "4" value = "50%" readonly></br>-->
 					<!--<input type='checkbox' id='ortho_uav' value=1 /> IfGi UAV Luftbilder 2013</br>-->
 					<!--<input type="range" id="ortho_uav_opacity" min="0" max="1" step="0.01"> <input type="text" id="ortho_uav_opacity_value" size = "4" value = "50%" readonly></br></br>-->
-					</br>
+					
+					</div>
+
+					<div data-dojo-type="dijit/TitlePane" data-dojo-props="title:'Flüge'">
+
+					
 					<input type='checkbox' id='uas_flight' value=1 /> alle Flüge 2015</br>
-					
-					
+										
 					<a>&nbsp;&nbsp;&nbsp;&nbsp;</a><input type='checkbox' id='flug1' value=1 /> <a onclick=window.open("https://geo-arcgis.uni-muenster.de:6443/arcgis/services/LutherBog/Flight1/MapServer/WFSServer?SERVICE=WFS&VERSION=1.1.0&REQUEST=GetCapabilities") title="GetCapabilities" style="cursor: pointer"> Flug 1</a>
 					</br>
 					<a>&nbsp;&nbsp;&nbsp;&nbsp;</a><input type='checkbox' id='flug2' value=1 /> <a onclick=window.open("https://geo-arcgis.uni-muenster.de:6443/arcgis/services/LutherBog/Flight2/MapServer/WFSServer?SERVICE=WFS&VERSION=1.1.0&REQUEST=GetCapabilities") title="GetCapabilities" style="cursor: pointer"> Flug 2</a>
@@ -92,38 +102,45 @@ else{
 					</br>
 					<a>&nbsp;&nbsp;&nbsp;&nbsp;</a><input type='checkbox' id='flug5' value=1 /> <a onclick=window.open("https://geo-arcgis.uni-muenster.de:6443/arcgis/services/LutherBog/Flight5/MapServer/WFSServer?SERVICE=WFS&VERSION=1.1.0&REQUEST=GetCapabilities") title="GetCapabilities" style="cursor: pointer"> Flug 5</a>
 					</br>
-					</br>
-					<!-- 
-					<div id="list1" class="dropdown-check-list" tabindex="100">
-						<span class="anchor">Wähle Flug</span>
-						<ul class="items">
-							<li><input type='checkbox' id='flug1' value=1 /> Flug 1</li>							
-							<li><input type='checkbox' id='flug2' value=1 /> Flug 2</li>
-							<li><input type='checkbox' id='flug3' value=1 /> Flug 3</li>
-							<li><input type='checkbox' id='flug4' value=1 /> Flug 4</li>
-							<li><input type='checkbox' id='flug5' value=1 /> Flug 5</li>
-						</ul>
-					</div>
-					</br>
-					</br>
-
-					<script type="text/javascript">
-
-						var checkList = document.getElementById('list1');
-						checkList.getElementsByClassName('anchor')[0].onclick = function (evt) {
-							if (checkList.classList.contains('visible'))
-								checkList.classList.remove('visible');
-							else
-								checkList.classList.add('visible');
-						}
-
-						checkList.onblur = function(evt) {
-							checkList.classList.remove('visible');
-						}
-					</script>
-						
--->
 					
+					</div>
+
+					<div data-dojo-type="dijit/TitlePane" data-dojo-props="title:'Vegetationsindex'">
+
+					
+					<input type='checkbox' id='uas_ndvi' value=1 /> NDVI aller Flüge 2015</br>
+										
+					<a>&nbsp;&nbsp;&nbsp;&nbsp;</a><input type='checkbox' id='ndvi1' value=1 /> <a onclick=window.open("") title="" style="cursor: pointer"> NDVI des 1. Flugs</a>
+					</br>
+					<a>&nbsp;&nbsp;&nbsp;&nbsp;</a><input type='checkbox' id='ndvi2' value=1 /> <a onclick=window.open("") title="" style="cursor: pointer"> NDVI des 2. Flugs</a>
+					</br>
+					<a>&nbsp;&nbsp;&nbsp;&nbsp;</a><input type='checkbox' id='ndvi3' value=1 /> <a onclick=window.open("") title="" style="cursor: pointer"> NDVI des 3. Flugs</a>
+					</br>
+					<a>&nbsp;&nbsp;&nbsp;&nbsp;</a><input type='checkbox' id='ndvi4' value=1 /> <a onclick=window.open("") title="" style="cursor: pointer"> NDVI des 4. Flugs</a>
+					</br>
+					<a>&nbsp;&nbsp;&nbsp;&nbsp;</a><input type='checkbox' id='ndvi5' value=1 /> <a onclick=window.open("") title="" style="cursor: pointer"> NDVI des 5. Flugs</a>
+					</br>
+					
+					</div>
+				
+					<div data-dojo-type="dijit/TitlePane" data-dojo-props="title:'Klassifizierungen'">
+
+					
+					<input type='checkbox' id='SiteAlleMitRaster' value=1 /> Klassifizierungen aller Sites</br>
+										
+					<a>&nbsp;&nbsp;&nbsp;&nbsp;</a><input type='checkbox' id='site1' value=1 /> <a onclick=window.open("") title="" style="cursor: pointer"> Site 1</a>
+					</br>
+					<a>&nbsp;&nbsp;&nbsp;&nbsp;</a><input type='checkbox' id='site2' value=1 /> <a onclick=window.open("") title="" style="cursor: pointer"> Site 2</a>
+					</br>
+					<a>&nbsp;&nbsp;&nbsp;&nbsp;</a><input type='checkbox' id='site3' value=1 /> <a onclick=window.open("") title="" style="cursor: pointer"> Site 3</a>
+					</br>
+					<a>&nbsp;&nbsp;&nbsp;&nbsp;</a><input type='checkbox' id='site4' value=1 /> <a onclick=window.open("") title="" style="cursor: pointer"> Site 4</a>
+					</br>
+					
+					
+					</div>
+					
+					<div data-dojo-type="dijit/TitlePane" data-dojo-props="title:'Prozesse'">
 					<input type='checkbox' id='flooded_area_part' value=1 /> Überflutete Teilgebiete</br>
 					<input type="range" id="flooded_area_gauge_part" min="480" max="494" step="0.01"> <input type="text" id="flooded_area_gauge_value_part" size = "4" value = "487m" readonly></br>
 					<input type="range" id="flooded_area_opacity_part" min="0" max="1" step="0.01"> <input type="text" id="flooded_area_opacity_value_part" size = "4" value = "50%" readonly></br>
@@ -138,9 +155,21 @@ else{
 					<div class="submit-button" id="process-flooded-button">
                                 <p>Prozess starten</p>
                     </div>
-				</div>
-				<br>  </br>
-				<div id="mainWindow" data-dojo-type="dijit/layout/BorderContainer" data-dojo-props="design:'headline',gutters:false" style="width:100%; height:100%;">
+					
+					</div>
+					<!--<input type='checkbox' id='ndvi1' value=1 /> NDVI des 1. Flugs</br>
+					<input type="range" id="ndvi1_opacity" min="0" max="1" step="0.01"> <input type="text" id="ndvi1_opacity_value" size = "4" value = "50%" readonly></br>
+					<div class="submit-button" id="process-ndvi1-button">
+                        <p>Prozess starten</p>
+					</div>-->
+
+					
+				
+			
+				
+				<div data-dojo-type="dijit/TitlePane" data-dojo-props="title:'Upload'">
+				
+				<!--<div id="mainWindow" data-dojo-type="dijit/layout/BorderContainer" data-dojo-props="design:'headline',gutters:false" style="width:100%; height:100%;">-->
 					<!--<div data-dojo-type="dijit/layout/ContentPane" id="rightPane" data-dojo-props="region:'right'">-->
 						<!--<div style='margin-left:5px;'>-->
 							<p> Shapefile hinzufügen (Add zipped shp. file) </p>
@@ -158,6 +187,10 @@ else{
 						<!--</div>-->
 					<!--</div> -->
 				</div>
+				<!--</div>-->
+				<!--</div>-->
+			</div>
+		</div>		
 		</div>
 		
 		<div id="page">
@@ -183,11 +216,11 @@ else{
 			
 			<div id='impressum-content'>
 				<h1>Impressum</h1>
-				<p>Diese Website ist im Zuge der Bachelorarbeit von Fabian Röhr entstanden.</p>
+				<p>Diese Website ist im Zuge der Bachelorarbeiten von Fabian Röhr und Luisa Bodem entstanden.</p>
 				<p>Die verarbeiteten Daten wurden von der Arbeitsgruppe Hydrologie, die von Prof. Dr. Blodau geleitet wird, gesammelt und zur Verfügung gestellt.</p>	
 			</div>
                         
-               <footer>
+            <footer>
                     <a href="http://www.uni-muenster.de/HydrologieBodenkunde/LUTHERbog.html" id="projectinfo">Projektinfomationen</a>
 				<a href="help.php" id="help">Hilfe</a>
 				<a href="#" id="impressum">Impressum</a>

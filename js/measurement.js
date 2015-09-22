@@ -41,7 +41,7 @@
           outFields: ["*"]
         });
         parcelsLayer.setRenderer(new SimpleRenderer(sfs));
-        map.addLayers([parcelsLayer]);
+        /*map.addLayers([parcelsLayer]);*/
 
         //dojo.keys.copyKey maps to CTRL on windows and Cmd on Mac., but has wrong code for Chrome on Mac
         var snapManager = map.enableSnapping({
