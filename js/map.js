@@ -81,8 +81,9 @@ require([
 		center: [-80.409833, 43.924083],
 		zoom: 14,
 		basemap: "osm"
+		});
 		
-	});
+	
 	
 	var basemapGallery = new BasemapGallery({
 		showArcGISBasemaps: true,
@@ -238,11 +239,8 @@ require([
 	// Geoprocessing isolines
 	var gpServiceUrlIso= "http://geo-arcgis.uni-muenster.de:6080/arcgis/rest/services/LutherBog/isolines/GPServer/isolines";
         var mapserviceurlIso= "http://geo-arcgis.uni-muenster.de:6080/arcgis/rest/services/LutherBog/isolines/MapServer/jobs";
-		
-	/*// Geoprocessing ndvi1
-	var gpServiceUrlndvi1= "http://geo-arcgis.uni-muenster.de:6080/arcgis/rest/services/LutherBog/ndvi1/GPServer/ndvi1";
-        var mapserviceurlndvi1= "http://geo-arcgis.uni-muenster.de:6080/arcgis/rest/services/LutherBog/ndvi1/MapServer/jobs";
-*/
+	
+	
 	
 	function getFlooded(){
 		$('#flooded_area').prop('checked', true);
@@ -276,14 +274,6 @@ require([
 		cleanup("isolines");
 		gp.submitJob(params, gpJobCompleteIsolines, gpJobStatus, gpJobFailed);
         }
-		
-	/*function getndvi1(){
-		$('#ndvi1').prop('checked', true);
-		var gp = new Geoprocessor(gpServiceUrlndvi1);
-		cleanup("ndvi1");
-		gp.submitJob(gpJobCompletendvi1, gpJobStatus, gpJobFailed);
-        }
-		*/
 	
 	
 	function gpJobCompleteFlooded(jobinfo){
@@ -664,14 +654,6 @@ $('#isolines').change(function(){
 	}
 });
 
-/*$('#ndvi1').change(function(){
-	if($('#ndvi1').is(':checked') == true){
-		ndvi1.show();
-	}
-	else{
-		ndvi1.hide();
-	}
-});*/
 
 $('#process-flooded-button').click(function(){
 	app.getFlooded();
@@ -685,9 +667,11 @@ $('#process-isolines-button').click(function(){
 	app.getIsolines();
 });
 
-/*$('#process-ndvi1-button').click(function(){
-	app.getndvi1();
-});*/
+
+function popup(url,name,size) 
+{ 
+window.open(url,name,size); 
+}
 
 
 // Mapbreite anpassen

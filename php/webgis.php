@@ -23,16 +23,11 @@ else{
 		
 		<link rel="stylesheet" href="http://js.arcgis.com/3.10/js/esri/css/esri.css">
 		<link rel="stylesheet" href="http://js.arcgis.com/3.10/js/dojo/dijit/themes/claro/claro.css">
-		<!--<link rel="stylesheet" href="http://js.arcgis.com/3.14/dijit/themes/claro/claro.css">
-		<link rel="stylesheet" href="http://js.arcgis.com/3.14/esri/css/esri.css">-->
 
 		<script src="http://js.arcgis.com/3.10/"></script>
-		<!--<script src="http://js.arcgis.com/3.14/"></script>-->
 
 		<script>dojoConfig = {async: true, parseOnLoad: false}</script>
 		<script src="//ajax.googleapis.com/ajax/libs/dojo/1.10.4/dojo/dojo.js"></script>
-		<!--<script>require(["dojo/parser", "dijit/layout/AccordionContainer", "dijit/layout/ContentPane"]);</script>-->
-
 				
 	</head>
 	
@@ -40,6 +35,7 @@ else{
 		
 		<div id="map">
 			<div id="HomeButton"></div>
+			
 			<div id="map-submitted" class="map-processing"><img src="../img/map/submitted.png" width="200" height="200"></div>
 			<div id="map-loading" class="map-processing"><img src="../img/map/loading.gif" width="200" height="200"></div>
 			<div id="map-success" class="map-processing"><img src="../img/map/success.png" width="200" height="200"></div>
@@ -48,9 +44,9 @@ else{
 						
 			<div id="Funktionen">
 				<div data-dojo-type="dijit/TitlePane" data-dojo-props="title: 'Hintergrundkarten',closable:false, open:false">
-					<!--<div data-dojo-type="dijit/layout/ContentPane" style="width:380px; height:280px; overflow:auto;">-->
+					
 							<div id="basemapGallery"></div>
-					<!--</div>-->
+					
 				</div>
 				<div data-dojo-type="dijit/TitlePane" data-dojo-props="title: 'Messungen und Koordinaten', closable:false, open:false">
 					<div id="measurementDiv"></div>
@@ -63,12 +59,9 @@ else{
 		
 		<div id="mapdetails">
 				<div id="layerList">
-					<!--<div style="width: auto"-->
-						<!--<div data-dojo-type="dijit/layout/AccordionContainer">-->
-						<div data-dojo-type="dijit/TitlePane" data-dojo-props="title:'Verfügbare Layer'"> 
+					<div data-dojo-type="dijit/TitlePane" data-dojo-props="title:'Verfügbare Layer'"> 
 
 					
-					<!--<input type='checkbox' id='sites' value=0 /> Messpunkte (Sites)</br>-->
 					<input type='checkbox' id='hoehe' value=0 /> Höhenmodel (DTM) </br>
 					<input type="range" id="hoehe_opacity" min="0" max="1" step="0.01"> <input type="text" id="hoehe_opacity_value" size = "4" value = "50%" readonly> </br>
 					
@@ -79,11 +72,7 @@ else{
                          </div></br>
 					
 					<input type='checkbox' id='ortho_tiles' value=1 /> <a onclick=window.open("https://geo-arcgis.uni-muenster.de:6443/arcgis/services/LutherBog/Luther_Marsch_Orthofotos_2006/MapServer/WFSServer?SERVICE=WFS&VERSION=1.1.0&REQUEST=GetCapabilities") title="GetCapabilities" style="cursor: pointer"> Luftbilder 2006 (Tiles)</a> </br>
-					<!--<input type="range" id="ortho_tiles_opacity" min="0" max="1" step="0.01"> <input type="text" id="ortho_tiles_opacity_value" size = "4" value = "50%" readonly></br>-->
 					<input type='checkbox' id='ortho_merged' value=1 /> <a onclick=window.open("https://geo-arcgis.uni-muenster.de:6443/arcgis/services/LutherBog/Luther_Marsch_Orthophotos_2006_merged/MapServer/WFSServer?SERVICE=WFS&VERSION=1.1.0&REQUEST=GetCapabilities") title="GetCapabilities" style="cursor: pointer"> Luftbilder 2006 (Merged)</a> </br>
-					<!--<input type="range" id="ortho_merged_opacity" min="0" max="1" step="0.01"> <input type="text" id="ortho_merged_opacity_value" size = "4" value = "50%" readonly></br>-->
-					<!--<input type='checkbox' id='ortho_uav' value=1 /> IfGi UAV Luftbilder 2013</br>-->
-					<!--<input type="range" id="ortho_uav_opacity" min="0" max="1" step="0.01"> <input type="text" id="ortho_uav_opacity_value" size = "4" value = "50%" readonly></br></br>-->
 					
 					</div>
 
@@ -123,12 +112,12 @@ else{
 					
 					</div>
 				
-					<div data-dojo-type="dijit/TitlePane" data-dojo-props="title:'Klassifizierungen'">
+					<div data-dojo-type="dijit/TitlePane" data-dojo-props="title:'Mikrotopographie & Vegetation'">
 
 					
 					<input type='checkbox' id='SiteAlleMitRaster' value=1 /> Klassifizierungen aller Sites</br>
 										
-					<a>&nbsp;&nbsp;&nbsp;&nbsp;</a><input type='checkbox' id='site1' value=1 /> <a onclick=window.open("") title="" style="cursor: pointer"> Site 1</a>
+					<a>&nbsp;&nbsp;&nbsp;&nbsp;</a><input type='checkbox' id='site1' value=1 /> <a href="javascript: popup('../img/Site1.PNG', 'Site1', 'width=733, height=708')" title="" style="cursor: pointer"> Site 1</a>
 					</br>
 					<a>&nbsp;&nbsp;&nbsp;&nbsp;</a><input type='checkbox' id='site2' value=1 /> <a onclick=window.open("") title="" style="cursor: pointer"> Site 2</a>
 					</br>
@@ -157,38 +146,26 @@ else{
                     </div>
 					
 					</div>
-					<!--<input type='checkbox' id='ndvi1' value=1 /> NDVI des 1. Flugs</br>
-					<input type="range" id="ndvi1_opacity" min="0" max="1" step="0.01"> <input type="text" id="ndvi1_opacity_value" size = "4" value = "50%" readonly></br>
-					<div class="submit-button" id="process-ndvi1-button">
-                        <p>Prozess starten</p>
-					</div>-->
-
-					
+		
 				
 			
 				
 				<div data-dojo-type="dijit/TitlePane" data-dojo-props="title:'Upload'">
 				
-				<!--<div id="mainWindow" data-dojo-type="dijit/layout/BorderContainer" data-dojo-props="design:'headline',gutters:false" style="width:100%; height:100%;">-->
-					<!--<div data-dojo-type="dijit/layout/ContentPane" id="rightPane" data-dojo-props="region:'right'">-->
-						<!--<div style='margin-left:5px;'>-->
+
 							<p> Shapefile hinzufügen (Add zipped shp. file) </p>
 							<form enctype="multipart/form-data" method="post" id="uploadForm">
 								<div class="field">
 									<label class="file-upload">
-										<!--<span><strong><p>-->Füge hinzu<!--</p></strong></span>-->
 										<input type="file" name="file" id="inFile" />
 									</label>
 								</div>
 							</form>
 							<span class="file-upload-status" style="opacity:0;" id="upload-status"></span>
 							<div id="fileInfo">&nbsp;</div>
-							<!--<div id="mapCanvas" data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'center'"></div>-->
-						<!--</div>-->
-					<!--</div> -->
+
 				</div>
-				<!--</div>-->
-				<!--</div>-->
+
 			</div>
 		</div>		
 		</div>
