@@ -33,7 +33,7 @@ else{
 	</head>
 	
 	<body class="claro">
-	<div class="row">	
+	<div class="row" style="width:100%">	
 		<header>
                  <div class="hide-for-small-only">    
 							<a href="http://www.uni-muenster.de/Landschaftsoekologie/"><img src="../img/iloek_logo.png"></a>
@@ -41,43 +41,20 @@ else{
 			     <a href="../index.php"><h1>LUTHERbog WebGIS</h1></a>
 				<nav>
 					<section class="top-bar-section">
-					<div class="show-for-large-up">
-					<ul class="right" style="margin-top:17px">
-						<li><a href="process/logout.php" class="header-buttons" id="logout" >Ausloggen</a></li>
+					<div class="hide-for-small-only">
+					<ul class="right">
+						<li><a href="process/logout.php" class="header-buttons" id="logout">Ausloggen</a></li>
 						<li><a href="upload.php" class="header-buttons" id="upload">Daten hinzuf&uuml;gen</a></li>
 						<li><a href="access.php" class="header-buttons" id="access">Daten einsehen</a></li>
 					</ul>
 					</div>
 					</section>
-					<ul class="right" style="margin-top:10px">
-					<div class="hide-for-large-up">
-					
-					<a href="#" data-reveal-id="myModal"><img src="../img/welcome/menu.png" width="40" height="40"></a>
-					<div id="myModal" class="reveal-modal [tiny]" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
-					    <a href="process/logout.php" class="button" id="logout" >Ausloggen</a><br></br>
-						<a href="upload.php" class="button" id="upload">Daten hinzuf&uuml;gen</a><br></br>
-						<a href="access.php" class="button" id="access">Daten einsehen</a>
-						<a class="close-reveal-modal" aria-label="Close">&#215;</a>
-						<div id="logout-content2">
-							<form action="#" method="post">
-								<h1>Sie sind angemeldet als:</h1>
-								<p><?php echo $_SESSION['vorname']." ".$_SESSION['nachname']; ?></p>
-								<p><?php echo $_SESSION['email']?></p>
-							</form>
-						</div>
-					</div>
-					
-				</div>
-				</ul>
 				</nav>
 		</header>
-		
-		
-		
 	</div>	
-		<div class="row" style="overflow: hidden">
+		<div class="row" style="width:100%">
 			
-		<div class="large-2 medium-4 small-12 columns" style="height: 87%">
+		<div class="large-2 medium-4 small-12 columns">
 		<div id="mapdetails">
 		
 				<div id="layerList">
@@ -174,12 +151,10 @@ else{
 				<div data-dojo-type="dijit/TitlePane" data-dojo-props="title:'Upload'">
 				
 
-							<p> Shapefile hinzufügen (Add zipped shp. file) </p>							
-							
+							<p> Shapefile hinzufügen (Add zipped shp. file) </p>
 							<form enctype="multipart/form-data" method="post" id="uploadForm">
 								<div class="field">
 									<label class="file-upload">
-										<span><strong>Add File</strong></span>
 										<input type="file" name="file" id="inFile" />
 									</label>
 								</div>
@@ -200,7 +175,8 @@ else{
 							<span class="file-upload-status" style="opacity:0;" id="upload-status"></span>
 							<div id="fileInfo">&nbsp;</div>
 							
-							<p style="padding:4px;"><span>Ziehen Sie ein Bild oder eine .csv Datei mit angegeben Längen- und Breitengrade auf die Karte.</span>
+							<p style="padding:4px;"><span>Drag and drop services, images or a csv file with latitude/longitude information
+								  from windows explorer to the map.</span>
 							</p>
 
 							<div id='msg' style='color:red;display:none;padding:4px;'> 'You are using a browser that
@@ -212,18 +188,14 @@ else{
 							<span id="status"></span>
 							
 							<div id="fileInfo"> </div>
-							<p style='padding:4px;'>Wichtig: Die .csv Datei muss die Koordinaten in Felder mit folgenenden Bezeichnungen speichern:							  <br />
-							  <b>Feld für den Breitengrad:</b>lat, latitude, y, ycenter
+							<p style='padding:4px;'>Note: The CSV file must store the location in fields with one of the following
+							  names:
 							  <br />
-							  <b>Feld für den Längengrad:</b>lon, long, longitude, x, xcenter
+							  <b>latitude fields:</b>lat, latitude, y, ycenter
+							  <br />
+							  <b>longitude fields:</b>lon, long, longitude, x, xcenter
 							  <br />
 							</p>
-							
-							<button id="clearButton" class="roundedCorner">
-							  <div id="cleanup">
-							  <span>Clear Map</span>
-							  </div>
-							</button>
 
 				</div>
 
@@ -231,10 +203,10 @@ else{
 		</div>		
 		</div>
 		
-		<div class="large-10 medium-8 small-12 columns"  style="height:90%">
+		<div class="large-10 medium-8 small-12 columns"  style="height:100%">
 		<div id="map">
 		
-			<div id="HomeButton" style="width: 30px"></div>
+			<div id="HomeButton"></div>
 			<div id="map-submitted" class="map-processing"><img src="../img/map/submitted.png" width="200" height="200"></div>
 			<div id="map-loading" class="map-processing"><img src="../img/map/loading.gif" width="200" height="200"></div>
 			<div id="map-success" class="map-processing"><img src="../img/map/success.png" width="200" height="200"></div>
@@ -242,30 +214,46 @@ else{
 			<div id="map-wrongIP" class="map-processing"><img src="../img/map/wrongIP.png" width="200" height="200"></div>
 						
 			<div id="Funktionen">
-				<div data-dojo-type="dijit/TitlePane" data-dojo-props="title: 'Hintergrundkarten',closable:false, open:false">
+				<!--<div data-dojo-type="dijit/TitlePane" data-dojo-props="title: 'Hintergrundkarten',closable:false, open:false">
 					
 							<div id="basemapGallery"></div>
 					
 				</div>
 				<div data-dojo-type="dijit/TitlePane" data-dojo-props="title: 'Messungen und Koordinaten', closable:false, open:false">
 					<div id="measurementDiv"></div>
-				</div>
+					<span style="font-size:smaller;padding:5px 5px;">Press <b>CTRL</b> to enable snapping.</span>
+				</div>-->
 				<div data-dojo-type="dijit/TitlePane" data-dojo-props="title: 'Level of Detail',closable:false, open:false">
-					<input type="radio" id="standardLOD" name="lod" checked>Standard LOD <br>
-					<input type="radio" id="customLOD" name="lod">Custom LOD 
+					<input type="radio" id="standardLOD" name="lod" >Standard LOD <br>
+					<input type="radio" id="customLOD" name="lod" checked>Custom LOD 
 					
 				</div>
 			</div>
 			
-			
-				
-			
+			<div id="mapCanvas" data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'center'">
+				<div id="clearButton" class="roundedCorner">
+				  <span>Clear Map</span>
+				</div>
+			</div>
 			
 		</div>
 		</div>
 		
 		</div>
 		<div id="page">
+			<!--<header>
+                 <div class="hide-for-small-only">    
+							<a href="http://www.uni-muenster.de/Landschaftsoekologie/"><img src="../img/iloek_logo.png"></a>
+                 </div> 
+			     <a href="../index.php"><h1>LUTHERbog WebGIS</h1></a>
+				<nav>
+					<ul>
+						<li><a href="process/logout.php" class="header-buttons" id="logout">Ausloggen</a></li>
+						<li><a href="upload.php" class="header-buttons" id="upload">Daten hinzuf&uuml;gen</a></li>
+						<li><a href="access.php" class="header-buttons" id="access">Daten einsehen</a></li>
+					</ul>
+				</nav>
+			</header>-->
 			
 			<div id="logout-content">
 				<form action="#" method="post">
@@ -274,23 +262,25 @@ else{
 					<p><?php echo $_SESSION['email']?></p>
 				</form>
 			</div>
-			    
-            
+			
+			<div id='impressum-content'>
+				<h1>Impressum</h1>
+				<p>Diese Website ist im Zuge der Bachelorarbeiten von Fabian Röhr und Luisa Bodem entstanden.</p>
+				<p>Die verarbeiteten Daten wurden von der Arbeitsgruppe Hydrologie, die von Prof. Dr. Blodau geleitet wird, gesammelt und zur Verfügung gestellt.</p>	
+			</div>
+                        
+            <footer>
+                    <a href="http://www.uni-muenster.de/HydrologieBodenkunde/LUTHERbog.html" id="projectinfo">Projektinfomationen</a>
+				<a href="help.php" id="help">Hilfe</a>
+				<a href="#" id="impressum">Impressum</a>
+			</footer>
 		</div>
-		
-		
 		<script src="../js/login.js"></script>
-		<script src="../js/map.js"></script>
+		<script src="../js/mapLeer.js"></script>
 		<script src="../js/measurement.js"></script>
 		<script src="../js/addShapefile.js"></script>
 		<script src="../js/userinterface.js"></script>
 		<script src="../js/addGPX.js"></script>
 		<script src="../js/DragAndDrop.js"></script>
-		<script src="../js/vendor/jquery.js"></script>
-		<script src="../js/vendor/fastclick.js"></script>
-		<script src="../js/foundation.min.js"></script>
-		<script>
-				$(document).foundation();
-		</script>
 	</body>
 </html>

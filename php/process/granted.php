@@ -1,6 +1,6 @@
 <?php
 
-if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 1800)) {
+if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 36000)) {
     // Letzter Zugriffe mehr als X Sekunden her --> Logout
     session_unset();
     session_destroy();

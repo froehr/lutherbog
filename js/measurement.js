@@ -54,6 +54,7 @@
 
         var measurement = new Measurement({
           map: map
+		
         }, dom.byId("measurementDiv"));
         measurement.startup();
       });

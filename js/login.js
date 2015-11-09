@@ -3,6 +3,7 @@ function login() {
 		$('#input-error').css('display', 'block');
 		$('#login-error').css('display', 'none');
 		$('#login-content').css('height', '200px');
+		$('#login-content2').css('height', '200px');
 	}
 	else{
 		$('#input-error').css('display', 'none');
@@ -22,6 +23,7 @@ function login() {
 			$('#input-error').css('display', 'none');
 			$('#login-success').css('display', 'block');
 			$('#login-content').css('height', '200px');
+			$('#login-content2').css('height', '200px');
 			setTimeout(function() {
 				location.reload();
 			}, 1500);
@@ -32,6 +34,7 @@ function login() {
 			$('#login-error').css('display', 'block');
 			$('#input-error').css('display', 'none');
 			$('#login-content').css('height', '200px');
+			$('#login-content2').css('height', '200px');
 		}
 	}
 }

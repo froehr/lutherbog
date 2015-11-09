@@ -106,10 +106,9 @@ require([
 	
 		
         map = new Map("map", {
-		center: [-80.409833, 43.924083],
-		zoom: 14,
-		/*lods: lods,*/
-		basemap: "osm"
+		center: [-80.406215, 43.919381],
+		zoom: 16,
+		lods: lods
 		});
 		
 	
@@ -166,7 +165,7 @@ require([
 	
 	lutherbog_ortho_tiles = new ArcGISDynamicMapServiceLayer("http://geo-arcgis.uni-muenster.de:6080/arcgis/rest/services/LutherBog/Luther_Marsch_Orthofotos_2006/MapServer", {});
 	map.addLayer(lutherbog_ortho_tiles);
-	lutherbog_ortho_tiles.hide();
+	/*lutherbog_ortho_tiles.hide();*/
 	lutherbog_ortho_tiles.setOpacity(0.5);
 	
 	lutherbog_ortho_merged = new ArcGISDynamicMapServiceLayer("http://geo-arcgis.uni-muenster.de:6080/arcgis/rest/services/LutherBog/Luther_Marsch_Orthophotos_2006_merged/MapServer", {});
@@ -267,13 +266,13 @@ require([
 	lutherbog_uav_merged.hide();
 	lutherbog_uav_merged.setOpacity(0.5);
 	
-	/*lutherbog_sites = new FeatureLayer("http://geo-arcgis.uni-muenster.de:6080/arcgis/rest/services/LutherBog/Sites_lutherbog/FeatureServer/0", {
+	lutherbog_sites = new FeatureLayer("http://geo-arcgis.uni-muenster.de:6080/arcgis/rest/services/LutherBog/Sites_lutherbog/FeatureServer/0", {
 		mode: FeatureLayer.MODE_SNAPSHOT,
 		infoTemplate: popupTemplate,
 		outFields: ["*"]
 	});
 	map.addLayer(lutherbog_sites);
-	lutherbog_sites.hide();*/
+	lutherbog_sites.hide();
 	
 	// Geoprocessing flooded areas
 	var gpServiceUrl= "http://geo-arcgis.uni-muenster.de:6080/arcgis/rest/services/LutherBog/extract_flooded_areas/GPServer/flooded_areas";
@@ -391,10 +390,21 @@ require([
 		}
 	}
 	
-
+	/*function clearMapDif() {
+		var MapNode = document.getElementById("map");
+		MapNode.innerHtml="";
+		
+		map = new Map("map", {
+			center: [-80.409833, 43.924083],
+			zoom: 14,
+			lods: lods
+		});
+	}
 	
-	$('#customLOD').change (function () {
-		window.location.replace("../php/webgisLeer.php");
+	document.getElementById("customLOD").onClick = clearMapDif;*/
+	
+	$('#standardLOD').change (function () {
+		window.location.replace("../php/webgis.php");
 	})
 	
 	

@@ -19,13 +19,17 @@ body {
 	margin: 0px;
 }
 
+
+
 header {
 	background-color: #FFFFFF;
-	padding: 5px 40px;
-	height: 75px;
+	/*padding: 5px 40px;*/
+	height: 4.5rem;
+	width: 100%;
 	box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.8);
 	position: relative;
-	z-index: 10;
+	/*z-index: 10;*/
+	padding-left: 1rem;
 }
 
 /* Page title */
@@ -50,7 +54,7 @@ header a:visited {
 /* Buttons im header */
 header nav {
 	position: relative;
-	top: 20px;
+	top: 0px;
 }
 
 header nav ul {
@@ -62,7 +66,8 @@ header nav ul {
 header nav ul li {
 	float: right;
 	color: #000000;
-	margin-right: 20px;
+	/*margin-right: 10px;*/
+	padding-right:10px;
 	text-align: center;
 }
 
@@ -70,10 +75,10 @@ header nav ul li a {
 	display: block;
 	text-decoration: none;
 	color: #000000;
-	padding: 10px 20px;
+	/*padding: 10px 20px;*/
 	text-transform: uppercase;
 	letter-spacing: 1px;
-	height: 17px;
+	/*height: 3.8125rem;*/
 	font-size: 15px;
 	font-weight: bold;
 }
@@ -88,6 +93,7 @@ header nav ul li a:hover {
 header nav ul li #login {
 	background-color: #9ACA55;
 	width: 120px;
+	padding:5px;
 }
 
 header nav ul li #login:hover {
@@ -102,6 +108,7 @@ header nav ul li #login:active {
 /* Header Logout Button */
 header nav ul li #logout {
 	background-color: #FF3333;
+	padding:5px;
 }
 
 header nav ul li #logout:hover {
@@ -117,6 +124,7 @@ header nav ul li #logout:active {
 header nav ul li #admin {
 	background-color: #546a86;
 	display: none;
+	padding:5px;
 }
 
 header nav ul li #admin:hover {
@@ -133,6 +141,7 @@ header nav ul li #webgis {
 	background-color: #546a86;
 	display: none;
 	width: 120px;
+	padding:5px;
 }
 
 header nav ul li #webgis:hover {
@@ -148,6 +157,7 @@ header nav ul li #webgis:active {
 header nav ul li #project {
 	background-color: #546a86;
 	width: 120px;
+	padding:5px;
 }
 
 header nav ul li #project:hover {
@@ -163,6 +173,7 @@ header nav ul li #project:active {
 header nav ul li #help-button {
 	background-color: #546a86;
 	width: 140px;
+	padding:5px;
 }
 
 header nav ul li #help-button:hover {
@@ -178,6 +189,7 @@ header nav ul li #help-button:active {
 header nav ul li #home {
 	background-color: #546a86;
 	width: 120px;
+	padding:5px;
 }
 
 header nav ul li #home:hover {
@@ -192,7 +204,8 @@ header nav ul li #home:active {
 /* Zugriff auf Daten Button */
 header nav ul li #access {
 	background-color: #546a86;
-	width: 180px;
+	width: 10rem;
+	padding: 5px;
 }
 
 header nav ul li #access:hover {
@@ -207,7 +220,8 @@ header nav ul li #access:active {
 /* Upload Button */
 header nav ul li #upload {
 	background-color: #546a86;
-	width: 180px;
+	width: 12rem;
+	padding:5px;
 }
 
 header nav ul li #upload:hover {
@@ -218,6 +232,151 @@ header nav ul li #upload:active {
 	background-color: #8ba6c9;
 }
 /* ------------------------------- */
+
+/* Header Login Button im Reveal Model*/
+header nav ul a a #login {
+	background-color: #9ACA55;
+	width: 120px;
+	padding:5px;
+}
+
+header nav ul li #login:hover {
+	background-color: #68a170;
+}
+
+header nav ul li #login:active {
+	background-color: #95c49c;
+}
+/* ------------------------------- */
+
+/* Header Logout Button */
+header nav ul li #logout {
+	background-color: #FF3333;
+	padding:5px;
+}
+
+header nav ul li #logout:hover {
+	background-color: #E62E2E;
+}
+
+header nav ul li #logout:active {
+	background-color: #FF6666;
+}
+/* ------------------------------- */
+
+/* Header Admin Button */
+header nav ul li #admin {
+	background-color: #546a86;
+	display: none;
+	padding:5px;
+}
+
+header nav ul li #admin:hover {
+	background-color: #6a85a8;
+}
+
+header nav ul li #admin:active {
+	background-color: #8ba6c9;
+}
+/* ------------------------------- */
+
+/* Header Webgis Button */
+header nav ul li #webgis {
+	background-color: #546a86;
+	display: none;
+	width: 120px;
+	padding:5px;
+}
+
+header nav ul li #webgis:hover {
+	background-color: #6a85a8;
+}
+
+header nav ul li #webgis:active {
+	background-color: #8ba6c9;
+}
+/* ------------------------------- */
+
+/* Header Project Button */
+header nav ul li #project {
+	background-color: #546a86;
+	width: 120px;
+	padding:5px;
+}
+
+header nav ul li #project:hover {
+	background-color: #6a85a8;
+}
+
+header nav ul li #project:active {
+	background-color: #8ba6c9;
+}
+/* ------------------------------- */
+
+/* Header Help Button */
+header nav ul li #help-button {
+	background-color: #546a86;
+	width: 140px;
+	padding:5px;
+}
+
+header nav ul li #help-button:hover {
+	background-color: #6a85a8;
+}
+
+header nav ul li #help-button:active {
+	background-color: #8ba6c9;
+}
+/* ------------------------------- */
+
+/* Header Home Button */
+header nav ul li #home {
+	background-color: #546a86;
+	width: 120px;
+	padding:5px;
+}
+
+header nav ul li #home:hover {
+	background-color: #6a85a8;
+}
+
+header nav ul li #home:active {
+	background-color: #8ba6c9;
+}
+/* ------------------------------- */
+
+/* Zugriff auf Daten Button */
+header nav ul li #access {
+	background-color: #546a86;
+	width: 10rem;
+	padding: 5px;
+}
+
+header nav ul li #access:hover {
+	background-color: #6a85a8;
+}
+
+header nav ul li #access:active {
+	background-color: #8ba6c9;
+}
+/* ------------------------------- */
+
+/* Upload Button */
+header nav ul li #upload {
+	background-color: #546a86;
+	width: 12rem;
+	padding:5px;
+}
+
+header nav ul li #upload:hover {
+	background-color: #6a85a8;
+}
+
+header nav ul li #upload:active {
+	background-color: #8ba6c9;
+}
+/* ------------------------------- */
+
 
 /* Welcome Page */
 #welcome {
@@ -389,10 +548,11 @@ header nav ul li #upload:active {
 /* Map */
 #map {
 	position: absolute;
-	top: 85px;
-	left:250px;
+	top: 0px;
+	/*left:250px;*/
 	bottom: 28px;
 	width: 100%;
+	height: 100%;
 	z-index: 5;
 }
 
@@ -418,7 +578,8 @@ header nav ul li #upload:active {
          padding: 0 0 10px 0;
       }
 #layerList {
-         width: 200px;
+         /*width: 200px;*/
+		 
       }
       .dojoDndItemOver {
          background: #ccc;
@@ -426,11 +587,12 @@ header nav ul li #upload:active {
 
 
 #mapdetails {
-	position: absolute;
-	top: 85px;
+	position: relative;
+	top: 25px;
 	bottom: 28px;
-	width: 230px;
-	padding: 15px;
+	/*width: 230px;*/
+	height: 100%;
+	padding: 5px;
 	z-index: 6;
 	background-color: #FFFFFF;
 	overflow: scroll;
@@ -450,14 +612,15 @@ header nav ul li #upload:active {
 #BasemapFrame {
       position: absolute;
       top: 230px;
-      right: 10px;
+      /*right: 10px;*/
       z-index: 6;
+	  
 }
 
 #Funktionen {
 		position: absolute;
-		top: 200px;
-		right: 10px;
+		top: 230px;
+		right: 20px;
 		z-index: 6;
 		width: 300px;
 		height: 280px;
@@ -480,18 +643,45 @@ header nav ul li #upload:active {
 	left: 20px !important;
 }
 
-.ovwContainer {
+#ovwContainer{
+	top: 32px;
+}
+
+#esri_dijit_OverviewMap_0-map_root {
+	width: 325px !important;
+	height: 177px !important;
+	top: 0px !important;
+}
+
+#esri_dijit_OverviewMap_0-map {
+	top: 0px;
+}
+
+.esriOverviewMap.ovwTR .ovwContainer{
+	top: 32px !important;
+}
+
+.overviewMapDijit {
 	width: 250px !important;
-	heigth: 250px !important;
+	height: 2000px !important;
+	top: 20px !important;
+	position: absolute!important;
+	right: 20px;
 }
 
 #HomeButton {
-      position: absolute;
-      top: 95px;
+      position: relative;
+      top: 120px;
       left: 20px;
+	  width: 30px;
       z-index: 3;
       border: solid 1px #FFFFFF;
       border-radius: 5px;
+}
+
+#mapCanvas {
+	position: absolute;
+	left: 45px;
 }
 
 #login-content{
@@ -503,7 +693,7 @@ header nav ul li #upload:active {
 	width: 250px;
 	height: 170px;
 	z-index: 9;
-	overflow: auto;
+	/*overflow: auto;*/
 	padding-bottom: 20px;
 	display: none;
 	box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.8);
@@ -648,26 +838,7 @@ header nav ul li #upload:active {
 }
 /* ------------------------------- */
 
-/* Geoprocressing ndvi1 starten Button */
-#process-ndvi1-button {
-	background-color: #52CC52;
-	margin-top: 0px !important;
-	margin-left: 0px;
-}
 
-#process-ndvi1-button:hover {
-	background-color: #86DB86;
-}
-
-#process-ndvi1-button:active {
-	background-color: #9EE29E;
-}
-
-#process-ndvi1-button p {
-	padding: 7px 0px 0px 24px;
-	margin-top: 5px;
-}
-/* ------------------------------- */
 
 
 .dropdown-check-list {
@@ -822,7 +993,7 @@ header nav ul li #upload:active {
 	width: 500px;
 	height: 220px;
 	z-index: 1000;
-	overflow: auto;
+	/*overflow: auto;*/
 	padding-bottom: 20px;
 	display: none;
 	box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.8);
@@ -874,11 +1045,12 @@ header nav ul li #upload:active {
 
 /* Fußzeile der Seite */
 footer {
-	position: fixed;
-	background-color: #3c4245;
+	margin-top:1em;
+	width:100%;
+	/*background-color: #3c4245;*/
 	padding: 4px 40px;
-	height: 20px;
-	box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.8);
+	/*height: 20px;
+	box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.8);*/
 	bottom: 0px;
 	left: 0px;
 	right: 0px;

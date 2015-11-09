@@ -14,7 +14,9 @@ include 'process/granted.php';
 	<body>
 		<div id="page">
 			<header>
-                            <a href="http://www.uni-muenster.de/Landschaftsoekologie/"><img src="../img/iloek_logo.png"></a>
+                        <div class="hide-for-small-only">    
+							<a href="http://www.uni-muenster.de/Landschaftsoekologie/"><img src="../img/iloek_logo.png"></a>
+                        </div> 
                             <a href="../index.php"><h1>LUTHERbog WebGIS</h1></a>
 				<nav>
 					<ul>
