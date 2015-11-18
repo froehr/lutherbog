@@ -20,13 +20,15 @@ else{
 		<?php
 			include 'head.php';
 		?>
-		
+		<script>
+		  var dojoConfig = { isDebug: true };
+		</script>
 		<link rel="stylesheet" href="http://js.arcgis.com/3.10/js/esri/css/esri.css">
 		<link rel="stylesheet" href="http://js.arcgis.com/3.10/js/dojo/dijit/themes/claro/claro.css">
 		<!--<link rel="stylesheet" href="../css/layout.css" />-->
 		<script src="http://js.arcgis.com/3.10/"></script>
 		
-
+		<link rel="stylesheet" href="../css/fileupload.css">
 		<script>dojoConfig = {async: true, parseOnLoad: false}</script>
 		<script src="//ajax.googleapis.com/ajax/libs/dojo/1.10.4/dojo/dojo.js"></script>
 				
@@ -44,8 +46,7 @@ else{
 					<div class="show-for-large-up">
 					<ul class="right" style="margin-top:17px">
 						<li><a href="process/logout.php" class="header-buttons" id="logout" >Ausloggen</a></li>
-						<li><a href="upload.php" class="header-buttons" id="upload">Daten hinzuf&uuml;gen</a></li>
-						<li><a href="access.php" class="header-buttons" id="access">Daten einsehen</a></li>
+						<li><a href="help.php" class="header-buttons" id="upload">Hilfe</a></li>
 					</ul>
 					</div>
 					</section>
@@ -55,8 +56,7 @@ else{
 					<a href="#" data-reveal-id="myModal"><img src="../img/welcome/menu.png" width="40" height="40"></a>
 					<div id="myModal" class="reveal-modal [tiny]" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
 					    <a href="process/logout.php" class="button" id="logout" >Ausloggen</a><br></br>
-						<a href="upload.php" class="button" id="upload">Daten hinzuf&uuml;gen</a><br></br>
-						<a href="access.php" class="button" id="access">Daten einsehen</a>
+						<a href="help.php" class="button" id="upload">Hilfe</a>
 						<a class="close-reveal-modal" aria-label="Close">&#215;</a>
 						<div id="logout-content2">
 							<form action="#" method="post">
@@ -93,25 +93,76 @@ else{
                                 <p>Prozess starten</p>
                          </div></br>
 					
-					<input type='checkbox' id='ortho_tiles' value=1 /> <a onclick=window.open("https://geo-arcgis.uni-muenster.de:6443/arcgis/services/LutherBog/Luther_Marsch_Orthofotos_2006/MapServer/WFSServer?SERVICE=WFS&VERSION=1.1.0&REQUEST=GetCapabilities") title="GetCapabilities" style="cursor: pointer"> Luftbilder 2006 (Tiles)</a> </br>
-					<input type='checkbox' id='ortho_merged' value=1 /> <a onclick=window.open("https://geo-arcgis.uni-muenster.de:6443/arcgis/services/LutherBog/Luther_Marsch_Orthophotos_2006_merged/MapServer/WFSServer?SERVICE=WFS&VERSION=1.1.0&REQUEST=GetCapabilities") title="GetCapabilities" style="cursor: pointer"> Luftbilder 2006 (Merged)</a> </br>
-					
+					<input type='checkbox' id='ortho_tiles' value=1 /> <a href="#" data-reveal-id="ortho" title="GetMap" style="cursor: pointer"> Luftbilder 2006 (Tiles)</a>
+					<div id="ortho" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+					  <p><a href="https://geo-arcgis.uni-muenster.de:6443/arcgis/services/LutherBog/Luther_Marsch_Orthophotos_2006/MapServer/WMSServer?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetCapabilities" target="_blank" title="GetCapabilities" style="cursor: pointer">Web Map Service: </a><a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a><input onclick="this.select()" value="https://geo-arcgis.uni-muenster.de:6443/arcgis/services/LutherBog/Luther_Marsch_Orthofotos_2006/MapServer/WMSServer"></p>
+					  <p>Web Feature Service: <input onclick="this.select()" value="https://geo-arcgis.uni-muenster.de:6443/arcgis/services/LutherBog/Luther_Marsch_Orthofotos_2006/MapServer/WFSServer"></p>
+					  <p>KML Datei: <a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a><input onclick="this.select()" value="https://geo-arcgis.uni-muenster.de:6443/arcgis/rest/services/LutherBog/Luther_Marsch_Orthofotos_2006/MapServer/KmlServer"></p>
+					  <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+					</div>
+					</br>	
+
+					<input type='checkbox' id='ortho_merged' value=1 /> <a href="#" data-reveal-id="ortho_m" title="GetMap" style="cursor: pointer"> Luftbilder 2006 (Merged)</a>
+					<div id="ortho_m" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+					  <p><a href="https://geo-arcgis.uni-muenster.de:6443/arcgis/services/LutherBog/Luther_Marsch_Orthophotos_2006_merged/MapServer/WMSServer?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetCapabilities" target="_blank" title="GetCapabilities" style="cursor: pointer">Web Map Service: </a><a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a><input onclick="this.select()" value="https://geo-arcgis.uni-muenster.de:6443/arcgis/services/LutherBog/Luther_Marsch_Orthophotos_2006_merged/MapServer/WMSServer"></p>
+					  <p>Web Feature Service: <input onclick="this.select()" value="https://geo-arcgis.uni-muenster.de:6443/arcgis/services/LutherBog/Luther_Marsch_Orthophotos_2006_merged/MapServer/WFSServer"></p>
+					  <p>KML Datei: <a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a><input onclick="this.select()" value="https://geo-arcgis.uni-muenster.de:6443/arcgis/rest/services/LutherBog/Luther_Marsch_Orthophotos_2006_merged/MapServer/KmlServer"></p>
+					  <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+					</div>
 					</div>
 
 					<div data-dojo-type="dijit/TitlePane" data-dojo-props="title:'Flüge'">
 
 					
-					<input type='checkbox' id='uas_flight' value=1 /> alle Flüge 2015</br>
-										
-					<a>&nbsp;&nbsp;&nbsp;&nbsp;</a><input type='checkbox' id='flug1' value=1 /> <a onclick=window.open("https://geo-arcgis.uni-muenster.de:6443/arcgis/services/LutherBog/Flight1/MapServer/WFSServer?SERVICE=WFS&VERSION=1.1.0&REQUEST=GetCapabilities") title="GetCapabilities" style="cursor: pointer"> Flug 1</a>
+					
+					<input type='checkbox' id='uas_flight' value=1 /> <a href="#" data-reveal-id="WMSalle" title="GetMap" style="cursor: pointer"> alle Flüge 2015</a>
+					<div id="WMSalle" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+					  <p><a href="https://geo-arcgis.uni-muenster.de:6443/arcgis/services/LutherBog/uasFlight1/MapServer/WMSServer?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetCapabilities" target="_blank" title="GetCapabilities" style="cursor: pointer">Web Map Service: </a><a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a><input onclick="this.select()" value="https://geo-arcgis.uni-muenster.de:6443/arcgis/services/LutherBog/uasFlight1/MapServer/WMSServer"></p>
+					  <p>Web Feature Service: <input onclick="this.select()" value="https://geo-arcgis.uni-muenster.de:6443/arcgis/services/LutherBog/uasFlight1/MapServer/WFSServer"></p>
+					  <p>KML Datei: <a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a><input onclick="this.select()" value="https://geo-arcgis.uni-muenster.de:6443/arcgis/rest/services/LutherBog/uasFlight1/MapServer/KmlServer"></p>
+					  <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+					</div>
+					</br>					
+					<a>&nbsp;&nbsp;&nbsp;&nbsp;</a><input type='checkbox' id='flug1' value=1 /> <a href="#" data-reveal-id="WMS1" title="GetMap" style="cursor: pointer"> Flug 1</a>
+					<div id="WMS1" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+					  <p><a href="https://geo-arcgis.uni-muenster.de:6443/arcgis/services/LutherBog/Flight1/MapServer/WMSServer?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetCapabilities" target="_blank" title="GetCapabilities" style="cursor: pointer">Web Map Service: </a><a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a><input onclick="this.select()" value="https://geo-arcgis.uni-muenster.de:6443/arcgis/services/LutherBog/Flight1/MapServer/WMSServer"></p>
+					  <p>Web Feature Service: <input onclick="this.select()" value="https://geo-arcgis.uni-muenster.de:6443/arcgis/services/LutherBog/Flight2/MapServer/WFSServer"></p>
+					  <p>KML Datei: <a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a><input onclick="this.select()" value="https://geo-arcgis.uni-muenster.de:6443/arcgis/rest/services/LutherBog/Flight1/MapServer/KmlServer"></p>
+					  <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+					</div>
+					
 					</br>
-					<a>&nbsp;&nbsp;&nbsp;&nbsp;</a><input type='checkbox' id='flug2' value=1 /> <a onclick=window.open("https://geo-arcgis.uni-muenster.de:6443/arcgis/services/LutherBog/Flight2/MapServer/WFSServer?SERVICE=WFS&VERSION=1.1.0&REQUEST=GetCapabilities") title="GetCapabilities" style="cursor: pointer"> Flug 2</a>
+					<a>&nbsp;&nbsp;&nbsp;&nbsp;</a><input type='checkbox' id='flug2' value=1 /> <a href="#" data-reveal-id="WMS2" title="GetMap" style="cursor: pointer"> Flug 2</a>
+					<div id="WMS2" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+					  <p><a href="https://geo-arcgis.uni-muenster.de:6443/arcgis/services/LutherBog/Flight2/MapServer/WMSServer?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetCapabilities" target="_blank" title="GetCapabilities" style="cursor: pointer">Web Map Service: </a><a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a><input onclick="this.select()" value="https://geo-arcgis.uni-muenster.de:6443/arcgis/services/LutherBog/Flight2/MapServer/WMSServer"></p>
+					  <p>Web Feature Service: <input onclick="this.select()" value="https://geo-arcgis.uni-muenster.de:6443/arcgis/services/LutherBog/Flight2/MapServer/WFSServer"></p>
+					  <p>KML Datei: <a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a><input onclick="this.select()" value="https://geo-arcgis.uni-muenster.de:6443/arcgis/rest/services/LutherBog/Flight2/MapServer/KmlServer"></p>
+					  <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+					</div>
 					</br>
-					<a>&nbsp;&nbsp;&nbsp;&nbsp;</a><input type='checkbox' id='flug3' value=1 /> <a onclick=window.open("https://geo-arcgis.uni-muenster.de:6443/arcgis/services/LutherBog/Flight3/MapServer/WFSServer?SERVICE=WFS&VERSION=1.1.0&REQUEST=GetCapabilities") title="GetCapabilities" style="cursor: pointer"> Flug 3</a>
+					<a>&nbsp;&nbsp;&nbsp;&nbsp;</a><input type='checkbox' id='flug3' value=1 /> <a href="#" data-reveal-id="WMS3" title="GetMap" style="cursor: pointer"> Flug 3</a>
+					<div id="WMS3" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+					  <p><a href="https://geo-arcgis.uni-muenster.de:6443/arcgis/services/LutherBog/Flight3/MapServer/WMSServer?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetCapabilities" target="_blank" title="GetCapabilities" style="cursor: pointer">Web Map Service: </a><a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a><input onclick="this.select()" value="https://geo-arcgis.uni-muenster.de:6443/arcgis/services/LutherBog/Flight3/MapServer/WMSServer"></p>
+					  <p>Web Feature Service: <input onclick="this.select()" value="https://geo-arcgis.uni-muenster.de:6443/arcgis/services/LutherBog/Flight3/MapServer/WFSServer"></p>
+					  <p>KML Datei: <a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a><input onclick="this.select()" value="https://geo-arcgis.uni-muenster.de:6443/arcgis/rest/services/LutherBog/Flight3/MapServer/KmlServer"></p>
+					  <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+					</div>
 					</br>
-					<a>&nbsp;&nbsp;&nbsp;&nbsp;</a><input type='checkbox' id='flug4' value=1 /> <a onclick=window.open("https://geo-arcgis.uni-muenster.de:6443/arcgis/services/LutherBog/Flight4/MapServer/WFSServer?SERVICE=WFS&VERSION=1.1.0&REQUEST=GetCapabilities") title="GetCapabilities" style="cursor: pointer"> Flug 4</a>
+					<a>&nbsp;&nbsp;&nbsp;&nbsp;</a><input type='checkbox' id='flug4' value=1 /> <a href="#" data-reveal-id="WMS4" title="GetMap" style="cursor: pointer"> Flug 4</a>
+					<div id="WMS4" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+					  <p><a href="https://geo-arcgis.uni-muenster.de:6443/arcgis/services/LutherBog/Flight4/MapServer/WMSServer?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetCapabilities" target="_blank" title="GetCapabilities" style="cursor: pointer">Web Map Service: </a><a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a><input onclick="this.select()" value="https://geo-arcgis.uni-muenster.de:6443/arcgis/services/LutherBog/Flight4/MapServer/WMSServer"></p>
+					  <p>Web Feature Service: <input onclick="this.select()" value="https://geo-arcgis.uni-muenster.de:6443/arcgis/services/LutherBog/Flight4/MapServer/WFSServer"></p>
+					  <p>KML Datei: <a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a><input onclick="this.select()" value="https://geo-arcgis.uni-muenster.de:6443/arcgis/rest/services/LutherBog/Flight4/MapServer/KmlServer"></p>
+					  <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+					</div>
 					</br>
-					<a>&nbsp;&nbsp;&nbsp;&nbsp;</a><input type='checkbox' id='flug5' value=1 /> <a onclick=window.open("https://geo-arcgis.uni-muenster.de:6443/arcgis/services/LutherBog/Flight5/MapServer/WFSServer?SERVICE=WFS&VERSION=1.1.0&REQUEST=GetCapabilities") title="GetCapabilities" style="cursor: pointer"> Flug 5</a>
+					<a>&nbsp;&nbsp;&nbsp;&nbsp;</a><input type='checkbox' id='flug5' value=1 /> <a href="#" data-reveal-id="WMS5" title="GetMap" style="cursor: pointer"> Flug 5</a>
+					<div id="WMS5" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+					  <p><a href="https://geo-arcgis.uni-muenster.de:6443/arcgis/services/LutherBog/Flight5/MapServer/WMSServer?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetCapabilities" target="_blank" title="GetCapabilities" style="cursor: pointer">Web Map Service: </a><a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a><input onclick="this.select()" value="https://geo-arcgis.uni-muenster.de:6443/arcgis/services/LutherBog/Flight5/MapServer/WMSServer"></p>
+					  <p>Web Feature Service: <input onclick="this.select()" value="https://geo-arcgis.uni-muenster.de:6443/arcgis/services/LutherBog/Flight5/MapServer/WFSServer"></p>
+					  <p>KML Datei: <a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a><input onclick="this.select()" value="https://geo-arcgis.uni-muenster.de:6443/arcgis/rest/services/LutherBog/Flight5/MapServer/KmlServer"></p>
+					  <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+					</div>
 					</br>
 					
 					</div>
@@ -137,15 +188,18 @@ else{
 					<div data-dojo-type="dijit/TitlePane" data-dojo-props="title:'Mikrotopographie & Vegetation'">
 
 					
-					<input type='checkbox' id='SiteAlleMitRaster' value=1 /> Klassifizierungen aller Sites</br>
-										
-					<a>&nbsp;&nbsp;&nbsp;&nbsp;</a><input type='checkbox' id='site1' value=1 /> <a href="javascript: popup('../img/Site1.PNG', 'Site1', 'width=843, height=712')" title="" style="cursor: pointer"> Site 1</a>
+					<input type='checkbox' id='SiteAlleMitRaster' value=1 /> Felddaten aller Sites</br>
+					<a>&nbsp;&nbsp;&nbsp;&nbsp;</a><input type='checkbox' id='site1Kl' value=1 /> <a href="javascript: popup('../img/Site1.PNG', 'Site1', 'width=843, height=712')" title="" style="cursor: pointer"> Site 1</a></br>					
+					<a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a><input type='checkbox' id='site1' value=1 /> <a href="javascript: popup('../img/Site1.PNG', 'Site1', 'width=843, height=712')" title="" style="cursor: pointer"> Felddaten</a>
 					</br>
-					<a>&nbsp;&nbsp;&nbsp;&nbsp;</a><input type='checkbox' id='site2' value=1 /> <a href="javascript: popup('../img/Site2.PNG', 'Site2', 'width=844, height=713')" title="" style="cursor: pointer"> Site 2</a>
+					<a>&nbsp;&nbsp;&nbsp;&nbsp;</a><input type='checkbox' id='site2Kl' value=1 /> <a href="javascript: popup('../img/Site1.PNG', 'Site1', 'width=843, height=712')" title="" style="cursor: pointer"> Site 2</a></br>
+					<a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a><input type='checkbox' id='site2' value=1 /> <a href="javascript: popup('../img/Site2.PNG', 'Site2', 'width=844, height=713')" title="" style="cursor: pointer"> Felddaten</a>
 					</br>
-					<a>&nbsp;&nbsp;&nbsp;&nbsp;</a><input type='checkbox' id='site3' value=1 /> <a href="javascript: popup('../img/Site3.PNG', 'Site3', 'width=842, height=714')" title="" style="cursor: pointer"> Site 3</a>
+					<a>&nbsp;&nbsp;&nbsp;&nbsp;</a><input type='checkbox' id='site3Kl' value=1 /> <a href="javascript: popup('../img/Site1.PNG', 'Site1', 'width=843, height=712')" title="" style="cursor: pointer"> Site 3</a></br>
+					<a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a><input type='checkbox' id='site3' value=1 /> <a href="javascript: popup('../img/Site3.PNG', 'Site3', 'width=842, height=714')" title="" style="cursor: pointer"> Felddaten</a>
 					</br>
-					<a>&nbsp;&nbsp;&nbsp;&nbsp;</a><input type='checkbox' id='site4' value=1 /> <a href="javascript: popup('../img/Site4.PNG', 'Site4', 'width=843, height=711')" title="" style="cursor: pointer"> Site 4</a>
+					<a>&nbsp;&nbsp;&nbsp;&nbsp;</a><input type='checkbox' id='site4Kl' value=1 /> <a href="javascript: popup('../img/Site1.PNG', 'Site1', 'width=843, height=712')" title="" style="cursor: pointer"> Site 4</a></br>
+					<a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a><input type='checkbox' id='site4' value=1 /> <a href="javascript: popup('../img/Site4.PNG', 'Site4', 'width=843, height=711')" title="" style="cursor: pointer"> Felddaten</a>
 					</br>
 					
 					</div>
@@ -174,7 +228,7 @@ else{
 				<div data-dojo-type="dijit/TitlePane" data-dojo-props="title:'Upload'">
 				
 
-							<p> Shapefile hinzufügen (Add zipped shp. file) </p>							
+							<p> Shapefile (Add zipped shp. file) oder .gpx-Datei hinzufügen </p>							
 							
 							<form enctype="multipart/form-data" method="post" id="uploadForm">
 								<div class="field">
@@ -186,9 +240,10 @@ else{
 							</form>
 							<span class="file-upload-status" style="opacity:0;" id="upload-status"></span>
 							<div id="fileInfo">&nbsp;</div>
+							<div id="alreadyAdded"></div>
 							
 							
-							<p> gpx-Datei hinzufügen </p>
+							<!--<p> gpx-Datei hinzufügen </p>
 							<form enctype="multipart/form-data" method="post" id="uploadForm">
 								<div class="field">
 									<label class="file-upload">
@@ -198,9 +253,11 @@ else{
 								</div>
 							</form>
 							<span class="file-upload-status" style="opacity:0;" id="upload-status"></span>
-							<div id="fileInfo">&nbsp;</div>
-							
+							<div id="fileInfo">&nbsp;</div>-->
+							 <ul class="side-nav"><li class="divider"></li></ul>
 							<p style="padding:4px;"><span>Ziehen Sie ein Bild oder eine .csv Datei mit angegeben Längen- und Breitengrade auf die Karte.</span>
+							<br></br>
+							<b>Wichtig: </b>Die Koordinaten müssen in Dezimalgrad angegeben sein.
 							</p>
 
 							<div id='msg' style='color:red;display:none;padding:4px;'> 'You are using a browser that
@@ -212,16 +269,16 @@ else{
 							<span id="status"></span>
 							
 							<div id="fileInfo"> </div>
-							<p style='padding:4px;'>Wichtig: Die .csv Datei muss die Koordinaten in Felder mit folgenenden Bezeichnungen speichern:							  <br />
-							  <b>Feld für den Breitengrad:</b>lat, latitude, y, ycenter
+							<p>Die .csv Datei muss die Koordinaten in Feldern mit folgenenden Bezeichnungen speichern:<br/>
+							  <b>Feld für den Breitengrad: </b>lat, latitude, y, ycenter
 							  <br />
-							  <b>Feld für den Längengrad:</b>lon, long, longitude, x, xcenter
+							  <b>Feld für den Längengrad: </b>lon, long, longitude, x, xcenter
 							  <br />
 							</p>
 							
 							<button id="clearButton" class="roundedCorner">
 							  <div id="cleanup">
-							  <span>Clear Map</span>
+							  <span>Leere Karte</span>
 							  </div>
 							</button>
 
@@ -232,14 +289,14 @@ else{
 		</div>
 		
 		<div class="large-10 medium-8 small-12 columns"  style="height:90%">
-		<div id="map">
+		<div id="map" style="width: 100%">
 		
 			<div id="HomeButton" style="width: 30px"></div>
 			<div id="map-submitted" class="map-processing"><img src="../img/map/submitted.png" width="200" height="200"></div>
 			<div id="map-loading" class="map-processing"><img src="../img/map/loading.gif" width="200" height="200"></div>
 			<div id="map-success" class="map-processing"><img src="../img/map/success.png" width="200" height="200"></div>
 			<div id="map-error" class="map-processing"><img src="../img/map/error.png" width="200" height="200"></div>
-			<div id="map-wrongIP" class="map-processing"><img src="../img/map/wrongIP.png" width="200" height="200"></div>
+			<!--<div id="map-wrongIP" class="map-processing"><img src="../img/map/wrongIP.png" width="200" height="200"></div>-->
 						
 			<div id="Funktionen">
 				<div data-dojo-type="dijit/TitlePane" data-dojo-props="title: 'Hintergrundkarten',closable:false, open:false">
@@ -252,7 +309,7 @@ else{
 				</div>
 				<div data-dojo-type="dijit/TitlePane" data-dojo-props="title: 'Level of Detail',closable:false, open:false">
 					<input type="radio" id="standardLOD" name="lod" checked>Standard LOD <br>
-					<input type="radio" id="customLOD" name="lod">Custom LOD 
+					<input type="radio" id="customLOD" name="lod">Benutzerdefinierter LOD 
 					
 				</div>
 			</div>

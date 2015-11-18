@@ -103,8 +103,27 @@ if(!isset($_SESSION)){
 								<p>Login &nbsp; &#9658;</p>
 							</div>
 						</div>
-					  <a class="close-reveal-modal" aria-label="Close">&#215;</a>
-					</div>
+					<a class="close-reveal-modal" aria-label="Close">&#215;</a>
+					</div>  
+						    <div id="login-content">
+								<h1>Benutzername</h1>
+								<input type="text" id="username" onkeypress="if(event.keyCode==13) {login();}" autofocus/>
+								<h1>Passwort</h1>
+								<input type="password" id="password" onkeypress="if(event.keyCode==13) {login();}"/>
+								<div id="input-error">
+									Benutzername oder Passwort ist leer
+								</div>
+								<div id="login-error">
+									Benutzername oder Passwort ist falsch
+								</div>
+								<div id="login-success">
+									Sie wurden erfolgreich eingeloggt!
+								</div>
+								<div class="submit-button" id="login-button">
+									<p>Login &nbsp; &#9658;</p>
+								</div>
+							</div>
+					
 				</ul>
 				
 				</div>
@@ -114,30 +133,12 @@ if(!isset($_SESSION)){
 			
 			
 			
-			<div id="login-content">
-				<h1>Benutzername</h1>
-				<input type="text" id="username" onkeypress="if(event.keyCode==13) {login();}" autofocus/>
-				<h1>Passwort</h1>
-				<input type="password" id="password" onkeypress="if(event.keyCode==13) {login();}"/>
-				<div id="input-error">
-					Benutzername oder Passwort ist leer
-				</div>
-				<div id="login-error">
-					Benutzername oder Passwort ist falsch
-				</div>
-				<div id="login-success">
-					Sie wurden erfolgreich eingeloggt!
-				</div>
-				<div class="submit-button" id="login-button">
-					<p>Login &nbsp; &#9658;</p>
-				</div>
-			</div>
+			
 			
 			<div id="logout-content">
 				<form action="#" method="post">
 					<h1>Sie sind angemeldet als:</h1>
 					<p><?php echo $_SESSION['vorname']." ".$_SESSION['nachname']; ?></p>
-					<p><?php echo $_SESSION['email']?></p>
 				</form>
 			</div>
 			
@@ -164,6 +165,7 @@ if(!isset($_SESSION)){
 					<h2>Informationen</h2>
 					<p>Dieses Websystem soll die Arbeit der Arbeitsgruppe Hydrologie erheblich erleichtern und nebensächliche Arbeiten wie Sortierung und Speicherung übernehmen.</p>
 					<p>Gleichzeitig soll aber auch die Möglichkeit bestehen erste Auswertungen durchzuführen.</p>
+					<p>Gastzugang:</br> Benutzername: gast </br>Passwort:123</p>
 					<img src="img/welcome/luther_bog_fotos.png" width="300px">
 					</div>
 				</div>

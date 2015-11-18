@@ -8,7 +8,6 @@
         "esri/config",
         "esri/sniff",
         "esri/map",
-        "esri/SnappingManager",
         "esri/dijit/Measurement",
         "esri/layers/FeatureLayer",
         "esri/renderers/SimpleRenderer",
@@ -24,7 +23,7 @@
         "dojo/domReady!"
       ], function(
         dom, Color, keys, parser, 
-        esriConfig, has, Map, SnappingManager, Measurement, FeatureLayer, SimpleRenderer, GeometryService, SimpleLineSymbol, SimpleFillSymbol
+        esriConfig, has, Map, Measurement, FeatureLayer, SimpleRenderer, GeometryService, SimpleLineSymbol, SimpleFillSymbol
       ) {
         parser.parse();
         
@@ -42,15 +41,6 @@
         });
         parcelsLayer.setRenderer(new SimpleRenderer(sfs));
         /*map.addLayers([parcelsLayer]);*/
-
-        //dojo.keys.copyKey maps to CTRL on windows and Cmd on Mac., but has wrong code for Chrome on Mac
-        var snapManager = map.enableSnapping({
-          snapKey: has("mac") ? keys.META : keys.CTRL
-        });
-        var layerInfos = [{
-          layer: parcelsLayer
-        }];
-        snapManager.setLayerInfos(layerInfos);
 
         var measurement = new Measurement({
           map: map

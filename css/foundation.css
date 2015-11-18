@@ -4040,7 +4040,7 @@ blockquote p {
   position: absolute;
   top: 0;
   visibility: hidden;
-  width: 50%;
+  width: 40%;
   z-index: 1005;
   right: 0;
   background-color: #FFFFFF;
@@ -4062,10 +4062,10 @@ blockquote p {
       margin: 0 auto;
       max-width: 62.5rem;
       right: 0;
-      width: 80%; } }
+      width: 30%; } }
   @media only screen and (min-width: 40.0625em) {
     .reveal-modal {
-      top: 6.25rem; } }
+      top: 10.25rem; } }
   .reveal-modal.radius {
     border-radius: 3px; }
   .reveal-modal.round {

@@ -25,6 +25,17 @@ $('#login').click(function() {
 });
 // -----------------------------------------------
 
+// Usermanagement small medium
+$('#login').click(function() {
+	if ($('#login-content2').css('display') == 'none') {
+		$('#login-content2').css('display', 'block');
+	}
+	else{
+		$('#login-content2').css('display', 'none');
+	}
+});
+// -----------------------------------------------
+
 // Anpassen der Breite der lis auf Grund der Anzahl in der Unternavigation
 var length = 100 / $("div#switch ul li").length;
 $('#switch ul li').css('width', length + "%");

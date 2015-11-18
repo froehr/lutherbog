@@ -106,35 +106,12 @@ require([
 	
 		
         map = new Map("map", {
-		center: [-80.406215, 43.919381],
+		center: [-80.405860, 43.919791],
 		zoom: 16,
 		lods: lods
 		});
 		
-	
-	
-	var basemapGallery = new BasemapGallery({
-		showArcGISBasemaps: true,
-		map: map
-	}, "basemapGallery");
-	basemapGallery.startup();
-	
-	var layer = new BasemapLayer({
-		
-   	});
 
-	var basemap = new Basemap({
-
-    layers:[layer],
-
-    title:"NoMap",
-	
-    thumbnailUrl:"../img/noMap.PNG"
-
-  });
-
-  basemapGallery.add(basemap);
-	
 	
 	var home = new HomeButton({
 		map: map
@@ -165,12 +142,12 @@ require([
 	
 	lutherbog_ortho_tiles = new ArcGISDynamicMapServiceLayer("http://geo-arcgis.uni-muenster.de:6080/arcgis/rest/services/LutherBog/Luther_Marsch_Orthofotos_2006/MapServer", {});
 	map.addLayer(lutherbog_ortho_tiles);
-	/*lutherbog_ortho_tiles.hide();*/
+	lutherbog_ortho_tiles.hide();
 	lutherbog_ortho_tiles.setOpacity(0.5);
 	
 	lutherbog_ortho_merged = new ArcGISDynamicMapServiceLayer("http://geo-arcgis.uni-muenster.de:6080/arcgis/rest/services/LutherBog/Luther_Marsch_Orthophotos_2006_merged/MapServer", {});
 	map.addLayer(lutherbog_ortho_merged);
-	lutherbog_ortho_merged.hide();
+	/*lutherbog_ortho_merged.hide();*/
 	lutherbog_ortho_merged.setOpacity(0.5);
 	
 	lutherbog_alle_flights = new ArcGISDynamicMapServiceLayer("http://geo-arcgis.uni-muenster.de:6080/arcgis/rest/services/LutherBog/uasFlight1/MapServer", {});
@@ -258,6 +235,25 @@ require([
 	lutherbog_site4.hide();
 	lutherbog_site4.setOpacity(0.5);
 	
+		lutherbog_site1Kl = new ArcGISDynamicMapServiceLayer("http://geo-arcgis.uni-muenster.de:6080/arcgis/rest/services/LutherBog/Site1Kl/MapServer", {});
+	map.addLayer(lutherbog_site1Kl);
+	lutherbog_site1Kl.hide();
+	lutherbog_site1Kl.setOpacity(0.3);
+	
+	lutherbog_site2Kl = new ArcGISDynamicMapServiceLayer("http://geo-arcgis.uni-muenster.de:6080/arcgis/rest/services/LutherBog/Site2Kl/MapServer", {});
+	map.addLayer(lutherbog_site2Kl);
+	lutherbog_site2Kl.hide();
+	lutherbog_site2Kl.setOpacity(0.3);
+	
+	lutherbog_site3Kl = new ArcGISDynamicMapServiceLayer("http://geo-arcgis.uni-muenster.de:6080/arcgis/rest/services/LutherBog/Site3Kl/MapServer", {});
+	map.addLayer(lutherbog_site3Kl);
+	lutherbog_site3Kl.hide();
+	lutherbog_site3Kl.setOpacity(0.3);
+	
+	lutherbog_site4Kl = new ArcGISDynamicMapServiceLayer("http://geo-arcgis.uni-muenster.de:6080/arcgis/rest/services/LutherBog/Site4Kl/MapServer", {});
+	map.addLayer(lutherbog_site4Kl);
+	lutherbog_site4Kl.hide();
+	lutherbog_site4Kl.setOpacity(0.3);
 	
 	
 	
@@ -510,6 +506,7 @@ $('#sites').change(function(){
 
 $('#hoehe').change(function(){
 	if($('#hoehe').is(':checked') == true){
+		map.centerAndZoom([-80.405970, 43.918175],17);
 		lutherbog_elevation.show();
 	}
 	else{
@@ -519,6 +516,7 @@ $('#hoehe').change(function(){
 
 $('#ortho_tiles').change(function(){
 	if($('#ortho_tiles').is(':checked') == true){
+		map.centerAndZoom([-80.416725, 43.937263],13);
 		lutherbog_ortho_tiles.show();
 	}
 	else{
@@ -528,6 +526,7 @@ $('#ortho_tiles').change(function(){
 
 $('#ortho_merged').change(function(){
 	if($('#ortho_merged').is(':checked') == true){
+		map.centerAndZoom([-80.416725, 43.937263],13);
 		lutherbog_ortho_merged.show();
 	}
 	else{
@@ -537,6 +536,7 @@ $('#ortho_merged').change(function(){
 
 $('#ortho_uav').change(function(){
 	if($('#ortho_uav').is(':checked') == true){
+		map.centerAndZoom([-80.416725, 43.937263],13);
 		lutherbog_uav_merged.show();
 	}
 	else{
@@ -546,6 +546,7 @@ $('#ortho_uav').change(function(){
 
 $('#uas_flight').change(function(){
 	if($('#uas_flight').is(':checked') == true){
+		map.centerAndZoom([-80.405860, 43.919791],16);
 		lutherbog_alle_flights.show();
 	}
 	else{
@@ -555,6 +556,7 @@ $('#uas_flight').change(function(){
 
 $('#flug1').change(function(){
 	if($('#flug1').is(':checked') == true){
+		map.centerAndZoom([-80.405970, 43.918175],17);
 		lutherbog_flight1.show();
 	}
 	else{
@@ -564,6 +566,7 @@ $('#flug1').change(function(){
 
 $('#flug2').change(function(){
 	if($('#flug2').is(':checked') == true){
+		map.centerAndZoom([-80.405860, 43.920038],17);
 		lutherbog_flight2.show();
 	}
 	else{
@@ -573,6 +576,7 @@ $('#flug2').change(function(){
 
 $('#flug3').change(function(){
 	if($('#flug3').is(':checked') == true){
+		map.centerAndZoom([-80.407212, 43.921120],17);
 		lutherbog_flight3.show();
 	}
 	else{
@@ -582,6 +586,7 @@ $('#flug3').change(function(){
 
 $('#flug4').change(function(){
 	if($('#flug4').is(':checked') == true){
+		map.centerAndZoom([-80.406954, 43.920687],17);
 		lutherbog_flight4.show();
 	}
 	else{
@@ -591,6 +596,7 @@ $('#flug4').change(function(){
 
 $('#flug5').change(function(){
 	if($('#flug5').is(':checked') == true){
+		map.centerAndZoom([-80.404787, 43.917890],17);
 		lutherbog_flight5.show();
 	}
 	else{
@@ -600,6 +606,7 @@ $('#flug5').change(function(){
 
 $('#uas_ndvi').change(function(){
 	if($('#uas_ndvi').is(':checked') == true){
+		map.centerAndZoom([-80.405860, 43.919791],16);
 		lutherbog_ndviAll.show();
 	}
 	else{
@@ -608,6 +615,7 @@ $('#uas_ndvi').change(function(){
 });
 $('#ndvi1').change(function(){
 	if($('#ndvi1').is(':checked') == true){
+		map.centerAndZoom([-80.405970, 43.918175],17);
 		lutherbog_ndvi2.show();
 	}
 	else{
@@ -616,6 +624,7 @@ $('#ndvi1').change(function(){
 });
 $('#ndvi2').change(function(){
 	if($('#ndvi2').is(':checked') == true){
+		map.centerAndZoom([-80.405860, 43.920038],17);
 		lutherbog_ndvi1.show();
 	}
 	else{
@@ -624,6 +633,7 @@ $('#ndvi2').change(function(){
 });
 $('#ndvi3').change(function(){
 	if($('#ndvi3').is(':checked') == true){
+		map.centerAndZoom([-80.407212, 43.921120],17);
 		lutherbog_ndvi3.show();
 	}
 	else{
@@ -632,6 +642,7 @@ $('#ndvi3').change(function(){
 });
 $('#ndvi4').change(function(){
 	if($('#ndvi4').is(':checked') == true){
+		map.centerAndZoom([-80.406954, 43.920687],17);
 		lutherbog_ndvi4.show();
 	}
 	else{
@@ -640,6 +651,7 @@ $('#ndvi4').change(function(){
 });
 $('#ndvi5').change(function(){
 	if($('#ndvi5').is(':checked') == true){
+		map.centerAndZoom([-80.404787, 43.917890],17);
 		lutherbog_ndvi5.show();
 	}
 	else{
@@ -649,6 +661,7 @@ $('#ndvi5').change(function(){
 
 $('#SiteAlleMitRaster').change(function(){
 	if($('#SiteAlleMitRaster').is(':checked') == true){
+		map.centerAndZoom([-80.406144, 43.919796],16);
 		lutherbog_siteAll.show();
 	}
 	else{
@@ -657,6 +670,7 @@ $('#SiteAlleMitRaster').change(function(){
 });
 $('#site1').change(function(){
 	if($('#site1').is(':checked') == true){
+		map.centerAndZoom([-80.404000, 43.916949],19);
 		lutherbog_site1.show();
 	}
 	else{
@@ -666,6 +680,7 @@ $('#site1').change(function(){
 
 $('#site2').change(function(){
 	if($('#site2').is(':checked') == true){
+		map.centerAndZoom([-80.405601, 43.919110],19);
 		lutherbog_site2.show();
 	}
 	else{
@@ -675,6 +690,7 @@ $('#site2').change(function(){
 
 $('#site3').change(function(){
 	if($('#site3').is(':checked') == true){
+		map.centerAndZoom([-80.406924, 43.920466],19);
 		lutherbog_site3.show();
 	}
 	else{
@@ -684,6 +700,7 @@ $('#site3').change(function(){
 
 $('#site4').change(function(){
 	if($('#site4').is(':checked') == true){
+		map.centerAndZoom([-80.408264, 43.922290],19);
 		lutherbog_site4.show();
 	}
 	else{
@@ -691,9 +708,50 @@ $('#site4').change(function(){
 	}
 });
 
+$('#site1Kl').change(function(){
+	if($('#site1Kl').is(':checked') == true){
+		map.centerAndZoom([-80.404000, 43.916949],19);
+		lutherbog_site1Kl.show();
+	}
+	else{
+		lutherbog_site1Kl.hide();
+	}
+});
+
+$('#site2Kl').change(function(){
+	if($('#site2Kl').is(':checked') == true){
+		map.centerAndZoom([-80.405601, 43.919110],19);
+		lutherbog_site2Kl.show();
+	}
+	else{
+		lutherbog_site2Kl.hide();
+	}
+});
+
+$('#site3Kl').change(function(){
+	if($('#site3Kl').is(':checked') == true){
+		map.centerAndZoom([-80.406924, 43.920466],19);
+		lutherbog_site3Kl.show();
+	}
+	else{
+		lutherbog_site3Kl.hide();
+	}
+});
+
+$('#site4Kl').change(function(){
+	if($('#site4Kl').is(':checked') == true){
+		map.centerAndZoom([-80.408264, 43.922290],19);
+		lutherbog_site4Kl.show();
+	}
+	else{
+		lutherbog_site4Kl.hide();
+	}
+});
+
 
 $('#flooded_area_part').change(function(){
 	if($('#flooded_area_part').is(':checked') == true){
+		map.centerAndZoom([-80.416725, 43.937263],13);
 		part_flooded.show();
 	}
 	else{
@@ -703,6 +761,7 @@ $('#flooded_area_part').change(function(){
 
 $('#flooded_area').change(function(){
 	if($('#flooded_area').is(':checked') == true){
+		map.centerAndZoom([-80.416725, 43.937263],13);
 		flooded_area.show();
 	}
 	else{
@@ -712,6 +771,7 @@ $('#flooded_area').change(function(){
 
 $('#isolines').change(function(){
 	if($('#isolines').is(':checked') == true){
+		map.centerAndZoom([-80.416725, 43.937263],17);
 		isolines.show();
 	}
 	else{
