@@ -81,30 +81,6 @@ require([
 	
         parser.parse();
 
- var lods = [  
-				{"level" : 0, "resolution" : 793.75158750317507, "scale" : 333584622889.211},   
-				{"level" : 1, "resolution" : 529.16772500211675, "scale" : 222389748592.807},   
-				{"level" : 2, "resolution" : 264.58386250105838, "scale" : 111194874296.403},   
-				{"level" : 3, "resolution" : 132.29193125052919, "scale" :  55597437148.2017},   
-				{"level" : 4, "resolution" : 66.145965625264594, "scale" :  27798718574.1008},   
-				{"level" : 5, "resolution" : 33.072982812632297, "scale" :  13899359287.0504},   
-				{"level" : 6, "resolution" : 13.229193125052918, "scale" :   5559743714.82017},   
-				{"level" : 7, "resolution" : 7.9375158750317505, "scale" :   3335846228.89211},   
-				{"level" : 8, "resolution" : 3.3072982812632294, "scale" :   1389935928.70504},   
-				{"level" : 9, "resolution" : 1.3229193125052918, "scale" :    555974371.482017},   
-				{"level" :10, "resolution" : 0.66145965625264591, "scale" :    277987185.741008},   
-				{"level" :11, "resolution" : 0.26458386250105836, "scale" :    111194874.296403},   
-				{"level" :12, "resolution" : 0.13229193125052918, "scale" :     55597437.1482017},   
-				{"level" :13, "resolution" : 0.066145965625264591, "scale" :     27798718.5741008},   
-				{"level" :14, "resolution" : 0.026458386250105836, "scale" :     11119487.4296403},
-		        {"level" :15, "resolution" : 0.010986328125, "scale" : 4617149.97766929},
-				{"level" :16, "resolution" : 0.0054931640625, "scale" : 2308574.98883465},
-				{"level" :17, "resolution" : 0.00274658203125, "scale" : 1154287.49441732},
-				{"level" :18, "resolution" : 0.001373291015625, "scale" : 577143.747208662},
-				{"level" :19, "resolution" : 0.0006866455078125, "scale" : 288571.873604331}
-			]; 
-	
-		
         map = new Map("map", {
 		center: [-80.409833, 43.924083],
 		zoom: 14,
@@ -397,7 +373,7 @@ require([
 	function gpJobCompletendvi2(jobinfo){
 		//construct the result map service url using the id from jobinfo we'll add a new layer to the map
 		var mapurl = mapserviceurlndvi1 + "/" + jobinfo.jobId;
-		ndvi1 = new ArcGISDynamicMapServiceLayer(mapurl,{"id":"ndvi2", "opacity": 0.5});
+		ndvi2 = new ArcGISDynamicMapServiceLayer(mapurl,{"id":"ndvi2", "opacity": 0.5});
 		//add the hotspot layer to the map
 		map.addLayers([ndvi2]);
 	}
@@ -405,7 +381,7 @@ require([
 	function gpJobCompletendvi3(jobinfo){
 		//construct the result map service url using the id from jobinfo we'll add a new layer to the map
 		var mapurl = mapserviceurlndvi1 + "/" + jobinfo.jobId;
-		ndvi1 = new ArcGISDynamicMapServiceLayer(mapurl,{"id":"ndvi3", "opacity": 0.5});
+		ndvi3 = new ArcGISDynamicMapServiceLayer(mapurl,{"id":"ndvi3", "opacity": 0.5});
 		//add the hotspot layer to the map
 		map.addLayers([ndvi3]);
 	}
@@ -413,7 +389,7 @@ require([
 	function gpJobCompletendvi4(jobinfo){
 		//construct the result map service url using the id from jobinfo we'll add a new layer to the map
 		var mapurl = mapserviceurlndvi1 + "/" + jobinfo.jobId;
-		ndvi1 = new ArcGISDynamicMapServiceLayer(mapurl,{"id":"ndvi4", "opacity": 0.5});
+		ndvi4 = new ArcGISDynamicMapServiceLayer(mapurl,{"id":"ndvi4", "opacity": 0.5});
 		//add the hotspot layer to the map
 		map.addLayers([ndvi4]);
 	}
@@ -421,7 +397,7 @@ require([
 	function gpJobCompletendvi5(jobinfo){
 		//construct the result map service url using the id from jobinfo we'll add a new layer to the map
 		var mapurl = mapserviceurlndvi1 + "/" + jobinfo.jobId;
-		ndvi1 = new ArcGISDynamicMapServiceLayer(mapurl,{"id":"ndvi5", "opacity": 0.5});
+		ndvi5 = new ArcGISDynamicMapServiceLayer(mapurl,{"id":"ndvi5", "opacity": 0.5});
 		//add the hotspot layer to the map
 		map.addLayers([ndvi5]);
 	}
@@ -455,12 +431,7 @@ require([
 		}, 1500);
 	}
 	
-	function cleanup(layer){
-		var removeLayer = map.getLayer(layer);
-		if(removeLayer){
-			map.removeLayer(removeLayer);
-		}
-	}
+
 	
 
 	
@@ -679,54 +650,67 @@ $('#uas_ndvi').change(function(){
 	if($('#uas_ndvi').is(':checked') == true){
 		map.centerAndZoom([-80.405860, 43.919791],16);
 		lutherbog_ndviAll.show();
+		myWindow = window.open("../LegendeNDVI.html", "myWindow", "top=680, left=1490, width=220, height=370");
 	}
 	else{
 		lutherbog_ndviAll.hide();
+		myWindow.close();
 	}
 });
 $('#ndvi1').change(function(){
 	if($('#ndvi1').is(':checked') == true){
 		map.centerAndZoom([-80.405970, 43.918175],17);
 		lutherbog_ndvi2.show();
+		myWindow1 = window.open("../LegendeNDVI.html", "myWindow1", "top=680, left=1490, width=220, height=370");
+		
 	}
 	else{
 		lutherbog_ndvi2.hide();
+		myWindow1.close();
 	}
 });
 $('#ndvi2').change(function(){
 	if($('#ndvi2').is(':checked') == true){
 		map.centerAndZoom([-80.405860, 43.920038],17);
 		lutherbog_ndvi1.show();
+		myWindow2 = window.open("../LegendeNDVI.html", "myWindow2", "top=680, left=1490, width=220, height=370");
 	}
 	else{
 		lutherbog_ndvi1.hide();
+		myWindow2.close();
 	}
 });
 $('#ndvi3').change(function(){
 	if($('#ndvi3').is(':checked') == true){
 		map.centerAndZoom([-80.407212, 43.921120],17);
 		lutherbog_ndvi3.show();
+		myWindow3 = window.open("../LegendeNDVI.html", "myWindow3", "top=680, left=1490, width=220, height=370");
 	}
 	else{
 		lutherbog_ndvi3.hide();
+		myWindow3.close();
 	}
 });
 $('#ndvi4').change(function(){
 	if($('#ndvi4').is(':checked') == true){
 		map.centerAndZoom([-80.406954, 43.920687],17);
 		lutherbog_ndvi4.show();
+		myWindow4 = window.open("../LegendeNDVI.html", "myWindow4", "top=680, left=1490, width=220, height=370");
 	}
 	else{
 		lutherbog_ndvi4.hide();
+		myWindow4.close();
 	}
 });
 $('#ndvi5').change(function(){
 	if($('#ndvi5').is(':checked') == true){
 		map.centerAndZoom([-80.404787, 43.917890],17);
 		lutherbog_ndvi5.show();
+		myWindow5 = window.open("../LegendeNDVI.html", "myWindow5", "top=680, left=1490, width=220, height=370");
 	}
 	else{
 		lutherbog_ndvi5.hide();
+		myWindow5.close();
 	}
 });
 
@@ -863,6 +847,39 @@ $('#process-isolines-button').click(function(){
 	app.getIsolines();
 });
 
+$('#process-ndvi1-button').click(function(){
+	app.getNDVI1();
+});
+
+$('#process-ndvi2d-button').click(function(){
+	app.getNDVI2();
+});
+
+$('#process-ndvi3-button').click(function(){
+	app.getNDVI3();
+});
+
+$('#process-ndvi4-button').click(function(){
+	app.getNDVI4();
+});
+
+$('#process-ndvi5-button').click(function(){
+	app.getNDVI5();
+});
+
+
+	function cleanup(layer){
+		var removeLayer = map.getLayer(layer);
+		if(removeLayer){
+			map.removeLayer(removeLayer);
+		}
+		myWindow.close();
+		myWindow1close();
+		myWindow2.close();
+		myWindow3.close();
+		myWindow4.close();
+		myWindow5.close();
+	}
 
 function popup(url,name,size) 
 { 

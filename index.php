@@ -35,16 +35,20 @@ if(!isset($_SESSION)){
 					<a href="#"><h1>LUTHERbog WebGIS</h1></a>
 			</ul>
 				<section class="top-bar-section">
-				<div class="show-for-large-up">
+			<!--	<div class="show-for-large-up">-->
+			
+				
 					<ul class="right">
 						<li style="padding-top: 10px"><a href="#" class="button" id="login">Einloggen</a></li>
-						<li style="padding-top: 10px"><a href="php/process/logout.php" class="button" id="logout">Ausloggen</a></li>
-						<li style="padding-top: 10px"><a href="php/administration.php" class="button" id="admin">Administration</a></li>
+						<div class="show-for-large-up"><li style="padding-top: 10px"><a href="php/process/logout.php" class="button" id="logout">Ausloggen</a></li></div>
+						<div class="show-for-large-up"><li style="padding-top: 10px"><a href="php/administration.php" class="button" id="admin">Administration</a></li></div>
 						<li style="padding-top: 10px"><a href="php/webgis.php" class="button" id="webgis">WebGIS</a></li>
-						<li style="padding-top: 10px"><a href="http://www.uni-muenster.de/HydrologieBodenkunde/LUTHERbog.html" class="button" id="project" target="_blank">Das Projekt</a></li>
-						<li style="padding-top: 10px"><a href="php/help.php" class="button" id="help-button">Hilfe / About</a></li>
+						<div class="show-for-large-up"><li style="padding-top: 10px"><a href="http://www.uni-muenster.de/HydrologieBodenkunde/LUTHERbog.html" class="button" id="project" target="_blank">Das Projekt</a></li></div>
+						<div class="show-for-large-up"><li style="padding-top: 10px"><a href="php/help.php" class="button" id="help-button">Hilfe / About</a></li></div>
 					</ul>
-				</div>
+				
+	
+				<!--</div>-->
 				
 						<div id="login-content">
 							<h1>Benutzername</h1>
@@ -65,8 +69,8 @@ if(!isset($_SESSION)){
 							</div>
 						</div>
 						
-				</section>
 				
+				<!--
 				<ul class="right" style="margin-top:10px">
 				<div class="hide-for-large-up">
 					
@@ -123,10 +127,10 @@ if(!isset($_SESSION)){
 									<p>Login &nbsp; &#9658;</p>
 								</div>
 							</div>
-					
+				</div>	
 				</ul>
+				-->
 				
-				</div>
 			</div>
 			</nav>
 			</header>

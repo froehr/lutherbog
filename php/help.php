@@ -56,19 +56,19 @@ session_start();
 					</br>	
 					<div class="panel" style="margin-left:5%">
 								
-					<p>Das WebGIS besteht aus einer Karte, die verschiedene Layer und Funktionen zur Verfügung stellt.<br></p>
+					<p>Das WebGIS besteht aus einer Karte, verschiedenen Layern und spezifischen Funktionen.<br></p>
 					
 					<img src="../img/help/Karte.png" width="700">
 					<br></br>
 					<h3>Übersicht:</h3>
 					
 					<ul>
+						<li>In der linken Seitennavigation gibt das "Table of Content" Informationen über die sich im Kartenausschnitt befindlichen Kartenlayer. Mit einem Klick auf einen entsprechenden Layer lässt sich dieser ein oder ausblenden.</li>
+						<li>Im linken unteren Bereich wird der aktuelle Maßstab des Kartenausschnitts aufgezeigt.</li>
 						<li>Im oberen rechten Bereich befindet sich eine Übersichtskarte, die eine relative Lokalisierung gewährleistet und den aktuellen Kartenausschnitt im größeren Kontext zeigt.<br></li>
 						<li>Im mittlere rechten Bereich der Karte findet der Nutzer die Basiskartengallerie. Mit einem Klick auf eine entsprechende Basiskarte ändert sich diese in der Hauptkarte.</li>
 						<li>Darunter befinden sich die Messwerkzeuge, mit denen der Nutzer Flächen und Entfernungen messen und Koordinaten auslesen kann.</li>
-						<li>Darunter kann man einen Level of Detail wählen. Bei dem voreingestellten Level of Detail, sind Hintergrundkarten und Messwerkzeuge verfügbar, jedoch kann man nur bis auf ein bestimmtes Level ranzoomen. Genügt einem dieses Level nicht, wählt man den Benutzerdefinierten Level of Detail. </li>
-						<li>Im linken unteren Bereich wird der aktuelle Maßstab des Kartenausschnitts aufgezeigt.</li>
-						<li>In der linken Seitennavigation gibt das "Table of Content" Informationen über die sich im Kartenausschnitt befindlichen Kartenlayer. Mit einem Klick auf einen entsprechenden Layer lässt sich dieser ein oder ausblenden.</li>
+						<li>Darunter kann man einen Level of Detail wählen. Bei dem voreingestellten Level of Detail, sind Hintergrundkarten und Messwerkzeuge verfügbar, jedoch kann man nur bis auf ein bestimmtes Level ranzoomen. Genügt einem dieses Level nicht, wählt man den benutzerdefinierten Detailgrad. </li>
 						<li>Der Kartenausschnitt visualisiert die angewählten Geodaten.</li>
 					</ul>
 					</br>
@@ -98,7 +98,7 @@ session_start();
 					</div>
 					<div class="row">
 					<div class="small-12 medium-12 large-12 columns">
-							<p>Klickt man auf die blauen Begriffe "Luftbilder 2006 (Tiles)" und "Luftbilder 2006 (Merged)" erscheint dieses Fenster:
+							<p>Klickt man auf den Button "Layerinfos" hinter "Luftbilder 2006 (Tiles)" und "Luftbilder 2006 (Merged)" erscheint dieses Fenster:
 							<img src="../img/help/GetMap.png" width="400">
 					</div>
 					</div>
@@ -136,7 +136,7 @@ session_start();
 					</div>
 					<div class="row">
 					<div class="small-12 medium-12 large-12 columns">
-							<p>Klickt man auf die blauen Begriffe "FlugX" erscheint dieses Fenster:
+							<p>Klickt man auf den Button "Layerinfos" hinter den Begriffen "FlugX" erscheint dieses Fenster:
 							<img src="../img/help/GetMap.png" width="400">
 					</div>
 					</div>
@@ -170,7 +170,8 @@ session_start();
 						
 						<div class="small-6 medium-8 large-9 columns">				
 							<p>Der Vegetaionsindex wird aus den multispektralen Bildern der Flüge berechnet. Durch Markieren der Checkbox werden sie auf der Karte angezeigt.
-							Die Berechnung wurde durch einen Web Processing Service realisiert.</p>
+							Die Berechnung wurde durch einen Web Processing Service realisiert.
+							Durch Auswahl eines Layers erscheint eine Legende zur Interpretation des Layers.</p>
 						</div>
 					</div>
 					
@@ -263,7 +264,8 @@ session_start();
 							<h3>.csv-Datei</h3>
 							<p>Eine .csv-Datei wird durch Ziehen vom Desktop auf die Karte visualisiert. Es ist notwendig die Hinweise zu beachten. Werden die Spalten anders bezeichnet als angegeben, kann die Datei nicht gelesen werden.
 							Sind die Koordinaten nicht in Dezimalgrad angegeben, sondern in Grad, Minuten, Sekunden nimmt die Funktion an, es wäre das richtige Format und der Standort stimmt nicht.
-							Es müssen Dezimalgrad mit dem Bezugssystem WGS84 sein.</p>
+							Es müssen Dezimalgrad mit dem Bezugssystem WGS84 sein.<br></br>
+							Beispiel einer .csv Datei:</p><img src="../img/help/BeispielCSV.png">
 						</div>
 					</div>
 					</div>
@@ -272,12 +274,34 @@ session_start();
 			  </dd>
 			  <ul class="side-nav"><li class="divider"></li></ul>
 			  <dd class="accordion-navigation">
-				<a href="#panel8a">Technisches</a>
+				<a href="#panel8a">Level of Detail</a>
 				<div id="panel8a" class="content">
 				  </br>	
 					<div class="panel" style="margin-left:5%">
+					<div class="row" style="padding-bottom: 10px">		
+						<div class="small-6 medium-4 large-3 columns">
+							<img src="../img/help/LoD.PNG" width="218" height="732" align="left" border="0" style="padding-right: 10px">
+							<br></br>
+						</div>
+						
+						<div class="small-6 medium-8 large-9 columns">				
+							<p> Wählt man den benutzerdefinierten Level of Detail, kann man beliebig nah in der Karte heranzoomen. Von besonderer Bedeutung ist das bei der Anzeige der Felddaten und Sites.
+						</div>
+					</div>
+					</div>
+					
+				</div>
+			  </dd>
+			  
+			  <ul class="side-nav"><li class="divider"></li></ul>
+			  <dd class="accordion-navigation">
+				<a href="#panel9a">Allgemeine Probleme</a>
+				<div id="panel9a" class="content">
+				  </br>	
+					<div class="panel" style="margin-left:5%">
 								
-					<p>Falls die Seite sich nicht korrekt aufbaut, drücken sie F5!</p>
+					<p>Falls die Seite sich nicht korrekt aufbaut, drücken sie F5!
+					Für die beste Darstellung wird der Internet Explorer als Browser empfohlen.</p>
 					
 					</div>
 					

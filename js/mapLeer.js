@@ -1,5 +1,5 @@
 var map;
-var lutherbog_elevation, lutherbog_ortho_tiles, flooded_area, part_flooded; 
+var lutherbog_elevation, lutherbog_ortho_tiles, flooded_area, part_flooded, ndvi1, ndvi2, ndvi3, ndvi4, ndvi5; 
 
 require([
 	'esri/map',
@@ -106,8 +106,7 @@ require([
 	
 		
         map = new Map("map", {
-		center: [-80.405860, 43.919791],
-		zoom: 16,
+		zoom: 6,
 		lods: lods
 		});
 		
@@ -235,7 +234,7 @@ require([
 	lutherbog_site4.hide();
 	lutherbog_site4.setOpacity(0.5);
 	
-		lutherbog_site1Kl = new ArcGISDynamicMapServiceLayer("http://geo-arcgis.uni-muenster.de:6080/arcgis/rest/services/LutherBog/Site1Kl/MapServer", {});
+	lutherbog_site1Kl = new ArcGISDynamicMapServiceLayer("http://geo-arcgis.uni-muenster.de:6080/arcgis/rest/services/LutherBog/Site1Kl/MapServer", {});
 	map.addLayer(lutherbog_site1Kl);
 	lutherbog_site1Kl.hide();
 	lutherbog_site1Kl.setOpacity(0.3);
@@ -282,7 +281,26 @@ require([
 	var gpServiceUrlIso= "http://geo-arcgis.uni-muenster.de:6080/arcgis/rest/services/LutherBog/isolines/GPServer/isolines";
         var mapserviceurlIso= "http://geo-arcgis.uni-muenster.de:6080/arcgis/rest/services/LutherBog/isolines/MapServer/jobs";
 	
-	
+	// Geoprocessing ndvi1
+	var gpServiceUrlndvi1="http://geo-arcgis.uni-muenster.de:6080/arcgis/rest/services/LutherBog/ndvi1/GPServer/ndvi1";
+		var mapserviceurlndvi1="http://geo-arcgis.uni-muenster.de:6080/arcgis/rest/services/LutherBog/ndvi1/MapServer/jobs";
+		
+	// Geoprocessing ndvi2
+	var gpServiceUrlndvi2="http://geo-arcgis.uni-muenster.de:6080/arcgis/rest/services/LutherBog/ndvi2/GPServer/ndvi2";
+		var mapserviceurlndvi2="http://geo-arcgis.uni-muenster.de:6080/arcgis/rest/services/LutherBog/ndvi2/MapServer/jobs";
+		
+	// Geoprocessing ndvi3
+	var gpServiceUrlndvi3="http://geo-arcgis.uni-muenster.de:6080/arcgis/rest/services/LutherBog/ndvi3/GPServer/ndvi3";
+		var mapserviceurlndvi3="http://geo-arcgis.uni-muenster.de:6080/arcgis/rest/services/LutherBog/ndvi3/MapServer/jobs";
+		
+	// Geoprocessing ndvi4
+	var gpServiceUrlndvi4="http://geo-arcgis.uni-muenster.de:6080/arcgis/rest/services/LutherBog/ndvi4/GPServer/ndvi4";
+		var mapserviceurlndvi4="http://geo-arcgis.uni-muenster.de:6080/arcgis/rest/services/LutherBog/ndvi4/MapServer/jobs";
+		
+	// Geoprocessing ndvi5
+	var gpServiceUrlndvi5="http://geo-arcgis.uni-muenster.de:6080/arcgis/rest/services/LutherBog/ndvi5/GPServer/ndvi5";
+		var mapserviceurlndvi5="http://geo-arcgis.uni-muenster.de:6080/arcgis/rest/services/LutherBog/ndvi5/MapServer/jobs";
+		
 	
 	function getFlooded(){
 		$('#flooded_area').prop('checked', true);
@@ -342,14 +360,45 @@ require([
 		map.addLayers([isolines]);
 	}
 	
-	/*function gpJobCompletendvi1(jobinfo){
+	function gpJobCompletendvi1(jobinfo){
 		//construct the result map service url using the id from jobinfo we'll add a new layer to the map
 		var mapurl = mapserviceurlndvi1 + "/" + jobinfo.jobId;
 		ndvi1 = new ArcGISDynamicMapServiceLayer(mapurl,{"id":"ndvi1", "opacity": 0.5});
 		//add the hotspot layer to the map
 		map.addLayers([ndvi1]);
 	}
-	*/
+	
+	function gpJobCompletendvi2(jobinfo){
+		//construct the result map service url using the id from jobinfo we'll add a new layer to the map
+		var mapurl = mapserviceurlndvi1 + "/" + jobinfo.jobId;
+		ndvi2 = new ArcGISDynamicMapServiceLayer(mapurl,{"id":"ndvi2", "opacity": 0.5});
+		//add the hotspot layer to the map
+		map.addLayers([ndvi2]);
+	}
+	
+	function gpJobCompletendvi3(jobinfo){
+		//construct the result map service url using the id from jobinfo we'll add a new layer to the map
+		var mapurl = mapserviceurlndvi1 + "/" + jobinfo.jobId;
+		ndvi3 = new ArcGISDynamicMapServiceLayer(mapurl,{"id":"ndvi3", "opacity": 0.5});
+		//add the hotspot layer to the map
+		map.addLayers([ndvi3]);
+	}
+	
+	function gpJobCompletendvi4(jobinfo){
+		//construct the result map service url using the id from jobinfo we'll add a new layer to the map
+		var mapurl = mapserviceurlndvi1 + "/" + jobinfo.jobId;
+		ndvi4 = new ArcGISDynamicMapServiceLayer(mapurl,{"id":"ndvi4", "opacity": 0.5});
+		//add the hotspot layer to the map
+		map.addLayers([ndvi4]);
+	}
+	
+	function gpJobCompletendvi5(jobinfo){
+		//construct the result map service url using the id from jobinfo we'll add a new layer to the map
+		var mapurl = mapserviceurlndvi1 + "/" + jobinfo.jobId;
+		ndvi5 = new ArcGISDynamicMapServiceLayer(mapurl,{"id":"ndvi5", "opacity": 0.5});
+		//add the hotspot layer to the map
+		map.addLayers([ndvi5]);
+	}
 	
 	function gpJobStatus(jobinfo){
 		$('#map-error').css('display','none');
@@ -445,7 +494,11 @@ require([
 		getFloodedPart: getFloodedPart,
 		getIsolines: getIsolines,
 		SetZoomSite: SetZoomSite
-		//getndvi1: getndvi1,
+		/*getndvi1: getndvi1,
+		getndvi2: getndvi2,
+		getndvi3: getndvi3,
+		getndvi4: getndvi4,
+		getndvi5: getndvi5*/
 	};
 	return app;
 
@@ -608,54 +661,67 @@ $('#uas_ndvi').change(function(){
 	if($('#uas_ndvi').is(':checked') == true){
 		map.centerAndZoom([-80.405860, 43.919791],16);
 		lutherbog_ndviAll.show();
+		myWindow = window.open("../LegendeNDVI.html", "myWindow", "top=680, left=1490, width=220, height=370");
 	}
 	else{
 		lutherbog_ndviAll.hide();
 	}
 });
+
 $('#ndvi1').change(function(){
 	if($('#ndvi1').is(':checked') == true){
 		map.centerAndZoom([-80.405970, 43.918175],17);
 		lutherbog_ndvi2.show();
+		myWindow1 = window.open("../LegendeNDVI.html", "myWindow1", "top=680, left=1490, width=220, height=370");
+		
 	}
 	else{
 		lutherbog_ndvi2.hide();
+		myWindow1.close();
 	}
 });
 $('#ndvi2').change(function(){
 	if($('#ndvi2').is(':checked') == true){
 		map.centerAndZoom([-80.405860, 43.920038],17);
 		lutherbog_ndvi1.show();
+		myWindow2 = window.open("../LegendeNDVI.html", "myWindow2", "top=680, left=1490, width=220, height=370");
 	}
 	else{
 		lutherbog_ndvi1.hide();
+		myWindow2.close();
 	}
 });
 $('#ndvi3').change(function(){
 	if($('#ndvi3').is(':checked') == true){
 		map.centerAndZoom([-80.407212, 43.921120],17);
 		lutherbog_ndvi3.show();
+		myWindow3 = window.open("../LegendeNDVI.html", "myWindow3", "top=680, left=1490, width=220, height=370");
 	}
 	else{
 		lutherbog_ndvi3.hide();
+		myWindow3.close();
 	}
 });
 $('#ndvi4').change(function(){
 	if($('#ndvi4').is(':checked') == true){
 		map.centerAndZoom([-80.406954, 43.920687],17);
 		lutherbog_ndvi4.show();
+		myWindow4 = window.open("../LegendeNDVI.html", "myWindow4", "top=680, left=1490, width=220, height=370");
 	}
 	else{
 		lutherbog_ndvi4.hide();
+		myWindow4.close();
 	}
 });
 $('#ndvi5').change(function(){
 	if($('#ndvi5').is(':checked') == true){
 		map.centerAndZoom([-80.404787, 43.917890],17);
 		lutherbog_ndvi5.show();
+		myWindow5 = window.open("../LegendeNDVI.html", "myWindow5", "top=680, left=1490, width=220, height=370");
 	}
 	else{
 		lutherbog_ndvi5.hide();
+		myWindow5.close();
 	}
 });
 
@@ -791,8 +857,38 @@ $('#process-flooded-part-button').click(function(){
 $('#process-isolines-button').click(function(){
 	app.getIsolines();
 });
+$('#process-ndvi1-button').click(function(){
+	app.getNDVI1();
+});
 
+$('#process-ndvi2d-button').click(function(){
+	app.getNDVI2();
+});
 
+$('#process-ndvi3-button').click(function(){
+	app.getNDVI3();
+});
+
+$('#process-ndvi4-button').click(function(){
+	app.getNDVI4();
+});
+
+$('#process-ndvi5-button').click(function(){
+	app.getNDVI5();
+});
+
+function cleanup(layer){
+		var removeLayer = map.getLayer(layer);
+		if(removeLayer){
+			map.removeLayer(removeLayer);
+		}
+		myWindow.close();
+		myWindow1close();
+		myWindow2.close();
+		myWindow3.close();
+		myWindow4.close();
+		myWindow5.close();
+	}
 function popup(url,name,size) 
 { 
 window.open(url,name,size); 
